@@ -1,0 +1,26 @@
+# Dossiers de build générés automatiquement
+build/
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+
+# Fichiers de configuration Qt Creator
+*.pro.user
+*.qmake.stash
+*.qmake.cache
+*.moc
+*.moc.*
+*.rcc
+*.ui.h
+
+# Fichiers temporaires
+*.log
+*.tmp
+*.swp
+*.DS_Store
+
+# Mac / Linux
+*.out
