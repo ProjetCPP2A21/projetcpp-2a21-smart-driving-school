@@ -124,7 +124,8 @@ public:
         label->setGeometry(QRect(20, 80, 61, 21));
         label_6 = new QLabel(examens);
         label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(-10, -20, 111, 91));
+        label_6->setGeometry(QRect(0, -10, 111, 91));
+        label_6->setStyleSheet(QString::fromUtf8("image: url(:/logo/logo.png);"));
         label_6->setPixmap(QPixmap(QString::fromUtf8(":/Downloads/554337631_1437269814008871_8043664467412301076_n.png")));
         label_6->setScaledContents(true);
         pushButton_7 = new QPushButton(examens);
@@ -714,7 +715,7 @@ public:
 
     void retranslateUi(QWidget *examens)
     {
-        examens->setWindowTitle(QCoreApplication::translate("examens", "Form", nullptr));
+        examens->setWindowTitle(QCoreApplication::translate("examens", "Gestion des examens ", nullptr));
         label_9->setText(QCoreApplication::translate("examens", "R\303\251sultat :", nullptr));
         label_2->setText(QCoreApplication::translate("examens", "Type :", nullptr));
         label_4->setText(QCoreApplication::translate("examens", "Heure :", nullptr));

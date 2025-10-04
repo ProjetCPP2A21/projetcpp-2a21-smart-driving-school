@@ -1,0 +1,10 @@
+release/examens.o
+release/main.o
+release/connexion.o
+release/menu.o
+release/qrc_loggoooo.o
+release/qrc_logo.o
+release/qrc_qmake_qmake_qm_files.o
+release/moc_connexion.o
+release/moc_examens.o
+release/moc_menu.o

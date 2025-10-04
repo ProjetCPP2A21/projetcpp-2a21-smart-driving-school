@@ -352,6 +352,7 @@ Makefile: ../../integ-menu-examens.pro ../../../../qt/6.7.3/mingw_64/mkspecs/fea
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/qt_config.prf \
 		../../../../qt/6.7.3/mingw_64/mkspecs/win32-g++/qmake.conf \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/exclusive_builds.prf \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/toolchain.prf \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/default_pre.prf \
@@ -382,7 +383,6 @@ Makefile: ../../integ-menu-examens.pro ../../../../qt/6.7.3/mingw_64/mkspecs/fea
 		../../../../qt/6.7.3/mingw_64/lib/Qt6Gui.prl \
 		../../../../qt/6.7.3/mingw_64/lib/Qt6Core.prl \
 		../../../../qt/6.7.3/mingw_64/lib/Qt6EntryPoint.prl \
-		.qmake.stash \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/build_pass.prf \
 		../../logo.qrc \
 		debug/qmake_qmake_qm_files.qrc \
@@ -670,6 +670,7 @@ Makefile: ../../integ-menu-examens.pro ../../../../qt/6.7.3/mingw_64/mkspecs/fea
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/qt_config.prf:
 ../../../../qt/6.7.3/mingw_64/mkspecs/win32-g++/qmake.conf:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/exclusive_builds.prf:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/toolchain.prf:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/default_pre.prf:
@@ -700,7 +701,6 @@ Makefile: ../../integ-menu-examens.pro ../../../../qt/6.7.3/mingw_64/mkspecs/fea
 ../../../../qt/6.7.3/mingw_64/lib/Qt6Gui.prl:
 ../../../../qt/6.7.3/mingw_64/lib/Qt6Core.prl:
 ../../../../qt/6.7.3/mingw_64/lib/Qt6EntryPoint.prl:
-.qmake.stash:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/build_pass.prf:
 ../../logo.qrc:
 debug/qmake_qmake_qm_files.qrc:

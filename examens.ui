@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Gestion des examens </string>
   </property>
   <widget class="QLabel" name="label_9">
    <property name="geometry">
@@ -153,11 +153,14 @@ QLineEdit:focus {
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>-10</x>
-     <y>-20</y>
+     <x>0</x>
+     <y>-10</y>
      <width>111</width>
      <height>91</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/logo/logo.png);</string>
    </property>
    <property name="text">
     <string/>

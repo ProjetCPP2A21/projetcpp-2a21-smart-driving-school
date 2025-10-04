@@ -13,6 +13,16 @@
   <property name="windowTitle">
    <string>connexion</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#centralwidget {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #f5f7fa,
+        stop:1 #c3cfe2
+    );
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
@@ -96,20 +106,17 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>40</y>
-      <width>381</width>
-      <height>371</height>
+      <x>-22</x>
+      <y>20</y>
+      <width>461</width>
+      <height>361</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/logo/logo.png);</string>
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Downloads/554337631_1437269814008871_8043664467412301076_n.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
     </property>
    </widget>
   </widget>

@@ -38,6 +38,14 @@ public:
         if (connexion->objectName().isEmpty())
             connexion->setObjectName("connexion");
         connexion->resize(906, 524);
+        connexion->setStyleSheet(QString::fromUtf8("QWidget#centralwidget {\n"
+"    background: qlineargradient(\n"
+"        x1:0, y1:0, x2:0, y2:1,\n"
+"        stop:0 #f5f7fa,\n"
+"        stop:1 #c3cfe2\n"
+"    );\n"
+"}\n"
+""));
         centralwidget = new QWidget(connexion);
         centralwidget->setObjectName("centralwidget");
         lineEdit = new QLineEdit(centralwidget);
@@ -79,9 +87,8 @@ public:
 "    transition: all 0.3s ease;"));
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(50, 40, 381, 371));
-        label->setPixmap(QPixmap(QString::fromUtf8("../../../Downloads/554337631_1437269814008871_8043664467412301076_n.png")));
-        label->setScaledContents(true);
+        label->setGeometry(QRect(-22, 20, 461, 361));
+        label->setStyleSheet(QString::fromUtf8("image: url(:/logo/logo.png);"));
         connexion->setCentralWidget(centralwidget);
         menubar = new QMenuBar(connexion);
         menubar->setObjectName("menubar");

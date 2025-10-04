@@ -167,7 +167,8 @@ public:
 "    );"));
         label = new QLabel(menu);
         label->setObjectName("label");
-        label->setGeometry(QRect(300, 20, 451, 371));
+        label->setGeometry(QRect(210, -10, 621, 421));
+        label->setStyleSheet(QString::fromUtf8("image: url(:/logo/logo.png);"));
         label->setPixmap(QPixmap(QString::fromUtf8("../../../Downloads/554337631_1437269814008871_8043664467412301076_n.png")));
         label->setScaledContents(true);
 
@@ -178,7 +179,7 @@ public:
 
     void retranslateUi(QWidget *menu)
     {
-        menu->setWindowTitle(QCoreApplication::translate("menu", "Form", nullptr));
+        menu->setWindowTitle(QCoreApplication::translate("menu", "Menu Principal", nullptr));
         Bmoniteurs->setText(QCoreApplication::translate("menu", "Moniteur", nullptr));
         pushButton_5->setText(QCoreApplication::translate("menu", "Employ\303\251s", nullptr));
         pushButton->setText(QString());
