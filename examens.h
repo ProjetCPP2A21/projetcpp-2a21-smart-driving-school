@@ -2,7 +2,7 @@
 #define EXAMENS_H
 
 #include <QMainWindow>
-#include "ui_examens.h"
+#include "ui_examens.h"   // <-- ajoute Ã§a aussi
 
 namespace Ui {
 class examens;
