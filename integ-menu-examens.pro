@@ -24,6 +24,14 @@ FORMS += \
     examens.ui \
     menu.ui
 
+<<<<<<< HEAD
+=======
+TRANSLATIONS += \
+    integ-menu-examens_fr_FR.ts
+CONFIG += lrelease
+CONFIG += embed_translations
+
+>>>>>>> origin/main-original
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

@@ -6,6 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
+<<<<<<< HEAD
     <width>904</width>
     <height>525</height>
    </rect>
@@ -71,12 +72,60 @@ QTimeEdit:hover {
     border: 2px solid #43cea2;
 }</string>
    </property>
+=======
+    <width>908</width>
+    <height>523</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion des examens </string>
+  </property>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>280</y>
+     <width>51</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 rgba(0, 0, 50, 255), stop: 0.5 rgba(47, 79, 79, 255), stop: 1 rgba(25, 25, 112, 255));
+    border: 2px solid rgba(100, 100, 100, 200);
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Résultat :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>150</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Type :</string>
+   </property>
+>>>>>>> origin/main-original
   </widget>
   <widget class="QDateEdit" name="Date">
    <property name="geometry">
     <rect>
      <x>160</x>
+<<<<<<< HEAD
      <y>180</y>
+=======
+     <y>170</y>
+>>>>>>> origin/main-original
      <width>111</width>
      <height>31</height>
     </rect>
@@ -97,11 +146,31 @@ QDateEdit:focus {
 }</string>
    </property>
   </widget>
+<<<<<<< HEAD
+=======
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>210</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Heure :</string>
+   </property>
+  </widget>
+>>>>>>> origin/main-original
   <widget class="QLineEdit" name="ID">
    <property name="geometry">
     <rect>
      <x>20</x>
+<<<<<<< HEAD
      <y>120</y>
+=======
+     <y>110</y>
+>>>>>>> origin/main-original
      <width>201</width>
      <height>31</height>
     </rect>
@@ -123,6 +192,7 @@ QLineEdit:focus {
 </string>
    </property>
   </widget>
+<<<<<<< HEAD
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
@@ -142,6 +212,125 @@ QLineEdit:focus {
      <x>170</x>
      <y>410</y>
      <width>111</width>
+=======
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>280</y>
+     <width>61</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 rgba(0, 0, 50, 255), stop: 0.5 rgba(47, 79, 79, 255), stop: 1 rgba(25, 25, 112, 255));
+    border: 2px solid rgba(100, 100, 100, 200);
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Véhicule :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>80</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ID Exemen :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>-10</y>
+     <width>111</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/logo/logo.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>:/Downloads/554337631_1437269814008871_8043664467412301076_n.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_7">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>480</y>
+     <width>921</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 rgba(0, 0, 50, 255), stop: 0.5 rgba(47, 79, 79, 255), stop: 1 rgba(25, 25, 112, 255));
+    border: 2px solid rgba(100, 100, 100, 200);
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>350</y>
+     <width>451</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 12px;
+    padding: 6px 12px;
+    background: white;
+    color: #2c3e50;
+}
+
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837); /* style feu au focus */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Recherche...</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_8">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>400</y>
+     <width>131</width>
+>>>>>>> origin/main-original
      <height>41</height>
     </rect>
    </property>
@@ -169,6 +358,7 @@ QPushButton:hover {
 </string>
    </property>
    <property name="text">
+<<<<<<< HEAD
     <string>Supprimer</string>
    </property>
   </widget>
@@ -475,11 +665,20 @@ QComboBox QAbstractItemView {
     </property>
    </item>
   </widget>
+=======
+    <string>Statistiques</string>
+   </property>
+  </widget>
+>>>>>>> origin/main-original
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
      <x>300</x>
+<<<<<<< HEAD
      <y>100</y>
+=======
+     <y>90</y>
+>>>>>>> origin/main-original
      <width>581</width>
      <height>251</height>
     </rect>
@@ -708,6 +907,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-</string>
     </property>
    </item>
   </widget>
+<<<<<<< HEAD
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -786,11 +986,17 @@ QPushButton:hover {
     <string>Modifier</string>
    </property>
   </widget>
+=======
+>>>>>>> origin/main-original
   <widget class="QPushButton" name="Bretour">
    <property name="geometry">
     <rect>
      <x>800</x>
+<<<<<<< HEAD
      <y>30</y>
+=======
+     <y>20</y>
+>>>>>>> origin/main-original
      <width>91</width>
      <height>41</height>
     </rect>
@@ -823,11 +1029,175 @@ QPushButton:hover {
     <string>Retour</string>
    </property>
   </widget>
+<<<<<<< HEAD
+=======
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>400</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Supprimer</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>150</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Date :</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>400</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Modifier</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_4">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>350</y>
+     <width>120</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;    /* un peu moins arrondi si tu veux */
+    padding: 4px 8px;       /* moins d'espace intérieur */
+    background: white;
+    color: #2c3e50;
+    min-width: 100px;       /* largeur minimale plus petite */
+    max-width: 150px;       /* facultatif : limite largeur */
+    height: 24px;           /* hauteur plus petite */
+}
+
+/* Drop-down (flèche) */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;           /* réduit largeur flèche */
+    border: none;
+    background: transparent;
+}
+
+QComboBox::down-arrow {
+    width: 12px;
+    height: 12px;
+}
+
+/* Hover et focus restent inchangés */
+QComboBox:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+QComboBox:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Menu déroulant */
+QComboBox QAbstractItemView {
+    background: white;
+    border: 1px solid #43cea2;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>             Tri</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Croissant</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Décroissant</string>
+    </property>
+   </item>
+  </widget>
+>>>>>>> origin/main-original
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
      <x>100</x>
+<<<<<<< HEAD
      <y>360</y>
+=======
+     <y>350</y>
+>>>>>>> origin/main-original
      <width>91</width>
      <height>41</height>
     </rect>
@@ -859,11 +1229,47 @@ QPushButton:hover {
     <string>Ajouter</string>
    </property>
   </widget>
+<<<<<<< HEAD
+=======
+  <widget class="QLineEdit" name="lineEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>230</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 12px;
+    padding: 6px 12px;
+    background: white;
+    color: #2c3e50;
+}
+
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837); /* style feu au focus */
+}
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+>>>>>>> origin/main-original
   <widget class="QComboBox" name="comboBox_2">
    <property name="geometry">
     <rect>
      <x>160</x>
+<<<<<<< HEAD
      <y>310</y>
+=======
+     <y>300</y>
+>>>>>>> origin/main-original
      <width>120</width>
      <height>31</height>
     </rect>
@@ -926,11 +1332,162 @@ QComboBox QAbstractItemView {
     </property>
    </item>
   </widget>
+<<<<<<< HEAD
+=======
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>210</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Lieu :</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="Type">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>170</y>
+     <width>120</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;    /* un peu moins arrondi si tu veux */
+    padding: 4px 8px;       /* moins d'espace intérieur */
+    background: white;
+    color: #2c3e50;
+    min-width: 100px;       /* largeur minimale plus petite */
+    max-width: 150px;       /* facultatif : limite largeur */
+    height: 24px;           /* hauteur plus petite */
+}
+
+/* Drop-down (flèche) */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;           /* réduit largeur flèche */
+    border: none;
+    background: transparent;
+}
+
+QComboBox::down-arrow {
+    width: 12px;
+    height: 12px;
+}
+
+/* Hover et focus restent inchangés */
+QComboBox:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+QComboBox:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Menu déroulant */
+QComboBox QAbstractItemView {
+    background: white;
+    border: 1px solid #43cea2;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>Code </string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Circuit</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>parking</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QTimeEdit" name="timeEdit">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>230</y>
+     <width>120</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTimeEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 100px;
+    max-width: 150px;
+    height: 24px;
+    selection-background-color: #43cea2; /* couleur quand on sélectionne une partie de l'heure */
+    selection-color: white;
+}
+
+/* Boutons d’incrémentation/décrémentation */
+QTimeEdit::up-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+    width: 16px;
+    border: none;
+    background: transparent;
+}
+
+QTimeEdit::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: bottom right;
+    width: 16px;
+    border: none;
+    background: transparent;
+}
+
+QTimeEdit::up-arrow, QTimeEdit::down-arrow {
+    width: 10px;
+    height: 10px;
+}
+
+/* Focus */
+QTimeEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    /* ⚠️ box-shadow n’est pas supporté par Qt StyleSheets */
+}
+
+/* Hover */
+QTimeEdit:hover {
+    border: 2px solid #43cea2;
+}</string>
+   </property>
+  </widget>
+>>>>>>> origin/main-original
   <widget class="QPushButton" name="pushButton_4">
    <property name="geometry">
     <rect>
      <x>760</x>
+<<<<<<< HEAD
      <y>410</y>
+=======
+     <y>400</y>
+>>>>>>> origin/main-original
      <width>121</width>
      <height>41</height>
     </rect>
@@ -962,6 +1519,7 @@ QPushButton:hover {
     <string>Exporter PDF</string>
    </property>
   </widget>
+<<<<<<< HEAD
   <widget class="QPushButton" name="pushButton_7">
    <property name="geometry">
     <rect>
@@ -1057,5 +1615,66 @@ QPushButton:hover {
  <resources>
   <include location="../autoecole2/logo.qrc"/>
  </resources>
+=======
+  <widget class="QComboBox" name="comboBox_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>300</y>
+     <width>120</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;    /* un peu moins arrondi si tu veux */
+    padding: 4px 8px;       /* moins d'espace intérieur */
+    background: white;
+    color: #2c3e50;
+    min-width: 100px;       /* largeur minimale plus petite */
+    max-width: 150px;       /* facultatif : limite largeur */
+    height: 24px;           /* hauteur plus petite */
+}
+
+/* Drop-down (flèche) */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;           /* réduit largeur flèche */
+    border: none;
+    background: transparent;
+}
+
+QComboBox::down-arrow {
+    width: 12px;
+    height: 12px;
+}
+
+/* Hover et focus restent inchangés */
+QComboBox:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+QComboBox:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Menu déroulant */
+QComboBox QAbstractItemView {
+    background: white;
+    border: 1px solid #43cea2;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+>>>>>>> origin/main-original
  <connections/>
 </ui>

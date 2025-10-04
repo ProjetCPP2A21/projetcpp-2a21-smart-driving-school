@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 <RCC/>
+=======
+<RCC>
+    <qresource prefix="/logo">
+        <file>logo.png</file>
+    </qresource>
+</RCC>
+>>>>>>> origin/main-original

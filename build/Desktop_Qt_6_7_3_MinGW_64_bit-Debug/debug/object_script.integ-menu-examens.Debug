@@ -1,0 +1,10 @@
+debug/examens.o
+debug/main.o
+debug/connexion.o
+debug/menu.o
+debug/qrc_loggoooo.o
+debug/qrc_logo.o
+debug/qrc_qmake_qmake_qm_files.o
+debug/moc_connexion.o
+debug/moc_examens.o
+debug/moc_menu.o

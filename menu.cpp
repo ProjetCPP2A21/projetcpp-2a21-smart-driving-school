@@ -20,3 +20,7 @@ void menu::on_Bexamens_clicked()
     examWindow->show();
     this->hide(); // optionnel, si tu veux fermer le menu
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main-original
