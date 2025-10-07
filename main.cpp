@@ -1,17 +1,11 @@
 #include "connexion.h"
-
 #include <QApplication>
-<<<<<<< HEAD
-=======
 #include <QLocale>
 #include <QTranslator>
->>>>>>> origin/main-original
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-<<<<<<< HEAD
-=======
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
@@ -22,7 +16,6 @@ int main(int argc, char *argv[])
             break;
         }
     }
->>>>>>> origin/main-original
     connexion w;
     w.show();
     return a.exec();

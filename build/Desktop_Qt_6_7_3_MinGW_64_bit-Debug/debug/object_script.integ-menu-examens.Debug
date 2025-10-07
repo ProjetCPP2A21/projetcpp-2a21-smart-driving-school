@@ -1,10 +1,15 @@
+debug/apprenant.o
 debug/examens.o
 debug/main.o
 debug/connexion.o
 debug/menu.o
-debug/qrc_loggoooo.o
+debug/moniteur.o
+debug/vehicule.o
 debug/qrc_logo.o
 debug/qrc_qmake_qmake_qm_files.o
+debug/moc_apprenant.o
 debug/moc_connexion.o
 debug/moc_examens.o
 debug/moc_menu.o
+debug/moc_moniteur.o
+debug/moc_vehicule.o

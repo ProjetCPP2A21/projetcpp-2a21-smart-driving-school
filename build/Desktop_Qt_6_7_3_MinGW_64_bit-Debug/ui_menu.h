@@ -20,7 +20,7 @@ QT_BEGIN_NAMESPACE
 class Ui_menu
 {
 public:
-    QPushButton *Bmoniteurs;
+    QPushButton *Bmoniteur;
     QPushButton *pushButton_5;
     QPushButton *pushButton;
     QPushButton *Bexamens;
@@ -34,10 +34,10 @@ public:
         if (menu->objectName().isEmpty())
             menu->setObjectName("menu");
         menu->resize(906, 524);
-        Bmoniteurs = new QPushButton(menu);
-        Bmoniteurs->setObjectName("Bmoniteurs");
-        Bmoniteurs->setGeometry(QRect(0, 85, 111, 81));
-        Bmoniteurs->setStyleSheet(QString::fromUtf8("\n"
+        Bmoniteur = new QPushButton(menu);
+        Bmoniteur->setObjectName("Bmoniteur");
+        Bmoniteur->setGeometry(QRect(0, 85, 111, 81));
+        Bmoniteur->setStyleSheet(QString::fromUtf8("\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
 "        stop:1 #185a9d\n"
@@ -180,7 +180,7 @@ public:
     void retranslateUi(QWidget *menu)
     {
         menu->setWindowTitle(QCoreApplication::translate("menu", "Menu Principal", nullptr));
-        Bmoniteurs->setText(QCoreApplication::translate("menu", "Moniteur", nullptr));
+        Bmoniteur->setText(QCoreApplication::translate("menu", "Moniteur", nullptr));
         pushButton_5->setText(QCoreApplication::translate("menu", "Employ\303\251s", nullptr));
         pushButton->setText(QString());
         Bexamens->setText(QCoreApplication::translate("menu", "examens", nullptr));

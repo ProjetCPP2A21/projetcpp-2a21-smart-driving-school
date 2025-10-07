@@ -7,21 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>906</width>
-<<<<<<< HEAD
-    <height>523</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
-=======
     <height>524</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Menu Principal</string>
   </property>
-  <widget class="QPushButton" name="Bmoniteurs">
+  <widget class="QPushButton" name="Bmoniteur">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -108,16 +100,11 @@ QPushButton:hover {
     <string/>
    </property>
   </widget>
->>>>>>> origin/main-original
   <widget class="QPushButton" name="Bexamens">
    <property name="geometry">
     <rect>
      <x>0</x>
-<<<<<<< HEAD
-     <y>230</y>
-=======
      <y>235</y>
->>>>>>> origin/main-original
      <width>111</width>
      <height>81</height>
     </rect>
@@ -149,11 +136,7 @@ QPushButton:hover {
    <property name="geometry">
     <rect>
      <x>0</x>
-<<<<<<< HEAD
-     <y>390</y>
-=======
      <y>395</y>
->>>>>>> origin/main-original
      <width>111</width>
      <height>91</height>
     </rect>
@@ -181,137 +164,11 @@ QPushButton:hover {
     <string>Paiement</string>
    </property>
   </widget>
-<<<<<<< HEAD
-  <widget class="QPushButton" name="Bmoniteurs">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>80</y>
-     <width>111</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-        stop:0 #43cea2,
-        stop:1 #185a9d
-    );
-    color: white;
-    border-radius: 12px;
-    padding: 10px 22px;
-    font-weight: bold;
-    border: 1px solid #144d7e;
-}
-
-QPushButton:hover {
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-        stop:0 #2ebf91,
-        stop:1 #0f2027
-    );</string>
-   </property>
-   <property name="text">
-    <string>Moniteur</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>480</y>
-     <width>921</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
-    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 rgba(0, 0, 50, 255), stop: 0.5 rgba(47, 79, 79, 255), stop: 1 rgba(25, 25, 112, 255));
-    border: 2px solid rgba(100, 100, 100, 200);
-    padding: 5px;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-}</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_5">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>310</y>
-     <width>111</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-        stop:0 #43cea2,
-        stop:1 #185a9d
-    );
-    color: white;
-    border-radius: 12px;
-    padding: 10px 22px;
-    font-weight: bold;
-    border: 1px solid #144d7e;
-}
-
-QPushButton:hover {
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-        stop:0 #2ebf91,
-        stop:1 #0f2027
-    );</string>
-   </property>
-   <property name="text">
-    <string>Employés</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Bapprenant">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>111</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-        stop:0 #43cea2,
-        stop:1 #185a9d
-    );
-    color: white;
-    border-radius: 12px;
-    padding: 10px 22px;
-    font-weight: bold;
-    border: 1px solid #144d7e;
-}
-
-QPushButton:hover {
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-        stop:0 #2ebf91,
-        stop:1 #0f2027
-    );</string>
-   </property>
-   <property name="text">
-    <string>Apprenant</string>
-   </property>
-  </widget>
-=======
->>>>>>> origin/main-original
   <widget class="QPushButton" name="Bvehicule">
    <property name="geometry">
     <rect>
      <x>0</x>
-<<<<<<< HEAD
-     <y>160</y>
-=======
      <y>165</y>
->>>>>>> origin/main-original
      <width>111</width>
      <height>71</height>
     </rect>
@@ -339,17 +196,6 @@ QPushButton:hover {
     <string>Véhicule</string>
    </property>
   </widget>
-<<<<<<< HEAD
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>0</y>
-     <width>501</width>
-     <height>441</height>
-    </rect>
-   </property>
-=======
   <widget class="QPushButton" name="Bapprenant">
    <property name="geometry">
     <rect>
@@ -394,7 +240,6 @@ QPushButton:hover {
    <property name="styleSheet">
     <string notr="true">image: url(:/logo/logo.png);</string>
    </property>
->>>>>>> origin/main-original
    <property name="text">
     <string/>
    </property>

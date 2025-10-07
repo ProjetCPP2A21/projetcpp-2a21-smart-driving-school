@@ -21,7 +21,9 @@ private:
 
 private slots:
     void on_Bexamens_clicked();
-
+    void on_Bapprenant_clicked();
+    void on_Bmoniteur_clicked();
+    void on_Bvehicule_clicked();
 };
 
 #endif // MENU_H

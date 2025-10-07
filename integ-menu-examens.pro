@@ -9,29 +9,33 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    apprenant.cpp \
     examens.cpp \
     main.cpp \
     connexion.cpp \
-    menu.cpp
+    menu.cpp \
+    moniteur.cpp \
+    vehicule.cpp
 
 HEADERS += \
+    apprenant.h \
     connexion.h \
     examens.h \
-    menu.h
+    menu.h \
+    moniteur.h \
+    vehicule.h
 
 FORMS += \
+    apprenant.ui \
     connexion.ui \
     examens.ui \
-    menu.ui
-
-<<<<<<< HEAD
-=======
+    menu.ui \
+    moniteur.ui \
+    vehicule.ui
 TRANSLATIONS += \
     integ-menu-examens_fr_FR.ts
 CONFIG += lrelease
 CONFIG += embed_translations
-
->>>>>>> origin/main-original
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
