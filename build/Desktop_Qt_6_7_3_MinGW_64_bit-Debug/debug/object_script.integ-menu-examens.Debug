@@ -1,0 +1,16 @@
+debug/apprenant.o
+debug/examens.o
+debug/main.o
+debug/connexion.o
+debug/menu.o
+debug/moniteur.o
+debug/paiement.o
+debug/vehicule.o
+debug/qrc_logo.o
+debug/moc_apprenant.o
+debug/moc_connexion.o
+debug/moc_examens.o
+debug/moc_menu.o
+debug/moc_moniteur.o
+debug/moc_paiement.o
+debug/moc_vehicule.o

@@ -1,0 +1,16 @@
+release/apprenant.o
+release/examens.o
+release/main.o
+release/connexion.o
+release/menu.o
+release/moniteur.o
+release/paiement.o
+release/vehicule.o
+release/qrc_logo.o
+release/moc_apprenant.o
+release/moc_connexion.o
+release/moc_examens.o
+release/moc_menu.o
+release/moc_moniteur.o
+release/moc_paiement.o
+release/moc_vehicule.o
