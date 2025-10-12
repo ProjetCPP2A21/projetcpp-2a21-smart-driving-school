@@ -5,6 +5,7 @@
 #include "moniteur.h"
 #include "paiement.h"
 #include "vehicule.h"
+#include "employe.h"
 
 menu::menu(QWidget *parent)
     : QMainWindow(parent)
@@ -50,5 +51,12 @@ void menu::on_Bvehicule_clicked()
 {
     vehicule *vehiculeWindow = new vehicule(this);
     vehiculeWindow->show();
+    this->hide();
+}
+
+void menu::on_Bemploye_clicked()
+{
+    employe *employeWindow = new employe(this);
+    employeWindow->show();
     this->hide();
 }

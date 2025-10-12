@@ -8,6 +8,8 @@ namespace Ui {
 class menu;
 }
 
+class employe;
+
 class menu : public QMainWindow
 {
     Q_OBJECT
@@ -25,6 +27,7 @@ private slots:
     void on_Bmoniteurs_clicked();
     void on_Bpaiement_clicked();
     void on_Bvehicule_clicked();
+    void on_Bemploye_clicked();
 };
 
 #endif // MENU_H
