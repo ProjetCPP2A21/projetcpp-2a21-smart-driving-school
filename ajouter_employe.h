@@ -2,14 +2,6 @@
 #define AJOUTER_EMPLOYE_H
 
 #include <QWidget>
-#include <QLineEdit>
-#include <QDateEdit>
-#include <QPushButton>
-#include <QMessageBox>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QVariant>
 
 namespace Ui {
 class ajouter_employe;
@@ -31,11 +23,6 @@ private slots:
 
 private:
     Ui::ajouter_employe *ui;
-    bool validerFormulaire();
-    void viderChamps();
-    bool ajouterEmploye();
-    bool verifierEmailUnique(const QString &email);
-    bool verifierIdUnique(const QString &id);
 };
 
 #endif // AJOUTER_EMPLOYE_H

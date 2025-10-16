@@ -9,9 +9,6 @@ class employe;
 }
 QT_END_NAMESPACE
 
-class ajouter_employe;
-class modifier_employe;
-
 class employe : public QMainWindow
 {
     Q_OBJECT
@@ -22,8 +19,6 @@ public:
 
 private:
     Ui::employe *ui;
-    ajouter_employe *ajouterPage;
-    modifier_employe *modifierPage;
 
 private slots:
     void on_BretourEmploye_clicked();  // slot bouton retour

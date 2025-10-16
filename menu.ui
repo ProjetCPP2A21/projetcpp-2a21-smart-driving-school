@@ -132,7 +132,7 @@ QPushButton:hover {
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="Bemploye">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -241,7 +241,7 @@ QPushButton:hover {
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../../Downloads/554337631_1437269814008871_8043664467412301076_n.png</pixmap>
+    <pixmap>../../554337631_1437269814008871_8043664467412301076_n.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>

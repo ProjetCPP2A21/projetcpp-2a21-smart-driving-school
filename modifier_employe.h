@@ -2,14 +2,6 @@
 #define MODIFIER_EMPLOYE_H
 
 #include <QWidget>
-#include <QLineEdit>
-#include <QDateEdit>
-#include <QPushButton>
-#include <QMessageBox>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QVariant>
 
 namespace Ui {
 class modifier_employe;
@@ -34,11 +26,6 @@ private slots:
 private:
     Ui::modifier_employe *ui;
     QString idEmployeActuel; // ID de l'employé en cours de modification
-    
-    bool validerFormulaire();
-    bool modifierEmploye();
-    bool verifierEmailUnique(const QString &email, const QString &idExclu);
-    void chargerDonneesEmploye();
 };
 
 #endif // MODIFIER_EMPLOYE_H
