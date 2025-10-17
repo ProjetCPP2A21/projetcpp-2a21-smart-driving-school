@@ -14,15 +14,11 @@ modifier_employe::~modifier_employe()
     delete ui;
 }
 
-void modifier_employe::chargerEmploye(const QString &idEmploye)
-{
-    idEmployeActuel = idEmploye;
-    // Charger les données de l'employé
-}
 
 void modifier_employe::on_pushButton_confirmer_clicked()
 {
-    // Logique de modification d'employé
+    // Fonction de design seulement - pas de logique métier
+    this->close();
 }
 
 void modifier_employe::on_pushButton_annuler_clicked()

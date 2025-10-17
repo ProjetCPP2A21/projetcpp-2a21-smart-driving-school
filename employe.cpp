@@ -37,5 +37,5 @@ void employe::on_pushButton_11_clicked()
 
 void employe::on_pushButton_8_clicked()
 {
-    // Logique de suppression d'employé
+    // Fonction de design seulement - pas de logique métier
 }

@@ -16,7 +16,8 @@ ajouter_employe::~ajouter_employe()
 
 void ajouter_employe::on_pushButton_ajouter_clicked()
 {
-    // Logique d'ajout d'employé
+    // Fonction de design seulement - pas de logique métier
+    this->close();
 }
 
 void ajouter_employe::on_pushButton_annuler_clicked()
@@ -26,7 +27,7 @@ void ajouter_employe::on_pushButton_annuler_clicked()
 
 void ajouter_employe::on_pushButton_vider_clicked()
 {
-    // Vider les champs
+    // Fonction de design seulement - pas de logique métier
 }
 
 void ajouter_employe::on_BretourAjouterEmploye_clicked()
