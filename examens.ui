@@ -53,15 +53,15 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>111</width>
-      <height>91</height>
+      <width>91</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../Downloads/554337631_1437269814008871_8043664467412301076_n.png</pixmap>
+     <pixmap>../../../Downloads/logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

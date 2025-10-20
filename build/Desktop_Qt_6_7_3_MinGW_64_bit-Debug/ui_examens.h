@@ -88,8 +88,8 @@ public:
 ""));
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(0, 0, 111, 91));
-        label_6->setPixmap(QPixmap(QString::fromUtf8("../../../Downloads/554337631_1437269814008871_8043664467412301076_n.png")));
+        label_6->setGeometry(QRect(0, 0, 91, 81));
+        label_6->setPixmap(QPixmap(QString::fromUtf8("../../../Downloads/logo.png")));
         label_6->setScaledContents(true);
         Bretour = new QPushButton(centralwidget);
         Bretour->setObjectName("Bretour");

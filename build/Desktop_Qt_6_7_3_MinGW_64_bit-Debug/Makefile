@@ -352,6 +352,7 @@ Makefile: ../../examens.pro ../../../../qt/6.7.3/mingw_64/mkspecs/features/spec_
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/qt_config.prf \
 		../../../../qt/6.7.3/mingw_64/mkspecs/win32-g++/qmake.conf \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/exclusive_builds.prf \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/toolchain.prf \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/default_pre.prf \
@@ -380,10 +381,11 @@ Makefile: ../../examens.pro ../../../../qt/6.7.3/mingw_64/mkspecs/features/spec_
 		../../examens.pro \
 		../../../../qt/6.7.3/mingw_64/lib/Qt6Widgets.prl \
 		../../../../qt/6.7.3/mingw_64/lib/Qt6Gui.prl \
+		../../../../qt/6.7.3/mingw_64/lib/Qt6Sql.prl \
 		../../../../qt/6.7.3/mingw_64/lib/Qt6Core.prl \
 		../../../../qt/6.7.3/mingw_64/lib/Qt6EntryPoint.prl \
-		.qmake.stash \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/build_pass.prf \
+		../../logo.qrc \
 		debug/qmake_qmake_qm_files.qrc \
 		release/qmake_qmake_qm_files.qrc
 	$(QMAKE) -o Makefile ..\..\examens.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -669,6 +671,7 @@ Makefile: ../../examens.pro ../../../../qt/6.7.3/mingw_64/mkspecs/features/spec_
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/qt_config.prf:
 ../../../../qt/6.7.3/mingw_64/mkspecs/win32-g++/qmake.conf:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/exclusive_builds.prf:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/toolchain.prf:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/default_pre.prf:
@@ -697,10 +700,11 @@ Makefile: ../../examens.pro ../../../../qt/6.7.3/mingw_64/mkspecs/features/spec_
 ../../examens.pro:
 ../../../../qt/6.7.3/mingw_64/lib/Qt6Widgets.prl:
 ../../../../qt/6.7.3/mingw_64/lib/Qt6Gui.prl:
+../../../../qt/6.7.3/mingw_64/lib/Qt6Sql.prl:
 ../../../../qt/6.7.3/mingw_64/lib/Qt6Core.prl:
 ../../../../qt/6.7.3/mingw_64/lib/Qt6EntryPoint.prl:
-.qmake.stash:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/build_pass.prf:
+../../logo.qrc:
 debug/qmake_qmake_qm_files.qrc:
 release/qmake_qmake_qm_files.qrc:
 qmake: FORCE

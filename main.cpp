@@ -1,23 +1,20 @@
 #include "examens.h"
-
+#include "connection.h"
 #include <QApplication>
-#include <QLocale>
-#include <QTranslator>
+#include <QMessageBox>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    Connection c;
 
-    QTranslator translator;
-    const QStringList uiLanguages = QLocale::system().uiLanguages();
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = "examens_" + QLocale(locale).name();
-        if (translator.load(":/i18n/" + baseName)) {
-            a.installTranslator(&translator);
-            break;
-        }
+    if (c.createconnect()) {
+        QMessageBox::information(nullptr, "Connexion", "Connexion réussie !");
+        examens w;
+        w.show();
+        return a.exec();
+    } else {
+        QMessageBox::critical(nullptr, "Erreur", "Échec de connexion à la base de données !");
+        return 0;
     }
-    examens w;
-    w.show();
-    return a.exec();
 }
