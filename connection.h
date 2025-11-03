@@ -1,11 +1,12 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
+
 #include <QSqlDatabase>
 
-class connection
+class Connection
 {
 public:
-    connection();
+    Connection();
     bool createconnect();
 };
 

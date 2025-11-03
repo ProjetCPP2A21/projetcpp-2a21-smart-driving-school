@@ -1,23 +1,35 @@
 #ifndef APPRENANT_H
 #define APPRENANT_H
 
-#include <QMainWindow>
+#include <QString>
+#include <QSqlQueryModel>
+#include <QMap>
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class apprenant;
-}
-QT_END_NAMESPACE
-
-class apprenant : public QMainWindow
+class Apprenant
 {
-    Q_OBJECT
-
 public:
-    apprenant(QWidget *parent = nullptr);
-    ~apprenant();
+    Apprenant();
+    Apprenant(int id, QString nom, QString prenom, QString dateNaissance,
+              QString telephone, QString sexe, QString adresse);
+
+    bool ajouter();
+    bool modifier();
+    bool modifierAvecID(int nouvelId);
+    bool supprimer(int id);
+    QSqlQueryModel* afficher();
+    QSqlQueryModel* rechercher(int id);
+    QSqlQueryModel* trierParPrenomCroissant();
+    QSqlQueryModel* trierParPrenomDecroissant();
+    QMap<QString,int> statistiquesSexe();
 
 private:
-    Ui::apprenant *ui;
+    int id;
+    QString nom;
+    QString prenom;
+    QString dateNaissance;
+    QString telephone;
+    QString sexe;
+    QString adresse;
 };
+
 #endif // APPRENANT_H

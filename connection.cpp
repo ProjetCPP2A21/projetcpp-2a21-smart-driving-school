@@ -1,11 +1,20 @@
 #include "connection.h"
-connection::connection() {}
-bool connection::createconnect()
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QDebug>
+
+Connection::Connection() {}
+
+bool Connection::createconnect()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("Source_Projet2A");   // Remplace par le nom exact de ta source ODBC
-    db.setUserName("islem");        // Ton nom d’utilisateur Oracle
-    db.setPassword("islem");     // Ton mot de passe Oracle
+    db.setDatabaseName("Source_Projet2A");
+    db.setUserName("islem");
+    db.setPassword("islem");
 
-    return db.open(); // Retourne vrai si la connexion réussit
+    if(!db.open()){
+        qDebug() << "Erreur de connexion:" << db.lastError().text();
+        return false;
+    }
+    return true;
 }

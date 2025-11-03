@@ -2,18 +2,19 @@
 #include "connection.h"
 #include <QApplication>
 #include <QMessageBox>
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    connection c;
+    Connection c;
     if(c.createconnect()){
-        QMessageBox::information(nullptr,"Connection","Connection réussie!");
+        QMessageBox::information(nullptr,"Connexion","Connexion réussie !");
         apprenants w;
         w.show();
         return a.exec();
     }
     else{
-        QMessageBox::critical(nullptr,"Erreur","échec de connection à la base de données");
+        QMessageBox::critical(nullptr,"Erreur","Échec de la connexion à la base de données");
         return 0;
     }
 }
