@@ -30,14 +30,14 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QTableWidget *tableWidget;
-    QPushButton *pushButton_3;
+    QTableWidget *tab;
+    QPushButton *supprimer;
     QPushButton *selection;
-    QPushButton *pushButton_6;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton;
-    QPushButton *pushButton_5;
+    QPushButton *tri;
+    QPushButton *modifier;
+    QPushButton *exporter;
+    QPushButton *ajouter;
+    QPushButton *statistique;
     QLineEdit *lineEdit_3;
     QLineEdit *ID;
     QDateEdit *Date;
@@ -46,15 +46,15 @@ public:
     QLabel *label_2;
     QLabel *label_6;
     QComboBox *Type;
-    QTimeEdit *timeEdit;
-    QLineEdit *lineEdit_2;
-    QComboBox *comboBox_4;
+    QTimeEdit *heure;
+    QLineEdit *lieu;
+    QComboBox *choisir;
     QLabel *label_3;
     QLabel *label_4;
     QLabel *label_5;
     QLabel *label_10;
     QLabel *label_7;
-    QLineEdit *lineEdit_4;
+    QLineEdit *montant;
     QLabel *label_8;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -73,82 +73,82 @@ public:
 "}"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        tableWidget = new QTableWidget(centralwidget);
-        if (tableWidget->columnCount() < 8)
-            tableWidget->setColumnCount(8);
+        tab = new QTableWidget(centralwidget);
+        if (tab->columnCount() < 8)
+            tab->setColumnCount(8);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        tab->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        tab->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        tab->setHorizontalHeaderItem(2, __qtablewidgetitem2);
         QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        tab->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem4);
+        tab->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem5);
+        tab->setHorizontalHeaderItem(5, __qtablewidgetitem5);
         QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(6, __qtablewidgetitem6);
+        tab->setHorizontalHeaderItem(6, __qtablewidgetitem6);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(7, __qtablewidgetitem7);
-        if (tableWidget->rowCount() < 8)
-            tableWidget->setRowCount(8);
+        tab->setHorizontalHeaderItem(7, __qtablewidgetitem7);
+        if (tab->rowCount() < 8)
+            tab->setRowCount(8);
         QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem8);
+        tab->setVerticalHeaderItem(0, __qtablewidgetitem8);
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem9);
+        tab->setVerticalHeaderItem(1, __qtablewidgetitem9);
         QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem10);
+        tab->setVerticalHeaderItem(2, __qtablewidgetitem10);
         QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem11);
+        tab->setVerticalHeaderItem(3, __qtablewidgetitem11);
         QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(4, __qtablewidgetitem12);
+        tab->setVerticalHeaderItem(4, __qtablewidgetitem12);
         QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(5, __qtablewidgetitem13);
+        tab->setVerticalHeaderItem(5, __qtablewidgetitem13);
         QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(6, __qtablewidgetitem14);
+        tab->setVerticalHeaderItem(6, __qtablewidgetitem14);
         QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(7, __qtablewidgetitem15);
+        tab->setVerticalHeaderItem(7, __qtablewidgetitem15);
         QFont font;
         font.setPointSize(9);
         QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
         __qtablewidgetitem16->setFont(font);
-        tableWidget->setItem(0, 0, __qtablewidgetitem16);
+        tab->setItem(0, 0, __qtablewidgetitem16);
         QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
-        tableWidget->setItem(0, 1, __qtablewidgetitem17);
+        tab->setItem(0, 1, __qtablewidgetitem17);
         QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
-        tableWidget->setItem(0, 2, __qtablewidgetitem18);
+        tab->setItem(0, 2, __qtablewidgetitem18);
         QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
-        tableWidget->setItem(0, 3, __qtablewidgetitem19);
+        tab->setItem(0, 3, __qtablewidgetitem19);
         QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
-        tableWidget->setItem(0, 4, __qtablewidgetitem20);
+        tab->setItem(0, 4, __qtablewidgetitem20);
         QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
-        tableWidget->setItem(0, 5, __qtablewidgetitem21);
+        tab->setItem(0, 5, __qtablewidgetitem21);
         QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
-        tableWidget->setItem(0, 6, __qtablewidgetitem22);
+        tab->setItem(0, 6, __qtablewidgetitem22);
         QTableWidgetItem *__qtablewidgetitem23 = new QTableWidgetItem();
-        tableWidget->setItem(0, 7, __qtablewidgetitem23);
+        tab->setItem(0, 7, __qtablewidgetitem23);
         QTableWidgetItem *__qtablewidgetitem24 = new QTableWidgetItem();
-        tableWidget->setItem(1, 0, __qtablewidgetitem24);
+        tab->setItem(1, 0, __qtablewidgetitem24);
         QTableWidgetItem *__qtablewidgetitem25 = new QTableWidgetItem();
-        tableWidget->setItem(1, 1, __qtablewidgetitem25);
+        tab->setItem(1, 1, __qtablewidgetitem25);
         QTableWidgetItem *__qtablewidgetitem26 = new QTableWidgetItem();
-        tableWidget->setItem(1, 2, __qtablewidgetitem26);
+        tab->setItem(1, 2, __qtablewidgetitem26);
         QTableWidgetItem *__qtablewidgetitem27 = new QTableWidgetItem();
-        tableWidget->setItem(1, 3, __qtablewidgetitem27);
+        tab->setItem(1, 3, __qtablewidgetitem27);
         QTableWidgetItem *__qtablewidgetitem28 = new QTableWidgetItem();
-        tableWidget->setItem(1, 4, __qtablewidgetitem28);
+        tab->setItem(1, 4, __qtablewidgetitem28);
         QTableWidgetItem *__qtablewidgetitem29 = new QTableWidgetItem();
-        tableWidget->setItem(1, 5, __qtablewidgetitem29);
+        tab->setItem(1, 5, __qtablewidgetitem29);
         QTableWidgetItem *__qtablewidgetitem30 = new QTableWidgetItem();
-        tableWidget->setItem(1, 6, __qtablewidgetitem30);
+        tab->setItem(1, 6, __qtablewidgetitem30);
         QTableWidgetItem *__qtablewidgetitem31 = new QTableWidgetItem();
-        tableWidget->setItem(1, 7, __qtablewidgetitem31);
-        tableWidget->setObjectName("tableWidget");
-        tableWidget->setGeometry(QRect(610, 140, 521, 241));
-        tableWidget->setMinimumSize(QSize(521, 0));
-        tableWidget->setStyleSheet(QString::fromUtf8("/* Style global du tableau */\n"
+        tab->setItem(1, 7, __qtablewidgetitem31);
+        tab->setObjectName("tab");
+        tab->setGeometry(QRect(610, 140, 521, 241));
+        tab->setMinimumSize(QSize(521, 0));
+        tab->setStyleSheet(QString::fromUtf8("/* Style global du tableau */\n"
 "QTableWidget, QTableView {\n"
 "    background-color: white;          /* fond neutre */\n"
 "    border: 2px solid #43cea2;        /* contour vert-bleu */\n"
@@ -205,10 +205,10 @@ public:
 "\n"
 "QScrollBar::add-page:vertical, QScrollBar::sub-\n"
 ""));
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(80, 470, 121, 41));
-        pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        supprimer = new QPushButton(centralwidget);
+        supprimer->setObjectName("supprimer");
+        supprimer->setGeometry(QRect(80, 470, 121, 41));
+        supprimer->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
 "        stop:1 #185a9d\n"
@@ -251,10 +251,10 @@ public:
 "    );\n"
 "    border: 1px solid #e04b3f; /* bordure assortie au feu */\n"
 "}"));
-        pushButton_6 = new QPushButton(centralwidget);
-        pushButton_6->setObjectName("pushButton_6");
-        pushButton_6->setGeometry(QRect(750, 470, 81, 41));
-        pushButton_6->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        tri = new QPushButton(centralwidget);
+        tri->setObjectName("tri");
+        tri->setGeometry(QRect(750, 470, 81, 41));
+        tri->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
 "        stop:1 #185a9d\n"
@@ -274,10 +274,10 @@ public:
 "    );\n"
 "    border: 1px solid #e04b3f; /* bordure assortie au feu */\n"
 "}"));
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(340, 470, 111, 41));
-        pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        modifier = new QPushButton(centralwidget);
+        modifier->setObjectName("modifier");
+        modifier->setGeometry(QRect(340, 470, 111, 41));
+        modifier->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
 "        stop:1 #185a9d\n"
@@ -297,10 +297,10 @@ public:
 "    );\n"
 "    border: 1px solid #e04b3f; /* bordure assortie au feu */\n"
 "}"));
-        pushButton_4 = new QPushButton(centralwidget);
-        pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(470, 470, 141, 41));
-        pushButton_4->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        exporter = new QPushButton(centralwidget);
+        exporter->setObjectName("exporter");
+        exporter->setGeometry(QRect(470, 470, 141, 41));
+        exporter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
 "        stop:1 #185a9d\n"
@@ -320,10 +320,10 @@ public:
 "    );\n"
 "    border: 1px solid #e04b3f; /* bordure assortie au feu */\n"
 "}"));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(220, 470, 101, 41));
-        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        ajouter = new QPushButton(centralwidget);
+        ajouter->setObjectName("ajouter");
+        ajouter->setGeometry(QRect(220, 470, 101, 41));
+        ajouter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
 "        stop:1 #185a9d\n"
@@ -343,10 +343,10 @@ public:
 "    );\n"
 "    border: 1px solid #e04b3f; /* bordure assortie au feu */\n"
 "}"));
-        pushButton_5 = new QPushButton(centralwidget);
-        pushButton_5->setObjectName("pushButton_5");
-        pushButton_5->setGeometry(QRect(630, 470, 111, 41));
-        pushButton_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        statistique = new QPushButton(centralwidget);
+        statistique->setObjectName("statistique");
+        statistique->setGeometry(QRect(630, 470, 111, 41));
+        statistique->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
 "        stop:1 #185a9d\n"
@@ -580,10 +580,10 @@ public:
 "    selection-background-color: #43cea2;\n"
 "    selection-color: white;\n"
 "}"));
-        timeEdit = new QTimeEdit(centralwidget);
-        timeEdit->setObjectName("timeEdit");
-        timeEdit->setGeometry(QRect(280, 260, 120, 31));
-        timeEdit->setStyleSheet(QString::fromUtf8("QTimeEdit {\n"
+        heure = new QTimeEdit(centralwidget);
+        heure->setObjectName("heure");
+        heure->setGeometry(QRect(280, 260, 120, 31));
+        heure->setStyleSheet(QString::fromUtf8("QTimeEdit {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 10px;\n"
@@ -631,10 +631,10 @@ public:
 "QTimeEdit:hover {\n"
 "    border: 2px solid #43cea2;\n"
 "}"));
-        lineEdit_2 = new QLineEdit(centralwidget);
-        lineEdit_2->setObjectName("lineEdit_2");
-        lineEdit_2->setGeometry(QRect(440, 260, 140, 31));
-        lineEdit_2->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+        lieu = new QLineEdit(centralwidget);
+        lieu->setObjectName("lieu");
+        lieu->setGeometry(QRect(440, 260, 140, 31));
+        lieu->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 10px;\n"
@@ -665,12 +665,12 @@ public:
 "QLineEdit[placeholderText]:empty {\n"
 "    color: #95a5a6;  /* gris clair pour le placeholder */\n"
 "}"));
-        comboBox_4 = new QComboBox(centralwidget);
-        comboBox_4->addItem(QString());
-        comboBox_4->addItem(QString());
-        comboBox_4->setObjectName("comboBox_4");
-        comboBox_4->setGeometry(QRect(280, 320, 120, 31));
-        comboBox_4->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+        choisir = new QComboBox(centralwidget);
+        choisir->addItem(QString());
+        choisir->addItem(QString());
+        choisir->setObjectName("choisir");
+        choisir->setGeometry(QRect(280, 320, 120, 31));
+        choisir->setStyleSheet(QString::fromUtf8("QComboBox {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 10px;    /* un peu moins arrondi si tu veux */\n"
@@ -739,10 +739,10 @@ public:
         label_7 = new QLabel(centralwidget);
         label_7->setObjectName("label_7");
         label_7->setGeometry(QRect(440, 300, 91, 20));
-        lineEdit_4 = new QLineEdit(centralwidget);
-        lineEdit_4->setObjectName("lineEdit_4");
-        lineEdit_4->setGeometry(QRect(440, 320, 140, 31));
-        lineEdit_4->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+        montant = new QLineEdit(centralwidget);
+        montant->setObjectName("montant");
+        montant->setGeometry(QRect(440, 320, 140, 31));
+        montant->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 10px;\n"
@@ -795,66 +795,66 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
+        QTableWidgetItem *___qtablewidgetitem = tab->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "ID", nullptr));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
+        QTableWidgetItem *___qtablewidgetitem1 = tab->horizontalHeaderItem(1);
         ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Type", nullptr));
-        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
+        QTableWidgetItem *___qtablewidgetitem2 = tab->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "Date", nullptr));
-        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
+        QTableWidgetItem *___qtablewidgetitem3 = tab->horizontalHeaderItem(3);
         ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Heure", nullptr));
-        QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
+        QTableWidgetItem *___qtablewidgetitem4 = tab->horizontalHeaderItem(4);
         ___qtablewidgetitem4->setText(QCoreApplication::translate("MainWindow", "Lieu", nullptr));
-        QTableWidgetItem *___qtablewidgetitem5 = tableWidget->horizontalHeaderItem(5);
+        QTableWidgetItem *___qtablewidgetitem5 = tab->horizontalHeaderItem(5);
         ___qtablewidgetitem5->setText(QCoreApplication::translate("MainWindow", "Apprenant", nullptr));
-        QTableWidgetItem *___qtablewidgetitem6 = tableWidget->horizontalHeaderItem(6);
+        QTableWidgetItem *___qtablewidgetitem6 = tab->horizontalHeaderItem(6);
         ___qtablewidgetitem6->setText(QCoreApplication::translate("MainWindow", "Moniteur", nullptr));
-        QTableWidgetItem *___qtablewidgetitem7 = tableWidget->horizontalHeaderItem(7);
+        QTableWidgetItem *___qtablewidgetitem7 = tab->horizontalHeaderItem(7);
         ___qtablewidgetitem7->setText(QCoreApplication::translate("MainWindow", "R\303\251sultat", nullptr));
 
-        const bool __sortingEnabled = tableWidget->isSortingEnabled();
-        tableWidget->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem8 = tableWidget->item(0, 0);
+        const bool __sortingEnabled = tab->isSortingEnabled();
+        tab->setSortingEnabled(false);
+        QTableWidgetItem *___qtablewidgetitem8 = tab->item(0, 0);
         ___qtablewidgetitem8->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
-        QTableWidgetItem *___qtablewidgetitem9 = tableWidget->item(0, 1);
+        QTableWidgetItem *___qtablewidgetitem9 = tab->item(0, 1);
         ___qtablewidgetitem9->setText(QCoreApplication::translate("MainWindow", "Code", nullptr));
-        QTableWidgetItem *___qtablewidgetitem10 = tableWidget->item(0, 2);
+        QTableWidgetItem *___qtablewidgetitem10 = tab->item(0, 2);
         ___qtablewidgetitem10->setText(QCoreApplication::translate("MainWindow", "01-01-2025", nullptr));
-        QTableWidgetItem *___qtablewidgetitem11 = tableWidget->item(0, 3);
+        QTableWidgetItem *___qtablewidgetitem11 = tab->item(0, 3);
         ___qtablewidgetitem11->setText(QCoreApplication::translate("MainWindow", "12:00", nullptr));
-        QTableWidgetItem *___qtablewidgetitem12 = tableWidget->item(0, 4);
+        QTableWidgetItem *___qtablewidgetitem12 = tab->item(0, 4);
         ___qtablewidgetitem12->setText(QCoreApplication::translate("MainWindow", "Tunis", nullptr));
-        QTableWidgetItem *___qtablewidgetitem13 = tableWidget->item(0, 5);
+        QTableWidgetItem *___qtablewidgetitem13 = tab->item(0, 5);
         ___qtablewidgetitem13->setText(QCoreApplication::translate("MainWindow", "Islem", nullptr));
-        QTableWidgetItem *___qtablewidgetitem14 = tableWidget->item(0, 6);
+        QTableWidgetItem *___qtablewidgetitem14 = tab->item(0, 6);
         ___qtablewidgetitem14->setText(QCoreApplication::translate("MainWindow", "Ahmed", nullptr));
-        QTableWidgetItem *___qtablewidgetitem15 = tableWidget->item(0, 7);
+        QTableWidgetItem *___qtablewidgetitem15 = tab->item(0, 7);
         ___qtablewidgetitem15->setText(QCoreApplication::translate("MainWindow", "Admis", nullptr));
-        QTableWidgetItem *___qtablewidgetitem16 = tableWidget->item(1, 0);
+        QTableWidgetItem *___qtablewidgetitem16 = tab->item(1, 0);
         ___qtablewidgetitem16->setText(QCoreApplication::translate("MainWindow", "2", nullptr));
-        QTableWidgetItem *___qtablewidgetitem17 = tableWidget->item(1, 1);
+        QTableWidgetItem *___qtablewidgetitem17 = tab->item(1, 1);
         ___qtablewidgetitem17->setText(QCoreApplication::translate("MainWindow", "Parking", nullptr));
-        QTableWidgetItem *___qtablewidgetitem18 = tableWidget->item(1, 2);
+        QTableWidgetItem *___qtablewidgetitem18 = tab->item(1, 2);
         ___qtablewidgetitem18->setText(QCoreApplication::translate("MainWindow", "05-02-2025", nullptr));
-        QTableWidgetItem *___qtablewidgetitem19 = tableWidget->item(1, 3);
+        QTableWidgetItem *___qtablewidgetitem19 = tab->item(1, 3);
         ___qtablewidgetitem19->setText(QCoreApplication::translate("MainWindow", "10:00", nullptr));
-        QTableWidgetItem *___qtablewidgetitem20 = tableWidget->item(1, 4);
+        QTableWidgetItem *___qtablewidgetitem20 = tab->item(1, 4);
         ___qtablewidgetitem20->setText(QCoreApplication::translate("MainWindow", "Bardo", nullptr));
-        QTableWidgetItem *___qtablewidgetitem21 = tableWidget->item(1, 5);
+        QTableWidgetItem *___qtablewidgetitem21 = tab->item(1, 5);
         ___qtablewidgetitem21->setText(QCoreApplication::translate("MainWindow", "Mariem", nullptr));
-        QTableWidgetItem *___qtablewidgetitem22 = tableWidget->item(1, 6);
+        QTableWidgetItem *___qtablewidgetitem22 = tab->item(1, 6);
         ___qtablewidgetitem22->setText(QCoreApplication::translate("MainWindow", "Amin", nullptr));
-        QTableWidgetItem *___qtablewidgetitem23 = tableWidget->item(1, 7);
+        QTableWidgetItem *___qtablewidgetitem23 = tab->item(1, 7);
         ___qtablewidgetitem23->setText(QCoreApplication::translate("MainWindow", "\303\251chou\303\251", nullptr));
-        tableWidget->setSortingEnabled(__sortingEnabled);
+        tab->setSortingEnabled(__sortingEnabled);
 
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Supprimer", nullptr));
+        supprimer->setText(QCoreApplication::translate("MainWindow", "Supprimer", nullptr));
         selection->setText(QCoreApplication::translate("MainWindow", "selection", nullptr));
-        pushButton_6->setText(QCoreApplication::translate("MainWindow", "Tri", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Modifier", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainWindow", "Exporter PDF", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Ajouter", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("MainWindow", "Statistiques", nullptr));
+        tri->setText(QCoreApplication::translate("MainWindow", "Tri", nullptr));
+        modifier->setText(QCoreApplication::translate("MainWindow", "Modifier", nullptr));
+        exporter->setText(QCoreApplication::translate("MainWindow", "Exporter PDF", nullptr));
+        ajouter->setText(QCoreApplication::translate("MainWindow", "Ajouter", nullptr));
+        statistique->setText(QCoreApplication::translate("MainWindow", "Statistiques", nullptr));
         lineEdit_3->setText(QCoreApplication::translate("MainWindow", "Recherche...", nullptr));
         Retour->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "ID apprenant :", nullptr));
@@ -865,9 +865,9 @@ public:
         Type->setItemText(2, QCoreApplication::translate("MainWindow", "paypal", nullptr));
         Type->setItemText(3, QCoreApplication::translate("MainWindow", "esp\303\251ces", nullptr));
 
-        lineEdit_2->setText(QString());
-        comboBox_4->setItemText(0, QCoreApplication::translate("MainWindow", "1et", nullptr));
-        comboBox_4->setItemText(1, QCoreApplication::translate("MainWindow", "2et", nullptr));
+        lieu->setText(QString());
+        choisir->setItemText(0, QCoreApplication::translate("MainWindow", "1et", nullptr));
+        choisir->setItemText(1, QCoreApplication::translate("MainWindow", "2et", nullptr));
 
         label_3->setText(QCoreApplication::translate("MainWindow", "Date :", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Heure :", nullptr));
@@ -881,7 +881,7 @@ public:
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline; color:#037f7b;\">Gestion de paiement</span></p></body></html>", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "montant:", nullptr));
-        lineEdit_4->setText(QString());
+        montant->setText(QString());
         label_8->setText(QString());
     } // retranslateUi
 
