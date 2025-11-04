@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 17.0.1, 2025-10-20T21:21:19. -->
+=======
+<!-- Written by QtCreator 17.0.1, 2025-11-04T11:19:01. -->
+>>>>>>> ae4c4d6 (hello)
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -164,7 +168,11 @@
      <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph &quot;dwarf,4096&quot; -F 250</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
+<<<<<<< HEAD
      <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/manel/OneDrive/Bureau/vehicule/vehicule.pro</value>
+=======
+     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/manel/OneDrive/Documents/vehicule/vehicule.pro</value>
+>>>>>>> ae4c4d6 (hello)
      <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
      <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
      <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
@@ -200,7 +208,11 @@
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph &quot;dwarf,4096&quot; -F 250</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/manel/OneDrive/Bureau/vehicule/vehicule.pro</value>
+=======
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/manel/OneDrive/Documents/vehicule/vehicule.pro</value>
+>>>>>>> ae4c4d6 (hello)
     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>

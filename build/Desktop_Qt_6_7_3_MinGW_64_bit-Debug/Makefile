@@ -381,6 +381,10 @@ Makefile: ../../vehicule.pro C:/Windows/QT/6.7.3/mingw_64/mkspecs/win32-g++/qmak
 		C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/qt_config.prf \
 		C:/Windows/QT/6.7.3/mingw_64/mkspecs/win32-g++/qmake.conf \
 		C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/spec_post.prf \
+<<<<<<< HEAD
+=======
+		.qmake.stash \
+>>>>>>> ae4c4d6 (hello)
 		C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/exclusive_builds.prf \
 		C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/toolchain.prf \
 		C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/default_pre.prf \
@@ -408,10 +412,18 @@ Makefile: ../../vehicule.pro C:/Windows/QT/6.7.3/mingw_64/mkspecs/win32-g++/qmak
 		../../vehicule.pro \
 		C:/Windows/QT/6.7.3/mingw_64/lib/Qt6Widgets.prl \
 		C:/Windows/QT/6.7.3/mingw_64/lib/Qt6Gui.prl \
+<<<<<<< HEAD
 		C:/Windows/QT/6.7.3/mingw_64/lib/Qt6Core.prl \
 		C:/Windows/QT/6.7.3/mingw_64/lib/Qt6EntryPoint.prl \
 		.qmake.stash \
 		C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/build_pass.prf
+=======
+		C:/Windows/QT/6.7.3/mingw_64/lib/Qt6Sql.prl \
+		C:/Windows/QT/6.7.3/mingw_64/lib/Qt6Core.prl \
+		C:/Windows/QT/6.7.3/mingw_64/lib/Qt6EntryPoint.prl \
+		C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/build_pass.prf \
+		../../logo.qrc
+>>>>>>> ae4c4d6 (hello)
 	$(QMAKE) -o Makefile ..\..\vehicule.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/spec_pre.prf:
 C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/device_config.prf:
@@ -724,6 +736,10 @@ C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/qt_functions.prf:
 C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/qt_config.prf:
 C:/Windows/QT/6.7.3/mingw_64/mkspecs/win32-g++/qmake.conf:
 C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/spec_post.prf:
+<<<<<<< HEAD
+=======
+.qmake.stash:
+>>>>>>> ae4c4d6 (hello)
 C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/exclusive_builds.prf:
 C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/toolchain.prf:
 C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/default_pre.prf:
@@ -751,10 +767,18 @@ C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/lex.prf:
 ../../vehicule.pro:
 C:/Windows/QT/6.7.3/mingw_64/lib/Qt6Widgets.prl:
 C:/Windows/QT/6.7.3/mingw_64/lib/Qt6Gui.prl:
+<<<<<<< HEAD
 C:/Windows/QT/6.7.3/mingw_64/lib/Qt6Core.prl:
 C:/Windows/QT/6.7.3/mingw_64/lib/Qt6EntryPoint.prl:
 .qmake.stash:
 C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/build_pass.prf:
+=======
+C:/Windows/QT/6.7.3/mingw_64/lib/Qt6Sql.prl:
+C:/Windows/QT/6.7.3/mingw_64/lib/Qt6Core.prl:
+C:/Windows/QT/6.7.3/mingw_64/lib/Qt6EntryPoint.prl:
+C:/Windows/QT/6.7.3/mingw_64/mkspecs/features/build_pass.prf:
+../../logo.qrc:
+>>>>>>> ae4c4d6 (hello)
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\..\vehicule.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 
