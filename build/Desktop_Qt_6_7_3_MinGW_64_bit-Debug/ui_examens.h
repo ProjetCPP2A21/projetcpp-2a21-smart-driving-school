@@ -20,7 +20,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QTimeEdit>
 #include <QtWidgets/QWidget>
 
@@ -33,29 +33,28 @@ public:
     QLabel *label_8;
     QLabel *label_6;
     QPushButton *Bretour;
-    QComboBox *Type;
-    QComboBox *comboBox_3;
-    QPushButton *pushButton;
-    QLineEdit *lineEdit_3;
-    QComboBox *comboBox_2;
-    QDateEdit *Date;
+    QComboBox *comboBox_type;
+    QComboBox *comboBox_vehicule;
+    QPushButton *pushButton_ajouter;
+    QLineEdit *lineEdit_rechercheType;
+    QComboBox *comboBox_resultat;
+    QDateEdit *dateEdit_date;
     QLabel *label_9;
-    QLineEdit *ID;
+    QLineEdit *lineEdit_id;
     QPushButton *pushButton_5;
     QPushButton *pushButton_7;
     QLabel *label;
     QLabel *label_4;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_6;
-    QPushButton *pushButton_3;
+    QPushButton *pushButton_modifier;
+    QPushButton *pushButton_supprimer;
     QLabel *label_3;
     QLabel *label_5;
-    QLineEdit *lineEdit_2;
+    QLineEdit *lineEdit_lieu;
     QPushButton *pushButton_4;
     QLabel *label_2;
-    QLabel *label_10;
-    QTimeEdit *timeEdit;
-    QTableWidget *tableWidget;
+    QTimeEdit *timeEdit_heure;
+    QTableView *tableView_examens;
+    QComboBox *comboBox_triDate;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -64,6 +63,7 @@ public:
         if (examens->objectName().isEmpty())
             examens->setObjectName("examens");
         examens->resize(905, 558);
+        examens->setAutoFillBackground(false);
         examens->setStyleSheet(QString::fromUtf8("\n"
 "    background: qlineargradient(\n"
 "        x1:0, y1:0, x2:0, y2:1,\n"
@@ -116,13 +116,13 @@ public:
 "    border: 1px solid #800000; /* bordure assortie au d\303\251grad\303\251 */\n"
 "    color: white;               /* texte reste blanc */\n"
 "}"));
-        Type = new QComboBox(centralwidget);
-        Type->addItem(QString());
-        Type->addItem(QString());
-        Type->addItem(QString());
-        Type->setObjectName("Type");
-        Type->setGeometry(QRect(50, 180, 120, 31));
-        Type->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+        comboBox_type = new QComboBox(centralwidget);
+        comboBox_type->addItem(QString());
+        comboBox_type->addItem(QString());
+        comboBox_type->addItem(QString());
+        comboBox_type->setObjectName("comboBox_type");
+        comboBox_type->setGeometry(QRect(50, 180, 120, 31));
+        comboBox_type->setStyleSheet(QString::fromUtf8("QComboBox {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 10px;    /* un peu moins arrondi si tu veux */\n"
@@ -168,10 +168,12 @@ public:
 "    selection-background-color: #43cea2;\n"
 "    selection-color: white;\n"
 "}"));
-        comboBox_3 = new QComboBox(centralwidget);
-        comboBox_3->setObjectName("comboBox_3");
-        comboBox_3->setGeometry(QRect(50, 310, 120, 31));
-        comboBox_3->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+        comboBox_vehicule = new QComboBox(centralwidget);
+        comboBox_vehicule->addItem(QString());
+        comboBox_vehicule->addItem(QString());
+        comboBox_vehicule->setObjectName("comboBox_vehicule");
+        comboBox_vehicule->setGeometry(QRect(50, 310, 120, 31));
+        comboBox_vehicule->setStyleSheet(QString::fromUtf8("QComboBox {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 10px;    /* un peu moins arrondi si tu veux */\n"
@@ -217,10 +219,10 @@ public:
 "    selection-background-color: #43cea2;\n"
 "    selection-color: white;\n"
 "}"));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(60, 390, 91, 41));
-        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        pushButton_ajouter = new QPushButton(centralwidget);
+        pushButton_ajouter->setObjectName("pushButton_ajouter");
+        pushButton_ajouter->setGeometry(QRect(110, 370, 91, 41));
+        pushButton_ajouter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
 "        stop:1 #185a9d\n"
@@ -241,10 +243,10 @@ public:
 "    border: 1px solid #e04b3f; /* bordure assortie au feu */\n"
 "}\n"
 ""));
-        lineEdit_3 = new QLineEdit(centralwidget);
-        lineEdit_3->setObjectName("lineEdit_3");
-        lineEdit_3->setGeometry(QRect(320, 340, 521, 31));
-        lineEdit_3->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+        lineEdit_rechercheType = new QLineEdit(centralwidget);
+        lineEdit_rechercheType->setObjectName("lineEdit_rechercheType");
+        lineEdit_rechercheType->setGeometry(QRect(370, 330, 371, 31));
+        lineEdit_rechercheType->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 12px;\n"
@@ -258,12 +260,12 @@ public:
 "        stop:0 #ff4b1f, stop:1 #ffc837); /* style feu au focus */\n"
 "}\n"
 ""));
-        comboBox_2 = new QComboBox(centralwidget);
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->setObjectName("comboBox_2");
-        comboBox_2->setGeometry(QRect(190, 310, 120, 31));
-        comboBox_2->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+        comboBox_resultat = new QComboBox(centralwidget);
+        comboBox_resultat->addItem(QString());
+        comboBox_resultat->addItem(QString());
+        comboBox_resultat->setObjectName("comboBox_resultat");
+        comboBox_resultat->setGeometry(QRect(190, 310, 120, 31));
+        comboBox_resultat->setStyleSheet(QString::fromUtf8("QComboBox {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 10px;    /* un peu moins arrondi si tu veux */\n"
@@ -309,10 +311,10 @@ public:
 "    selection-background-color: #43cea2;\n"
 "    selection-color: white;\n"
 "}"));
-        Date = new QDateEdit(centralwidget);
-        Date->setObjectName("Date");
-        Date->setGeometry(QRect(190, 180, 111, 31));
-        Date->setStyleSheet(QString::fromUtf8("QDateEdit {\n"
+        dateEdit_date = new QDateEdit(centralwidget);
+        dateEdit_date->setObjectName("dateEdit_date");
+        dateEdit_date->setGeometry(QRect(190, 180, 111, 31));
+        dateEdit_date->setStyleSheet(QString::fromUtf8("QDateEdit {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 12px;\n"
@@ -336,10 +338,10 @@ public:
 "    font-weight: bold;\n"
 "    border-radius: 5px;\n"
 "}"));
-        ID = new QLineEdit(centralwidget);
-        ID->setObjectName("ID");
-        ID->setGeometry(QRect(50, 120, 201, 31));
-        ID->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+        lineEdit_id = new QLineEdit(centralwidget);
+        lineEdit_id->setObjectName("lineEdit_id");
+        lineEdit_id->setGeometry(QRect(50, 120, 201, 31));
+        lineEdit_id->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 12px;\n"
@@ -355,7 +357,7 @@ public:
 ""));
         pushButton_5 = new QPushButton(centralwidget);
         pushButton_5->setObjectName("pushButton_5");
-        pushButton_5->setGeometry(QRect(580, 390, 131, 41));
+        pushButton_5->setGeometry(QRect(740, 400, 131, 41));
         pushButton_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
@@ -394,10 +396,10 @@ public:
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(50, 220, 49, 16));
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(180, 390, 91, 41));
-        pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        pushButton_modifier = new QPushButton(centralwidget);
+        pushButton_modifier->setObjectName("pushButton_modifier");
+        pushButton_modifier->setGeometry(QRect(30, 420, 91, 41));
+        pushButton_modifier->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
 "        stop:1 #185a9d\n"
@@ -418,34 +420,10 @@ public:
 "    border: 1px solid #e04b3f; /* bordure assortie au feu */\n"
 "}\n"
 ""));
-        pushButton_6 = new QPushButton(centralwidget);
-        pushButton_6->setObjectName("pushButton_6");
-        pushButton_6->setGeometry(QRect(730, 390, 111, 41));
-        pushButton_6->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
-"        stop:0 #43cea2,\n"
-"        stop:1 #185a9d\n"
-"    );\n"
-"    color: white;\n"
-"    border-radius: 12px;\n"
-"    padding: 10px 22px;\n"
-"    font-weight: bold;\n"
-"    border: 1px solid #144d7e;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
-"        stop:0 #ff4e50,   /* rouge vif */\n"
-"        stop:0.5 #fc913a, /* orange vif */\n"
-"        stop:1 #f9d423   /* jaune lumineux */\n"
-"    );\n"
-"    border: 1px solid #e04b3f; /* bordure assortie au feu */\n"
-"}\n"
-""));
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(300, 390, 101, 41));
-        pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        pushButton_supprimer = new QPushButton(centralwidget);
+        pushButton_supprimer->setObjectName("pushButton_supprimer");
+        pushButton_supprimer->setGeometry(QRect(200, 420, 101, 41));
+        pushButton_supprimer->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
 "        stop:1 #185a9d\n"
@@ -472,10 +450,10 @@ public:
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName("label_5");
         label_5->setGeometry(QRect(190, 220, 49, 16));
-        lineEdit_2 = new QLineEdit(centralwidget);
-        lineEdit_2->setObjectName("lineEdit_2");
-        lineEdit_2->setGeometry(QRect(190, 240, 111, 31));
-        lineEdit_2->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+        lineEdit_lieu = new QLineEdit(centralwidget);
+        lineEdit_lieu->setObjectName("lineEdit_lieu");
+        lineEdit_lieu->setGeometry(QRect(190, 240, 111, 31));
+        lineEdit_lieu->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 12px;\n"
@@ -491,7 +469,7 @@ public:
 ""));
         pushButton_4 = new QPushButton(centralwidget);
         pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(430, 390, 121, 41));
+        pushButton_4->setGeometry(QRect(600, 400, 121, 41));
         pushButton_4->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2,\n"
@@ -516,27 +494,10 @@ public:
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(50, 160, 49, 16));
-        label_10 = new QLabel(centralwidget);
-        label_10->setObjectName("label_10");
-        label_10->setGeometry(QRect(330, 10, 291, 51));
-        label_10->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
-"    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
-"        stop:0 #43cea2, stop:1 #185a9d);\n"
-"    border-radius: 12px;\n"
-"    padding: 6px 12px;\n"
-"    background: white;\n"
-"    color: #2c3e50;\n"
-"}\n"
-"\n"
-"QLineEdit:focus {\n"
-"    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
-"        stop:0 #ff4b1f, stop:1 #ffc837); /* style feu au focus */\n"
-"}\n"
-""));
-        timeEdit = new QTimeEdit(centralwidget);
-        timeEdit->setObjectName("timeEdit");
-        timeEdit->setGeometry(QRect(50, 240, 120, 31));
-        timeEdit->setStyleSheet(QString::fromUtf8("QTimeEdit {\n"
+        timeEdit_heure = new QTimeEdit(centralwidget);
+        timeEdit_heure->setObjectName("timeEdit_heure");
+        timeEdit_heure->setGeometry(QRect(50, 240, 120, 31));
+        timeEdit_heure->setStyleSheet(QString::fromUtf8("QTimeEdit {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
 "    border-radius: 10px;\n"
@@ -584,79 +545,10 @@ public:
 "QTimeEdit:hover {\n"
 "    border: 2px solid #43cea2;\n"
 "}"));
-        tableWidget = new QTableWidget(centralwidget);
-        if (tableWidget->columnCount() < 8)
-            tableWidget->setColumnCount(8);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
-        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem4);
-        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem5);
-        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(6, __qtablewidgetitem6);
-        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(7, __qtablewidgetitem7);
-        if (tableWidget->rowCount() < 8)
-            tableWidget->setRowCount(8);
-        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(0, __qtablewidgetitem8);
-        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(1, __qtablewidgetitem9);
-        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(2, __qtablewidgetitem10);
-        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem11);
-        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(4, __qtablewidgetitem12);
-        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(5, __qtablewidgetitem13);
-        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(6, __qtablewidgetitem14);
-        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
-        tableWidget->setVerticalHeaderItem(7, __qtablewidgetitem15);
-        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
-        tableWidget->setItem(0, 0, __qtablewidgetitem16);
-        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
-        tableWidget->setItem(0, 1, __qtablewidgetitem17);
-        QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
-        tableWidget->setItem(0, 2, __qtablewidgetitem18);
-        QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
-        tableWidget->setItem(0, 3, __qtablewidgetitem19);
-        QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
-        tableWidget->setItem(0, 4, __qtablewidgetitem20);
-        QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
-        tableWidget->setItem(0, 5, __qtablewidgetitem21);
-        QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
-        tableWidget->setItem(0, 6, __qtablewidgetitem22);
-        QTableWidgetItem *__qtablewidgetitem23 = new QTableWidgetItem();
-        tableWidget->setItem(0, 7, __qtablewidgetitem23);
-        QTableWidgetItem *__qtablewidgetitem24 = new QTableWidgetItem();
-        tableWidget->setItem(1, 0, __qtablewidgetitem24);
-        QTableWidgetItem *__qtablewidgetitem25 = new QTableWidgetItem();
-        tableWidget->setItem(1, 1, __qtablewidgetitem25);
-        QTableWidgetItem *__qtablewidgetitem26 = new QTableWidgetItem();
-        tableWidget->setItem(1, 2, __qtablewidgetitem26);
-        QTableWidgetItem *__qtablewidgetitem27 = new QTableWidgetItem();
-        tableWidget->setItem(1, 3, __qtablewidgetitem27);
-        QTableWidgetItem *__qtablewidgetitem28 = new QTableWidgetItem();
-        tableWidget->setItem(1, 4, __qtablewidgetitem28);
-        QTableWidgetItem *__qtablewidgetitem29 = new QTableWidgetItem();
-        tableWidget->setItem(1, 5, __qtablewidgetitem29);
-        QTableWidgetItem *__qtablewidgetitem30 = new QTableWidgetItem();
-        tableWidget->setItem(1, 6, __qtablewidgetitem30);
-        QTableWidgetItem *__qtablewidgetitem31 = new QTableWidgetItem();
-        tableWidget->setItem(1, 7, __qtablewidgetitem31);
-        tableWidget->setObjectName("tableWidget");
-        tableWidget->setGeometry(QRect(320, 80, 521, 251));
-        tableWidget->setMinimumSize(QSize(521, 0));
-        tableWidget->setStyleSheet(QString::fromUtf8("/* Style global du tableau */\n"
+        tableView_examens = new QTableView(centralwidget);
+        tableView_examens->setObjectName("tableView_examens");
+        tableView_examens->setGeometry(QRect(370, 100, 491, 221));
+        tableView_examens->setStyleSheet(QString::fromUtf8("/* Style global du tableau */\n"
 "QTableWidget, QTableView {\n"
 "    background-color: white;          /* fond neutre */\n"
 "    border: 2px solid #43cea2;        /* contour vert-bleu */\n"
@@ -712,6 +604,57 @@ public:
 "}\n"
 "\n"
 "QScrollBar::add-page:vertical, QScrollBar::sub-"));
+        comboBox_triDate = new QComboBox(centralwidget);
+        comboBox_triDate->addItem(QString());
+        comboBox_triDate->addItem(QString());
+        comboBox_triDate->setObjectName("comboBox_triDate");
+        comboBox_triDate->setGeometry(QRect(750, 331, 120, 31));
+        comboBox_triDate->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"        stop:0 #43cea2, stop:1 #185a9d);\n"
+"    border-radius: 10px;    /* un peu moins arrondi si tu veux */\n"
+"    padding: 4px 8px;       /* moins d'espace int\303\251rieur */\n"
+"    background: white;\n"
+"    color: #2c3e50;\n"
+"    min-width: 100px;       /* largeur minimale plus petite */\n"
+"    max-width: 150px;       /* facultatif : limite largeur */\n"
+"    height: 24px;           /* hauteur plus petite */\n"
+"}\n"
+"\n"
+"/* Drop-down (fl\303\250che) */\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 20px;           /* r\303\251duit largeur fl\303\250che */\n"
+"    border: none;\n"
+"    background: transparent;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    width: 12px;\n"
+"    height: 12px;\n"
+"}\n"
+"\n"
+"/* Hover et focus restent inchang\303\251s */\n"
+"QComboBox:focus {\n"
+"    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"       "
+                        " stop:0 #ff4b1f, stop:1 #ffc837);\n"
+"    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    border: 2px solid #43cea2;\n"
+"    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);\n"
+"}\n"
+"\n"
+"/* Menu d\303\251roulant */\n"
+"QComboBox QAbstractItemView {\n"
+"    background: white;\n"
+"    border: 1px solid #43cea2;\n"
+"    selection-background-color: #43cea2;\n"
+"    selection-color: white;\n"
+"}"));
         examens->setCentralWidget(centralwidget);
         menubar = new QMenuBar(examens);
         menubar->setObjectName("menubar");
@@ -732,57 +675,39 @@ public:
         label_8->setText(QCoreApplication::translate("examens", "V\303\251hicule :", nullptr));
         label_6->setText(QString());
         Bretour->setText(QCoreApplication::translate("examens", "Retour", nullptr));
-        Type->setItemText(0, QCoreApplication::translate("examens", "Code ", nullptr));
-        Type->setItemText(1, QCoreApplication::translate("examens", "Circuit", nullptr));
-        Type->setItemText(2, QCoreApplication::translate("examens", "parking", nullptr));
+        comboBox_type->setItemText(0, QCoreApplication::translate("examens", "Code ", nullptr));
+        comboBox_type->setItemText(1, QCoreApplication::translate("examens", "Circuit", nullptr));
+        comboBox_type->setItemText(2, QCoreApplication::translate("examens", "parking", nullptr));
 
-        pushButton->setText(QCoreApplication::translate("examens", "Ajouter", nullptr));
-        lineEdit_3->setText(QCoreApplication::translate("examens", "Recherche.... ", nullptr));
-        comboBox_2->setItemText(0, QCoreApplication::translate("examens", "Admis", nullptr));
-        comboBox_2->setItemText(1, QCoreApplication::translate("examens", "\303\251chou\303\251", nullptr));
+        comboBox_vehicule->setItemText(0, QCoreApplication::translate("examens", "A", nullptr));
+        comboBox_vehicule->setItemText(1, QCoreApplication::translate("examens", "B", nullptr));
+
+        pushButton_ajouter->setText(QCoreApplication::translate("examens", "Ajouter", nullptr));
+        lineEdit_rechercheType->setText(QString());
+        comboBox_resultat->setItemText(0, QCoreApplication::translate("examens", "Admis", nullptr));
+        comboBox_resultat->setItemText(1, QCoreApplication::translate("examens", "\303\251chou\303\251", nullptr));
 
         label_9->setText(QCoreApplication::translate("examens", "R\303\251sultat :", nullptr));
         pushButton_5->setText(QCoreApplication::translate("examens", "Statistiques", nullptr));
         pushButton_7->setText(QString());
         label->setText(QCoreApplication::translate("examens", "ID Exemen :", nullptr));
         label_4->setText(QCoreApplication::translate("examens", "Heure :", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("examens", "Modifier", nullptr));
-        pushButton_6->setText(QCoreApplication::translate("examens", "Tri", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("examens", "Supprimer", nullptr));
+        pushButton_modifier->setText(QCoreApplication::translate("examens", "Modifier", nullptr));
+        pushButton_supprimer->setText(QCoreApplication::translate("examens", "Supprimer", nullptr));
         label_3->setText(QCoreApplication::translate("examens", "Date :", nullptr));
         label_5->setText(QCoreApplication::translate("examens", "Lieu :", nullptr));
-        lineEdit_2->setText(QString());
+        lineEdit_lieu->setText(QString());
         pushButton_4->setText(QCoreApplication::translate("examens", "Exporter PDF", nullptr));
         label_2->setText(QCoreApplication::translate("examens", "Type :", nullptr));
-        label_10->setText(QCoreApplication::translate("examens", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline; color:#037f7b;\">Gestion des Exemens</span></p></body></html>", nullptr));
-        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("examens", "ID", nullptr));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("examens", "Type", nullptr));
-        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QCoreApplication::translate("examens", "Date", nullptr));
-        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QCoreApplication::translate("examens", "Heure", nullptr));
-        QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QCoreApplication::translate("examens", "Lieu", nullptr));
-        QTableWidgetItem *___qtablewidgetitem5 = tableWidget->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QCoreApplication::translate("examens", "Apprenant", nullptr));
-        QTableWidgetItem *___qtablewidgetitem6 = tableWidget->horizontalHeaderItem(6);
-        ___qtablewidgetitem6->setText(QCoreApplication::translate("examens", "Moniteur", nullptr));
-        QTableWidgetItem *___qtablewidgetitem7 = tableWidget->horizontalHeaderItem(7);
-        ___qtablewidgetitem7->setText(QCoreApplication::translate("examens", "R\303\251sultat", nullptr));
+#if QT_CONFIG(tooltip)
+        tableView_examens->setToolTip(QCoreApplication::translate("examens", "<html><head/><body><p><br/></p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
+        comboBox_triDate->setItemText(0, QCoreApplication::translate("examens", "Croissant", nullptr));
+        comboBox_triDate->setItemText(1, QCoreApplication::translate("examens", "D\303\251croissant", nullptr));
 
-        const bool __sortingEnabled = tableWidget->isSortingEnabled();
-        tableWidget->setSortingEnabled(false);
-        tableWidget->setSortingEnabled(__sortingEnabled);
-
+#if QT_CONFIG(tooltip)
+        comboBox_triDate->setToolTip(QCoreApplication::translate("examens", "<html><head/><body><p><br/></p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
     } // retranslateUi
 
 };

@@ -386,6 +386,7 @@ Makefile: ../../examens.pro ../../../../qt/6.7.3/mingw_64/mkspecs/features/spec_
 		../../../../qt/6.7.3/mingw_64/lib/Qt6EntryPoint.prl \
 		../../../../qt/6.7.3/mingw_64/mkspecs/features/build_pass.prf \
 		../../logo.qrc \
+		../../recherche.qrc \
 		debug/qmake_qmake_qm_files.qrc \
 		release/qmake_qmake_qm_files.qrc
 	$(QMAKE) -o Makefile ..\..\examens.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -705,6 +706,7 @@ Makefile: ../../examens.pro ../../../../qt/6.7.3/mingw_64/mkspecs/features/spec_
 ../../../../qt/6.7.3/mingw_64/lib/Qt6EntryPoint.prl:
 ../../../../qt/6.7.3/mingw_64/mkspecs/features/build_pass.prf:
 ../../logo.qrc:
+../../recherche.qrc:
 debug/qmake_qmake_qm_files.qrc:
 release/qmake_qmake_qm_files.qrc:
 qmake: FORCE

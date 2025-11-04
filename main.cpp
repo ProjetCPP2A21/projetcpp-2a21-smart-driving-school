@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
         w.show();
         return a.exec();
     } else {
-        QMessageBox::critical(nullptr, "Erreur", "Échec de connexion à la base de données !");
+        QMessageBox::critical(nullptr, "Erreur", "Connexion échouée !");
         return 0;
     }
 }

@@ -11,11 +11,13 @@ CONFIG += c++17
 
 SOURCES += \
     connection.cpp \
+    examen.cpp \
     main.cpp \
     examens.cpp
 
 HEADERS += \
     connection.h \
+    examen.h \
     examens.h
 
 FORMS += \
@@ -32,4 +34,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    logo.qrc
+    logo.qrc \
+    recherche.qrc

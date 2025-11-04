@@ -2,7 +2,7 @@
 #define EXAMENS_H
 
 #include <QMainWindow>
-#include "ui_examens.h"   // <-- ajoute Ã§a aussi
+#include "examen.h"
 
 namespace Ui {
 class examens;
@@ -16,6 +16,13 @@ public:
     explicit examens(QWidget *parent = nullptr);
     ~examens();
 
+private slots:
+    void on_pushButton_ajouter_clicked();
+    void on_pushButton_modifier_clicked();
+    void on_pushButton_supprimer_clicked();
+    void on_tableView_examens_clicked(const QModelIndex &index);
+    void rechercherParType(const QString &type); // recherche dynamique
+    void on_pushButton_trierDate_clicked();
 private:
     Ui::examens *ui;
 };

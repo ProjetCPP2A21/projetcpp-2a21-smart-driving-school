@@ -3,9 +3,11 @@
 bool Connection::createconnect()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("SYSTEM");   // nom de ta source ODBC
-    db.setUserName("islem");        // ton nom utilisateur Oracle
-    db.setPassword("islem123");     // ton mot de passe Oracle
 
-    return db.open(); // retourne vrai si la connexion réussit
+    // ⚠️ adapte le nom de ta source de données ODBC ici :
+    db.setDatabaseName("Source_Projet2A");
+    db.setUserName("islem");
+    db.setPassword("islem123");
+
+    return db.open(); // true si la connexion réussit, false sinon
 }
