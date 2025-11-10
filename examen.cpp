@@ -77,5 +77,8 @@ QSqlQueryModel* Examen::afficher()
     model->setHeaderData(6, Qt::Horizontal, QObject::tr("Résultat"));
     return model;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 6261b74d60c6f1db7570688dee03222a2a4f5da2
