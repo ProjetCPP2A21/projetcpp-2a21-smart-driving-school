@@ -17,14 +17,23 @@ public:
     ~examens();
 
 private slots:
+    void on_pushButton_login_clicked();
+    void on_pushButton_examens_clicked();
     void on_pushButton_ajouter_clicked();
     void on_pushButton_modifier_clicked();
     void on_pushButton_supprimer_clicked();
+    void on_exporterPDF_clicked();
     void on_tableView_examens_clicked(const QModelIndex &index);
     void rechercherParType(const QString &type); // recherche dynamique
-    void on_pushButton_trierDate_clicked();
+    void trierDate(const QString &ordre); // 🔹 slot pour le comboBox
+    void afficherStatistiques(); // nouveau slot pour les stats
+    void on_pushButton_retour_clicked();
+
+
 private:
     Ui::examens *ui;
+    int selectedId;           // 🔹 ID de la ligne sélectionnée
+    void clearFields();       // 🔹 Fonction pour vider tous les champs
 };
 
 #endif // EXAMENS_H
