@@ -235,13 +235,36 @@ QLineEdit[placeholderText]:empty {
      <string>Recherche...</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_message">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>470</y>
+      <width>480</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #c62828;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
    <widget class="QDateEdit" name="dateEdit_naissance">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>310</y>
-      <width>141</width>
-      <height>31</height>
+      <width>140</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">

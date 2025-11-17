@@ -2,7 +2,6 @@
 #define APPRENANTS_H
 
 #include <QMainWindow>
-#include <QModelIndex>
 #include "apprenant.h"
 
 QT_BEGIN_NAMESPACE
@@ -14,11 +13,14 @@ class apprenants : public QMainWindow
     Q_OBJECT
 
 public:
-    apprenants(QWidget *parent = nullptr);
+    explicit apprenants(QWidget *parent = nullptr);
     ~apprenants();
-    void afficherApprenants();
 
 private slots:
+    void afficherApprenants();
+    bool verifierSaisie(int &id, QString &nom, QString &prenom, QString &dateNaissance,
+                        QString &tel, QString &sexe, QString &adresse);
+
     void on_pushButton_ajouter_clicked();
     void on_pushButton_modifier_clicked();
     void on_pushButton_supprimer_clicked();
@@ -29,6 +31,8 @@ private slots:
     void on_tableView_apprenants_clicked(const QModelIndex &index);
 
 private:
+    void reinitialiserFormulaire();
+    void afficherMessageControle(const QString &message, bool erreur = true);
     Ui::apprenants *ui;
 };
 

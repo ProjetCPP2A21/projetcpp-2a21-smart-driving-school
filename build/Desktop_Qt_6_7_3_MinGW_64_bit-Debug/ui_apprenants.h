@@ -34,6 +34,7 @@ public:
     QLineEdit *lineEdit_nom;
     QLabel *label_7;
     QLineEdit *lineEdit_recherche;
+    QLabel *label_message;
     QDateEdit *dateEdit_naissance;
     QLabel *label_8;
     QLabel *label_10;
@@ -213,9 +214,16 @@ public:
 "    color: #95a5a6;  /* gris clair pour le placeholder */\n"
 "}\n"
 ""));
+        label_message = new QLabel(centralwidget);
+        label_message->setObjectName("label_message");
+        label_message->setGeometry(QRect(240, 470, 480, 36));
+        label_message->setStyleSheet(QString::fromUtf8("color: #c62828;\n"
+"font-weight: bold;"));
+        label_message->setAlignment(Qt::AlignCenter);
+        label_message->setWordWrap(true);
         dateEdit_naissance = new QDateEdit(centralwidget);
         dateEdit_naissance->setObjectName("dateEdit_naissance");
-        dateEdit_naissance->setGeometry(QRect(20, 310, 141, 31));
+        dateEdit_naissance->setGeometry(QRect(20, 310, 140, 41));
         dateEdit_naissance->setStyleSheet(QString::fromUtf8("QDateEdit {\n"
 "    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
 "        stop:0 #43cea2, stop:1 #185a9d);\n"
@@ -684,6 +692,7 @@ public:
         label_2->setText(QCoreApplication::translate("apprenants", "ID Apprenant", nullptr));
         label_7->setText(QCoreApplication::translate("apprenants", "Adresse", nullptr));
         lineEdit_recherche->setText(QCoreApplication::translate("apprenants", "Recherche...", nullptr));
+        label_message->setText(QString());
         label_8->setText(QCoreApplication::translate("apprenants", "Date de naissance", nullptr));
         label_10->setText(QCoreApplication::translate("apprenants", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"

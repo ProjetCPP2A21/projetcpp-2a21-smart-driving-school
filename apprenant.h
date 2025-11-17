@@ -7,6 +7,10 @@
 
 class Apprenant
 {
+private:
+    int id;
+    QString nom, prenom, dateNaissance, telephone, sexe, adresse;
+
 public:
     Apprenant();
     Apprenant(int id, QString nom, QString prenom, QString dateNaissance,
@@ -16,20 +20,15 @@ public:
     bool modifier();
     bool modifierAvecID(int nouvelId);
     bool supprimer(int id);
+
     QSqlQueryModel* afficher();
     QSqlQueryModel* rechercher(int id);
+    QSqlQueryModel* rechercherParPrefixe(const QString &prefix);
     QSqlQueryModel* trierParPrenomCroissant();
     QSqlQueryModel* trierParPrenomDecroissant();
-    QMap<QString,int> statistiquesSexe();
 
-private:
-    int id;
-    QString nom;
-    QString prenom;
-    QString dateNaissance;
-    QString telephone;
-    QString sexe;
-    QString adresse;
+    QMap<QString,int> statistiquesSexe();
+    bool existe(int id);
 };
 
 #endif // APPRENANT_H
