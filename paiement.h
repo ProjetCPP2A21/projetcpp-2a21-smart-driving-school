@@ -2,32 +2,39 @@
 #define PAIEMENT_H
 
 #include <QString>
-#include <QSqlQuery>
 #include <QSqlQueryModel>
 
 class Paiement
 {
-public:
-    Paiement();
-    Paiement(int, QString, QString, QString, QString, QString, double);
-
-    int getId();
-    QString getType();
-    QString getDate();
-    QString getHeure();
-    QString getLieu();
-    QString getOffre();
-    double getMontant();
-
-    bool ajouter();
-    QSqlQueryModel* afficher();
-    bool supprimer(int);
-    bool modifier();
-
 private:
     int id;
-    QString type, date, heure, lieu, offre;
+    QString type;
+    QString date;
+    QString heure;
     double montant;
+    int id_apprenant;
+
+public:
+    Paiement();
+    Paiement(int id, QString type, QString date, QString heure,
+             double montant, int id_apprenant = 0);
+
+    // Getters
+    int getId() const;
+    QString getType() const;
+    QString getDate() const;
+    QString getHeure() const;
+    double getMontant() const;
+    int getIdApprenant() const;
+
+    // CRUD
+    bool ajouter();
+    bool modifier();
+    static bool supprimer(int id);  // Méthode statique
+    QSqlQueryModel* afficher() const;
+    QSqlQueryModel* trierParDate(bool croissant = true) const;
+    QSqlQueryModel* rechercherParApprenant(int id_apprenant) const;
+
 };
 
 #endif // PAIEMENT_H

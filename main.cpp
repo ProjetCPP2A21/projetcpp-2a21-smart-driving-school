@@ -1,27 +1,25 @@
-#include "mainwindow.h"
-#include"cnx.h"
 #include <QApplication>
 #include <QMessageBox>
+#include "mainwindow.h"
+#include "cnx.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+
+    // Initialisation de la connexion à la base Oracle via ODBC
     Connection c;
-    bool test=c.createconnect();
-    if(test)
-    {w.show();
-        QMessageBox::information(nullptr, QObject::tr("database is open"),
-                                 QObject::tr("connection successful.\n"
-                                             "Click Cancel to exit."), QMessageBox::Cancel);
-
+    if (!c.createconnect()) {
+        QMessageBox::critical(nullptr,
+                              "Erreur Connexion",
+                              "Impossible de se connecter à la base de données Oracle.\n"
+                              "Vérifiez le DSN et les identifiants.");
+        return -1; // Arrêt de l'application si la connexion échoue
     }
-    else
-        QMessageBox::critical(nullptr, QObject::tr("database is not open"),
-                              QObject::tr("connection failed.\n"
-                                          "Click Cancel to exit."), QMessageBox::Cancel);
 
-
+    // Création et affichage de la fenêtre principale
+    MainWindow w;
+    w.show();
 
     return a.exec();
 }

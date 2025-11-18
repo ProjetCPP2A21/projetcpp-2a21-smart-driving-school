@@ -1,22 +1,28 @@
 #include "cnx.h"
-Connection::Connection()
-{
+#include <QSqlError>
+#include <QDebug>
 
-}
+Connection::Connection() {}
 
 bool Connection::createconnect()
-{bool test=false;
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("Source_Projet2A");//inserer le nom de la source de données
-    db.setUserName("youssefgh");//inserer nom de l'utilisateur
-    db.setPassword("1245");//inserer mot de passe de cet utilisateur
+{
+    const QString connectionName = "oracle_connection";
 
-    if (db.open())
-        test=true;
+    QSqlDatabase db;
+    if (QSqlDatabase::contains(connectionName)) {
+        db = QSqlDatabase::database(connectionName);
+    } else {
+        db = QSqlDatabase::addDatabase("QODBC", connectionName);
+        db.setDatabaseName("Source_Projet2A");  // DSN configuré dans ODBC
+        db.setUserName("islem");
+        db.setPassword("islem");
+    }
 
+    if (!db.open()) {
+        qDebug() << " Impossible d'ouvrir la base via ODBC:" << db.lastError().text();
+        return false;
+    }
 
-
-
-
-    return  test;
+    qDebug() << " Connexion réussie à Oracle via ODBC.";
+    return true;
 }

@@ -1,13 +1,13 @@
-#ifndef CONNECTION_H
-#define CONNECTION_H
+#ifndef CNX_H
+#define CNX_H
+
 #include <QSqlDatabase>
-#include <QSqlError>
-#include <QSqlQuery>
+
 class Connection
 {
 public:
     Connection();
-    bool createconnect();
+    bool createconnect(); // Crée et ouvre la connexion Oracle via ODBC
 };
 
-#endif // CONNECTION_H
+#endif // CNX_H
