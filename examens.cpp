@@ -5,6 +5,16 @@
 #include <QTime>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QSqlError>
+#include <QPdfWriter>
+#include <QPainter>
+#include <QFileDialog>
+#include <QFont>
+#include <QAbstractItemModel>
+#include <QtCharts/QChartView>
+#include <QtCharts/QPieSeries>
+#include <QtCharts/QPieSlice>
+#include <QTimer>
 
 examens::examens(QWidget *parent) :
     QMainWindow(parent),
@@ -12,23 +22,66 @@ examens::examens(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // -------------------- CONFIGURATION TABLE --------------------
-    ui->tableView_examens->setSelectionBehavior(QAbstractItemView::SelectRows); // sélection par ligne
-    ui->tableView_examens->setSelectionMode(QAbstractItemView::SingleSelection); // une seule ligne à la fois
-    ui->tableView_examens->setEditTriggers(QAbstractItemView::NoEditTriggers); // pas d'édition directe
+    // ✅ Démarre sur la page de connexion
+    ui->stackedWidget->setCurrentIndex(0);
 
-    // Afficher la table au démarrage
+    // Masquer le mot de passe
+    ui->lineEdit_password->setEchoMode(QLineEdit::Password);
+
+    // Connexions
+    connect(ui->pushButton_examens, &QPushButton::clicked, this, &examens::on_pushButton_examens_clicked);
+
+    // Initialisation de la table examens (ta partie existante)
+    selectedId = 0;
+    ui->tableView_examens->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableView_examens->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableView_examens->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView_examens->setModel(Examen().afficher());
 
-    // Connecter le clic sur le tableau au slot
-    connect(ui->tableView_examens, &QTableView::clicked,
-            this, &examens::on_tableView_examens_clicked);
+    connect(ui->tableView_examens, &QTableView::clicked, this, &examens::on_tableView_examens_clicked);
+    connect(ui->lineEdit_rechercheType, &QLineEdit::textChanged, this, &examens::rechercherParType);
+    connect(ui->comboBox_triDate, &QComboBox::currentTextChanged, this, &examens::trierDate);
 
-    // Connexion du QLineEdit à la recherche
-    connect(ui->lineEdit_rechercheType, &QLineEdit::textChanged,
-            this, &examens::rechercherParType);
-    connect(ui->comboBox_triDate, &QComboBox::currentTextChanged,
-            this, &examens::on_pushButton_trierDate_clicked);
+    connect(ui->pushButton_stats, &QPushButton::clicked, this, &examens::afficherStatistiques);
+
+    connect(ui->pushButton_planifier, &QPushButton::clicked, this, [=]() {
+        if (Examen().planifierAutomatique("Code", "Centre A", "TN1234")) {
+            QMessageBox::information(this, "Succès", "Examens planifiés automatiquement !");
+            ui->tableView_examens->setModel(Examen().afficher());
+        } else {
+            QMessageBox::critical(this, "Erreur", "Échec de la planification !");
+        }
+    });
+
+}
+
+// 🟢 LOGIN
+void examens::on_pushButton_login_clicked()
+{
+    QString email = ui->lineEdit_email->text().trimmed();
+    QString password = ui->lineEdit_password->text().trimmed();
+
+    if (email == "a" && password == "0000")
+    {
+        QMessageBox::information(this, "Connexion réussie", "Bienvenue !");
+        ui->stackedWidget->setCurrentIndex(1); // Page menu
+        ui->lineEdit_email->clear();
+        ui->lineEdit_password->clear();
+    }
+    else
+    {
+        QMessageBox::warning(this, "Erreur", "Email ou mot de passe incorrect !");
+    }
+}
+
+// 🟡 MENU → PAGE EXAMENS
+void examens::on_pushButton_examens_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2); // Passe à l’interface examens
+    ui->tableView_examens->setModel(Examen().afficher());
+    ui->tableView_examens->clearSelection();
+
+    rappelExamensDuJour();
 }
 
 examens::~examens()
@@ -48,13 +101,13 @@ void examens::on_pushButton_ajouter_clicked()
     QString resultat = ui->comboBox_resultat->currentText();
 
     // Vérification des champs
-    if (idText.isEmpty() || type.isEmpty() || date.isEmpty() || heure.isEmpty() ||
+   /* if (idText.isEmpty() || type.isEmpty() || date.isEmpty() || heure.isEmpty() ||
         lieu.isEmpty() || vehicule.isEmpty() || resultat.isEmpty())
     {
         QMessageBox::warning(this, "Champs manquants",
                              "⚠️ Veuillez remplir tous les champs !");
         return;
-    }
+    }*/
 
     // Vérification de l'ID entier
     bool ok;
@@ -63,42 +116,69 @@ void examens::on_pushButton_ajouter_clicked()
         QMessageBox::warning(this, "Erreur", "L'ID doit être un entier !");
         return;
     }
-
     Examen e(id, type, date, heure, lieu, vehicule, resultat);
     if (e.ajouter()) {
         QMessageBox::information(this, "Succès", "Examen ajouté !");
         ui->tableView_examens->setModel(Examen().afficher());
+        clearFields(); // 🟢 vide les champs après ajout
     } else {
         QMessageBox::critical(this, "Erreur", "Échec de l’ajout !");
     }
 }
 
+
 // -------------------- MODIFIER --------------------
 void examens::on_pushButton_modifier_clicked()
 {
+    // ✅ Vérifier qu'une ligne est bien sélectionnée dans le tableau
     QModelIndexList selection = ui->tableView_examens->selectionModel()->selectedRows();
     if (selection.count() == 0) {
         QMessageBox::warning(this, "Erreur", "Veuillez sélectionner une ligne à modifier !");
         return;
     }
 
-    int id = selection.at(0).data().toInt(); // ID de la ligne sélectionnée
+    // ✅ Récupérer l'ID depuis la ligne sélectionnée
+    int id = selection.at(0).data().toInt();
+    if (id <= 0) {
+        QMessageBox::warning(this, "Erreur", "ID non valide !");
+        return;
+    }
 
-    QString type = ui->comboBox_type->currentText();
+    // ✅ Récupérer les valeurs modifiées dans les champs
+    QString type = ui->comboBox_type->currentText().trimmed();
     QString date = ui->dateEdit_date->date().toString("dd/MM/yyyy");
     QString heure = ui->timeEdit_heure->time().toString("hh:mm");
-    QString lieu = ui->lineEdit_lieu->text();
-    QString vehicule = ui->comboBox_vehicule->currentText();
-    QString resultat = ui->comboBox_resultat->currentText();
+    QString lieu = ui->lineEdit_lieu->text().trimmed();
+    QString vehicule = ui->comboBox_vehicule->currentText().trimmed();
+    QString resultat = ui->comboBox_resultat->currentText().trimmed();
 
+    // ✅ Vérification : aucun champ obligatoire ne doit être vide
+    if (type.isEmpty() || lieu.isEmpty() || vehicule.isEmpty() || resultat.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez remplir tous les champs avant de modifier !");
+        return;
+    }
+    // ⚠️ Demander confirmation avant modification
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this,
+                                  "Confirmation",
+                                  "Voulez-vous vraiment modifier cet examen ?",
+                                  QMessageBox::Yes | QMessageBox::No);
+
+
+    // ✅ Créer un objet Examen avec les nouvelles valeurs
     Examen e(id, type, date, heure, lieu, vehicule, resultat);
+
+    // ✅ Lancer la modification dans la base de données
     if (e.modifier()) {
-        QMessageBox::information(this, "Succès", "Examen modifié !");
-        ui->tableView_examens->setModel(Examen().afficher());
+        QMessageBox::information(this, "Succès", "Examen modifié avec succès !");
+        ui->tableView_examens->setModel(Examen().afficher());  // 🔄 Rafraîchir le tableau
+        clearFields();   // 🧹 Vider les champs après modification
+        selectedId = 0;  // 🔁 Réinitialiser la sélection
     } else {
-        QMessageBox::critical(this, "Erreur", "Échec de la modification !");
+        QMessageBox::critical(this, "Erreur", "Échec de la modification dans la base de données !");
     }
 }
+
 
 // -------------------- SUPPRIMER --------------------
 void examens::on_pushButton_supprimer_clicked()
@@ -117,6 +197,7 @@ void examens::on_pushButton_supprimer_clicked()
     if (reply == QMessageBox::Yes) {
         if (Examen().supprimer(id)) {
             QMessageBox::information(this, "Succès", "Examen supprimé !");
+            clearFields(); // 🟢 vide les champs après suppression
             ui->tableView_examens->setModel(Examen().afficher());
 
             // Vider les champs du formulaire
@@ -171,7 +252,7 @@ void examens::rechercherParType(const QString &type)
     query.bindValue(":type", "%" + type + "%"); // permet la recherche partielle
     query.exec();
 
-    model->setQuery(query);
+    model->setQuery(std::move(query));
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Type"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Date"));
@@ -183,29 +264,29 @@ void examens::rechercherParType(const QString &type)
     ui->tableView_examens->setModel(model);
 }
 
-void examens::on_pushButton_trierDate_clicked()
+void examens::trierDate(const QString &ordre)
 {
-    QString ordre = ui->comboBox_triDate->currentText();  // Récupère le choix du comboBox
     QString direction;
 
     if (ordre == "Croissant")
-        direction = "ASC";   // Tri croissant
+        direction = "ASC";
     else if (ordre == "Décroissant")
-        direction = "DESC";  // Tri décroissant
-    else {
-        QMessageBox::warning(this, "Erreur", "Veuillez choisir un ordre de tri !");
+        direction = "DESC";
+    else
+        return; // aucune action
+
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QString sql = QString("SELECT ID_EXAMEN, TYPE, TO_CHAR(DATE_EXAMEN, 'DD/MM/YYYY') AS DATE_EXAMEN, HEURE, LIEU, VEHICULE, RESULTAT "
+                          "FROM EXAMEN ORDER BY DATE_EXAMEN %1").arg(direction);
+
+    model->setQuery(sql);
+
+    if (model->lastError().isValid()) {
+        qDebug() << "Erreur tri:" << model->lastError().text();
         return;
     }
 
-    QSqlQueryModel* model = new QSqlQueryModel();
-    QSqlQuery query;
-
-    // Requête SQL avec tri dynamique
-    query.prepare("SELECT ID_EXAMEN, TYPE, DATE_EXAMEN, HEURE, LIEU, VEHICULE, RESULTAT "
-                  "FROM EXAMEN ORDER BY DATE_EXAMEN " + direction);
-    query.exec();
-
-    model->setQuery(std::move(query));
+    // Entêtes de colonnes
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Type"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Date"));
@@ -215,4 +296,189 @@ void examens::on_pushButton_trierDate_clicked()
     model->setHeaderData(6, Qt::Horizontal, QObject::tr("Résultat"));
 
     ui->tableView_examens->setModel(model);
+}
+
+
+void examens::on_exporterPDF_clicked()
+{
+    // ➤ Vérifier si la table contient des données
+    QAbstractItemModel *model = ui->tableView_examens->model();
+    if (model->rowCount() == 0) {
+        QMessageBox::warning(this, "Avertissement", "Aucun examen à exporter !");
+        return;
+    }
+
+    // ➤ Choisir un emplacement
+    QString filePath = QFileDialog::getSaveFileName(
+        this, "Exporter la liste des examens", "", "Fichier PDF (*.pdf)");
+
+    if (filePath.isEmpty())
+        return;
+
+    if (!filePath.endsWith(".pdf", Qt::CaseInsensitive))
+        filePath += ".pdf";
+
+    // ➤ Préparer le PDF
+    QPdfWriter pdf(filePath);
+    pdf.setPageSize(QPageSize(QPageSize::A4));
+    pdf.setTitle("Liste des examens");
+
+    QPainter painter(&pdf);
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    // -------------------- EN-TÊTE --------------------
+    painter.setFont(QFont("Helvetica", 18, QFont::Bold));
+    painter.drawText(1500, 1500, "Liste des Examens");
+
+    painter.setFont(QFont("Helvetica", 10));
+    painter.drawText(1500, 1800, "Date : " + QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm"));
+
+    painter.drawLine(500, 2000, 5500, 2000);
+
+    // -------------------- TABLEAU --------------------
+    int startY = 2500;
+    int rowHeight = 400;
+    int colWidth = 1000;
+
+    painter.setFont(QFont("Helvetica", 11, QFont::Bold));
+
+    // ➤ Afficher les en-têtes de colonnes
+    for (int col = 0; col < model->columnCount(); ++col) {
+        painter.drawText(500 + col * colWidth, startY, model->headerData(col, Qt::Horizontal).toString());
+    }
+
+    painter.drawLine(500, startY + 100, 5500, startY + 100);
+
+    // ➤ Afficher les données du tableau
+    painter.setFont(QFont("Helvetica", 10));
+    int y = startY + 300;
+
+    for (int row = 0; row < model->rowCount(); ++row) {
+        for (int col = 0; col < model->columnCount(); ++col) {
+            QString cellText;
+
+            // ---- FORMATTAGE MANUEL POUR DATE ----
+            if (model->headerData(col, Qt::Horizontal).toString().trimmed().toLower() == "date") {
+                QDate d = model->data(model->index(row, col)).toDate();
+                cellText = d.toString("dd/MM/yyyy");
+            }
+
+            // ---- FORMATTAGE MANUEL POUR HEURE ----
+            else if (model->headerData(col, Qt::Horizontal).toString().trimmed().toLower() == "heure") {
+                QTime t = model->data(model->index(row, col)).toTime();
+                cellText = t.toString("hh:mm");
+            }
+
+            // ---- AUTRES COLONNES ----
+            else {
+                cellText = model->data(model->index(row, col)).toString();
+            }
+
+            // affichage
+            painter.drawText(500 + col * colWidth, y, cellText);
+        }
+        y += rowHeight;
+
+        // ➤ Si on dépasse la page, on en crée une nouvelle
+        if (y > 11000) {
+            pdf.newPage();
+            y = 2500;
+        }
+    }
+
+    // -------------------- PIÈCE --------------------
+    painter.setFont(QFont("Helvetica", 9, QFont::StyleItalic));
+    painter.drawText(2000, 11500, "Document généré automatiquement - " +
+                                      QDate::currentDate().toString("dd/MM/yyyy"));
+
+    painter.end();
+
+    QMessageBox::information(this, "Succès", "La liste complète des examens a été exportée !");
+}
+
+
+
+void examens::afficherStatistiques()
+{
+    QSqlQuery query;
+    // 🔹 Grouper par RESULTAT au lieu de TYPE
+    query.prepare("SELECT RESULTAT, COUNT(*) FROM EXAMEN GROUP BY RESULTAT");
+    if (!query.exec()) {
+        QMessageBox::critical(this, "Erreur", "Impossible de récupérer les statistiques : " + query.lastError().text());
+        return;
+    }
+
+    QPieSeries *series = new QPieSeries();
+    while (query.next()) {
+        QString resultat = query.value(0).toString(); // "Réussi" ou "Échec"
+        int count = query.value(1).toInt();
+        series->append(resultat, count);
+    }
+
+    QChart *chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle("Répartition des examens selon le résultat");
+    chart->legend()->setAlignment(Qt::AlignRight);
+
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+    // 🔹 Affichage dans une nouvelle fenêtre
+    QMainWindow *statWindow = new QMainWindow(this);
+    statWindow->setCentralWidget(chartView);
+    statWindow->resize(600, 400);
+    statWindow->show();
+}
+
+
+void examens::on_pushButton_planifier_clicked()
+{
+    Examen e;
+
+    // Appel correct : 3 paramètres comme dans examen.h
+    bool ok = e.planifierAutomatique("Code", "Centre A", "A");
+
+    if (ok) {
+        QMessageBox::information(this, "Succès", "Examens planifiés automatiquement !");
+        ui->tableView_examens->setModel(Examen().afficher());  // rafraîchir le tableau
+    }
+    else {
+        qDebug() << "Planification échouée (voir erreurs SQL dans la console).";
+    }
+}
+
+void examens::rappelExamensDuJour() {
+    QSqlQuery query;
+    QDate today = QDate::currentDate();
+    query.prepare("SELECT TYPE, HEURE, LIEU, VEHICULE FROM EXAMEN WHERE TO_CHAR(DATE_EXAMEN,'DD/MM/YYYY') = :date");
+    query.bindValue(":date", today.toString("dd/MM/yyyy"));
+
+    if (!query.exec()) return;
+
+    QString message;
+    while (query.next()) {
+        message += query.value("TYPE").toString() + " à " + query.value("HEURE").toString() +
+                   " au " + query.value("LIEU").toString() + " (" + query.value("VEHICULE").toString() + ")\n";
+    }
+
+    if (!message.isEmpty())
+        QMessageBox::information(this, "Rappel Examens du Jour", message);
+}
+
+
+void examens::clearFields()
+{
+    ui->lineEdit_id->clear();
+    ui->comboBox_type->setCurrentIndex(-1);
+    ui->dateEdit_date->setDate(QDate::currentDate());
+    ui->timeEdit_heure->setTime(QTime::currentTime());
+    ui->lineEdit_lieu->clear();
+    ui->comboBox_vehicule->setCurrentIndex(-1);
+    ui->comboBox_resultat->setCurrentIndex(-1);
+}
+
+// 🟢 RETOUR → MENU
+void examens::on_pushButton_retour_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1); // index 1 = page menu
 }

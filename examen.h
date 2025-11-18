@@ -3,7 +3,6 @@
 
 #include <QString>
 #include <QSqlQueryModel>
-
 class Examen
 {
 public:
@@ -14,6 +13,7 @@ public:
     bool supprimer(int);
     bool modifier();
     QSqlQueryModel* afficher();
+   bool planifierAutomatique(QString type, QString lieu, QString vehicule);
 
 private:
     int id;

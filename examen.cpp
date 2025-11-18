@@ -2,6 +2,11 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QMessageBox>
+#include <QDate>
+#include <QRandomGenerator>
+#include <QtGlobal> // pour qrand
+#include <QTime>    // pour qrand seed
 
 Examen::Examen() {}
 
@@ -16,11 +21,12 @@ Examen::Examen(int id, QString type, QString date, QString heure, QString lieu, 
     this->resultat = resultat;
 }
 
+
 bool Examen::ajouter()
 {
     QSqlQuery query;
     query.prepare("INSERT INTO EXAMEN (ID_EXAMEN, TYPE, DATE_EXAMEN, HEURE, LIEU, VEHICULE, RESULTAT) "
-                  "VALUES (:id, :type, :date, :heure, :lieu, :vehicule, :resultat)");
+                  "VALUES (:id, :type, TO_DATE(:date, 'DD/MM/YYYY'), :heure, :lieu, :vehicule, :resultat)");
     query.bindValue(":id", id);
     query.bindValue(":type", type);
     query.bindValue(":date", date);
@@ -28,7 +34,15 @@ bool Examen::ajouter()
     query.bindValue(":lieu", lieu);
     query.bindValue(":vehicule", vehicule);
     query.bindValue(":resultat", resultat);
-    return query.exec();
+
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "Erreur SQL",
+                              "⚠️ Erreur : " + query.lastError().text());
+        qDebug() << "Requête SQL :" << query.lastQuery();
+        return false;
+    }
+
+    return true;
 }
 
 bool Examen::supprimer(int id)
@@ -46,7 +60,7 @@ bool Examen::modifier()
                   "WHERE ID_EXAMEN=:id");
     query.bindValue(":id", id);
     query.bindValue(":type", type);
-    query.bindValue(":date", date);
+    query.bindValue(":date", QDate::fromString(date,"dd/MM/yyyy").toString("yyyy-MM-dd")); // 🔹
     query.bindValue(":heure", heure);
     query.bindValue(":lieu", lieu);
     query.bindValue(":vehicule", vehicule);
@@ -54,10 +68,36 @@ bool Examen::modifier()
     return query.exec();
 }
 
-QSqlQueryModel* Examen::afficher()
+bool Examen::planifierAutomatique(QString type, QString lieu, QString vehicule)
 {
-    QSqlQueryModel* model = new QSqlQueryModel();
-    model->setQuery("SELECT ID_EXAMEN, TYPE, DATE_EXAMEN, HEURE, LIEU, VEHICULE, RESULTAT FROM EXAMEN");
+    QSqlQuery query;
+    for (int i = 0; i < 3; ++i) {
+        int id = QRandomGenerator::global()->bounded(1000, 9999);
+        QString date = QDate::currentDate().addDays(1).toString("dd/MM/yyyy");
+        QString heure = QString::number(9 + i) + ":00";
+        QString resultat = "En attente";
+
+        query.prepare("INSERT INTO EXAMEN (ID_EXAMEN, TYPE, DATE_EXAMEN, HEURE, LIEU, VEHICULE, RESULTAT) "
+                      "VALUES (:id, :type, TO_DATE(:date,'DD/MM/YYYY'), :heure, :lieu, :vehicule, :resultat)");
+        query.bindValue(":id", id);
+        query.bindValue(":type", type);
+        query.bindValue(":date", date);
+        query.bindValue(":heure", heure);
+        query.bindValue(":lieu", lieu);
+        query.bindValue(":vehicule", vehicule);
+        query.bindValue(":resultat", resultat);
+
+        if (!query.exec()) {
+            qDebug() << "Erreur SQL planification :" << query.lastError().text();
+            return false;
+        }
+    }
+    return true;
+}
+// Affichage
+QSqlQueryModel* Examen::afficher() {
+    QSqlQueryModel* model = new
+    QSqlQueryModel(); model->setQuery("SELECT ID_EXAMEN, TYPE, DATE_EXAMEN, HEURE, LIEU, VEHICULE, RESULTAT FROM EXAMEN");
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Type"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Date"));
@@ -67,3 +107,4 @@ QSqlQueryModel* Examen::afficher()
     model->setHeaderData(6, Qt::Horizontal, QObject::tr("Résultat"));
     return model;
 }
+
