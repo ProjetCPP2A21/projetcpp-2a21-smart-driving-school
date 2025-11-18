@@ -252,7 +252,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
     <property name="wordWrap">
      <bool>true</bool>

@@ -466,7 +466,7 @@ void apprenants::on_pushButton_exporterPDF_clicked()
 
     QAbstractItemModel* model = ui->tableView_apprenants->model();
     if(!model || model->rowCount() == 0){
-        QMessageBox::warning(this, "Erreur", "Aucune donnée à exporter !");
+        afficherMessageControle("Erreur", "Aucune donnée à exporter !");
         return;
     }
 
@@ -476,7 +476,7 @@ void apprenants::on_pushButton_exporterPDF_clicked()
 
     QPainter painter(&pdf);
     if(!painter.isActive()){
-        QMessageBox::critical(this, "Erreur", "Impossible de créer le PDF !");
+       afficherMessageControle("Erreur", "Impossible de créer le PDF !");
         return;
     }
 
@@ -607,7 +607,7 @@ void apprenants::on_pushButton_exporterPDF_clicked()
     }
 
     painter.end();
-    QMessageBox::information(this, "PDF", "Exportation réussie !");
+    afficherMessageControle( "PDF Exportation réussie !", false);
 }
 
 // -------------------- STATISTIQUES --------------------
@@ -615,32 +615,68 @@ void apprenants::on_pushButton_statistique_clicked()
 {
     Apprenant a;
     QMap<QString,int> stats = a.statistiquesSexe();
-    int total = 0; for(auto val: stats) total += val;
+    int total = 0;
+    for (auto val : stats) total += val;
 
     QPieSeries* series = new QPieSeries();
-    for(auto it=stats.begin(); it!=stats.end(); ++it){
-        double pourcentage = (it.value()*100.0)/total;
-        QString label = it.key()+" ("+QString::number(it.value())+") : "+QString::number(pourcentage,'f',1)+"%";
-        QPieSlice* slice = series->append(label,it.value());
+    series->setHoleSize(0.25);  // Donut léger (plus moderne)
+
+    for (auto it = stats.begin(); it != stats.end(); ++it) {
+
+        double pourcentage = (it.value() * 100.0) / total;
+        QString label = it.key() + " (" + QString::number(it.value()) +
+                        ") : " + QString::number(pourcentage, 'f', 1) + "%";
+
+        QPieSlice* slice = series->append(label, it.value());
         slice->setLabelVisible(true);
-        slice->setBrush(it.key()=="Femme"?Qt::magenta:Qt::blue);
+
+        if (it.key() == "Femme") {
+            slice->setBrush(QColor("#43cea2"));  // couleur Femme
+        }
+        else if (it.key() == "Homme") {
+            slice->setBrush(QColor("#185a9d"));  // couleur Homme
+        }
+
+        // ✨ Explosion animation au survol
+        slice->setExploded(false);
+        QObject::connect(slice, &QPieSlice::hovered, [slice](bool state){
+            slice->setExploded(state);
+            slice->setLabelVisible(true);
+        });
     }
 
+    // 📊 Création du chart
     QChart* chart = new QChart();
     chart->addSeries(series);
-    chart->setTitle("Répartition des apprenants selon le sexe");
+    chart->setAnimationOptions(QChart::SeriesAnimations);
 
+    // 🎨 Fond transparent
+    chart->setBackgroundVisible(false);
+    chart->setPlotAreaBackgroundVisible(false);
+
+    // Titre stylé
+    chart->setTitle("Répartition des apprenants selon le sexe");
+    chart->setTitleFont(QFont("Segoe UI", 14, QFont::Bold));
+    chart->setTitleBrush(QBrush(QColor("#185a9d")));
+
+    // 🏷️ Légende stylée
+    chart->legend()->setAlignment(Qt::AlignBottom);
+    chart->legend()->setFont(QFont("Segoe UI", 10, QFont::Bold));
+    chart->legend()->setLabelColor(QColor("#185a9d"));
+
+    // Affichage
     QChartView* chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
 
     QDialog* dialog = new QDialog(this);
     QVBoxLayout* layout = new QVBoxLayout(dialog);
     layout->addWidget(chartView);
-    dialog->setLayout(layout);
+
     dialog->setWindowTitle("Statistiques");
-    dialog->resize(500,400);
+    dialog->resize(550, 450);
     dialog->exec();
 }
+
 
 // -------------------- SELECTION LIGNE --------------------
 void apprenants::on_tableView_apprenants_clicked(const QModelIndex &index)
