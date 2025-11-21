@@ -1,0 +1,2238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Employes</class>
+ <widget class="QMainWindow" name="Employes">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1892</width>
+    <height>801</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Employes</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="menu">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1881</width>
+      <height>721</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QPushButton" name="Bemploye">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>310</y>
+       <width>111</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2ebf91,
+        stop:1 #0f2027
+    );</string>
+     </property>
+     <property name="text">
+      <string>Employés</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Bvehicule">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>160</y>
+       <width>111</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2ebf91,
+        stop:1 #0f2027
+    );</string>
+     </property>
+     <property name="text">
+      <string>Véhicule</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Bapprenant">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>111</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2ebf91,
+        stop:1 #0f2027
+    );</string>
+     </property>
+     <property name="text">
+      <string>Apprenant</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Bmoniteurs">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>111</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2ebf91,
+        stop:1 #0f2027
+    );</string>
+     </property>
+     <property name="text">
+      <string>Moniteur</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Bpaiement">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>390</y>
+       <width>111</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2ebf91,
+        stop:1 #0f2027
+    );</string>
+     </property>
+     <property name="text">
+      <string>Paiement</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Bexamens">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>230</y>
+       <width>111</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #2ebf91,
+        stop:1 #0f2027
+    );</string>
+     </property>
+     <property name="text">
+      <string>examens</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="grp_ajoutEmpl">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>20</y>
+       <width>611</width>
+       <height>611</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    font-weight: bold;
+    font-size: 16px;
+    color: #2c3e50;
+    border: 3px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 15px;
+    padding: 0 8px 0 8px;
+    background: white;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 16px;
+}
+</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="label_47">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>130</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ID Employé</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="idEmpl_ajout">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>160</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="placeholderText">
+       <string>Entrez l'ID employé</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_48">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>210</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nom</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nomEmpl_ajout">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>240</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="placeholderText">
+       <string>Entrez le nom</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_49">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>210</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Prénom</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="prenomEmpl_ajput">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>240</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="placeholderText">
+       <string>Entrez le prénom</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_51">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>130</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Email</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="EmailEmpl_ajout">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>160</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="placeholderText">
+       <string>exemple@email.com</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_53">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>280</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Poste</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_54">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>280</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Mot de passe</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="mdpEmpl_ajout">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>310</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::Normal</enum>
+      </property>
+      <property name="placeholderText">
+       <string>Mot de passe</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_55">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>-10</y>
+        <width>201</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    padding: 0px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Ajouter un Employé</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="retour_AjoutEmpl">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>60</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+/* Hover : dégradé de rouges uniquement */
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff0000,   /* rouge vif */
+        stop:0.5 #cc0000, /* rouge moyen */
+        stop:1 #990000    /* rouge foncé */
+    );
+    border: 1px solid #800000; /* bordure assortie au dégradé */
+    color: white;               /* texte reste blanc */
+}</string>
+      </property>
+      <property name="text">
+       <string>Retour</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="confirmer_AjoutEmpl">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>480</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Ajouter</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_annuler_5">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>480</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Annuler</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="posteEmpl_ajout">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>310</y>
+        <width>140</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QComboBox:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QComboBox:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QComboBox[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Agent</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Admin</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>RH</string>
+       </property>
+      </item>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>680</y>
+       <width>1631</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 rgba(0, 0, 50, 255), stop: 0.5 rgba(47, 79, 79, 255), stop: 1 rgba(25, 25, 112, 255));
+    border: 2px solid rgba(100, 100, 100, 200);
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="Employe">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>20</y>
+       <width>1521</width>
+       <height>571</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    font-weight: bold;
+    font-size: 16px;
+    color: #2c3e50;
+    border: 3px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 15px;
+    padding: 0 8px 0 8px;
+    background: white;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 16px;
+}
+</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="label_56">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>130</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ID Employé</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="idEmploye">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>160</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="placeholderText">
+       <string>Entrez l'ID employé</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_57">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>210</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nom</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nomEmploye">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>240</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="placeholderText">
+       <string>Entrez le nom</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_58">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>210</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Prénom</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="prenomEmploye">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>240</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="placeholderText">
+       <string>Entrez le prénom</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_60">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>130</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Email</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="emailEmploye">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>160</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="placeholderText">
+       <string>exemple@email.com</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_62">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>290</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Poste</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_63">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>280</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Mot de passe</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="mdpEmploye">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>320</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::Normal</enum>
+      </property>
+      <property name="placeholderText">
+       <string>Mot de passe</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_64">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>0</y>
+        <width>201</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    padding: 0px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Gestion des Employés</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="retourEmpl">
+      <property name="geometry">
+       <rect>
+        <x>1090</x>
+        <y>30</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+/* Hover : dégradé de rouges uniquement */
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff0000,   /* rouge vif */
+        stop:0.5 #cc0000, /* rouge moyen */
+        stop:1 #990000    /* rouge foncé */
+    );
+    border: 1px solid #800000; /* bordure assortie au dégradé */
+    color: white;               /* texte reste blanc */
+}</string>
+      </property>
+      <property name="text">
+       <string>Retour</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="modifierEmpl">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Modifier</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="supprimerEmploye">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Supprimer</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ajoutEmpl">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>440</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Ajouter</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_statEmpl">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>490</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Statistiques</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="PDFempl">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>490</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Exporter PDF</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="rechercheEmpl">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>430</y>
+        <width>401</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 12px;
+    padding: 6px 12px;
+    background: white;
+    color: #2c3e50;
+}
+
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837); /* style feu au focus */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Recherche...</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="trieEmpl">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>430</y>
+        <width>120</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;    /* un peu moins arrondi si tu veux */
+    padding: 4px 8px;       /* moins d'espace intérieur */
+    background: white;
+    color: #2c3e50;
+    min-width: 100px;       /* largeur minimale plus petite */
+    max-width: 150px;       /* facultatif : limite largeur */
+    height: 24px;           /* hauteur plus petite */
+}
+
+/* Drop-down (flèche) */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;           /* réduit largeur flèche */
+    border: none;
+    background: transparent;
+}
+
+QComboBox::down-arrow {
+    width: 12px;
+    height: 12px;
+}
+
+/* Hover et focus restent inchangés */
+QComboBox:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+QComboBox:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Menu déroulant */
+QComboBox QAbstractItemView {
+    background: white;
+    border: 1px solid #43cea2;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>nom</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>prenom</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>poste</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QTableView" name="tabEmploye">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>140</y>
+        <width>561</width>
+        <height>231</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="posteEmploye">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>330</y>
+        <width>140</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QComboBox:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QComboBox:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QComboBox[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Agent</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Admin</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>RH</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="lab_statEmpl">
+      <property name="geometry">
+       <rect>
+        <x>1130</x>
+        <y>140</y>
+        <width>351</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="grp_ModifierEmpl">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>20</y>
+       <width>611</width>
+       <height>571</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    font-weight: bold;
+    font-size: 16px;
+    color: #2c3e50;
+    border: 3px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 15px;
+    padding: 0 8px 0 8px;
+    background: white;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 16px;
+}
+</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="label_65">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>130</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ID Employé</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_id_6">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>160</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>1512</string>
+      </property>
+      <property name="placeholderText">
+       <string>Entrez l'ID employé</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_66">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>210</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Nom</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_nom_6">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>240</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>lamouchi</string>
+      </property>
+      <property name="placeholderText">
+       <string>Entrez le nom</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_67">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>210</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Prénom</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_prenom_6">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>240</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>ghassen</string>
+      </property>
+      <property name="placeholderText">
+       <string>Entrez le prénom</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_68">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>280</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Date de naissance</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_69">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>130</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Email</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_email_6">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>160</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>lamouchighassen@gmail.com</string>
+      </property>
+      <property name="placeholderText">
+       <string>exemple@email.com</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_70">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>280</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Téléphone</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_telephone_6">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>310</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="placeholderText">
+       <string>58 588 255</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_71">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>350</y>
+        <width>63</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Poste</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_poste_6">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>380</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Responsable</string>
+      </property>
+      <property name="placeholderText">
+       <string>Responsable</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_72">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>350</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Mot de passe</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_motdepasse_6">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>380</y>
+        <width>140</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>**************</string>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::Normal</enum>
+      </property>
+      <property name="placeholderText">
+       <string>Mot de passe</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_73">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>-10</y>
+        <width>201</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    padding: 0px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Modifier un Employé</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="retoure_modifierEmpl">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>60</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+/* Hover : dégradé de rouges uniquement */
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff0000,   /* rouge vif */
+        stop:0.5 #cc0000, /* rouge moyen */
+        stop:1 #990000    /* rouge foncé */
+    );
+    border: 1px solid #800000; /* bordure assortie au dégradé */
+    color: white;               /* texte reste blanc */
+}</string>
+      </property>
+      <property name="text">
+       <string>Retour</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_confirmer">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>480</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Confirmer</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_annuler_6">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>480</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Annuler</string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateEdit_naissance_6">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>310</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QDateEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 12px;
+    padding: 6px 12px;
+    background: white;
+    color: #2c3e50;
+}
+
+QDateEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837); /* effet feu au focus */
+}</string>
+      </property>
+     </widget>
+    </widget>
+    <zorder>Bemploye</zorder>
+    <zorder>Bvehicule</zorder>
+    <zorder>Bapprenant</zorder>
+    <zorder>Bmoniteurs</zorder>
+    <zorder>Bpaiement</zorder>
+    <zorder>Bexamens</zorder>
+    <zorder>grp_ajoutEmpl</zorder>
+    <zorder>pushButton</zorder>
+    <zorder>grp_ModifierEmpl</zorder>
+    <zorder>Employe</zorder>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1892</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
