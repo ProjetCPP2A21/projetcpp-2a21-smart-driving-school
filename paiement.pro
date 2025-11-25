@@ -1,10 +1,4 @@
-QT       += core gui
-QT+=sql
-QT += widgets sql charts
-QT += core gui widgets printsupport sql charts
-
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += core gui sql widgets printsupport charts
 
 CONFIG += c++17
 
@@ -16,12 +10,16 @@ SOURCES += \
     cnx.cpp \
     main.cpp \
     mainwindow.cpp \
-    paiement.cpp
+    paiement.cpp \
+    qrcode.cpp \
+    qrcodegen.cpp
 
 HEADERS += \
     cnx.h \
     mainwindow.h \
-    paiement.h
+    paiement.h \
+    qrcode.h \
+    qrcodegen.hpp
 
 FORMS += \
     mainwindow.ui

@@ -179,6 +179,53 @@ QPushButton:hover {
      <string>Tri</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="genererQRCode">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>500</y>
+      <width>180</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                              stop:0 #6e45e2, stop:1 #88d3ce);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(110, 69, 226, 0.3);
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                              stop:0 #5d3db8, stop:1 #6bbab5);
+    box-shadow: 0 6px 20px rgba(110, 69, 226, 0.4);
+    transform: translateY(-2px);
+}
+
+QPushButton:pressed {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(110, 69, 226, 0.3);
+}
+
+QPushButton:disabled {
+    background: #cccccc;
+    box-shadow: none;
+    transform: none;
+}</string>
+    </property>
+    <property name="text">
+     <string>Générer QR Code</string>
+    </property>
+   </widget>
    <widget class="QPushButton" name="modifier">
     <property name="geometry">
      <rect>
