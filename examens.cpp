@@ -15,6 +15,12 @@
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
 #include <QTimer>
+#include <QVBoxLayout>
+#include <QDialog>
+#include <QtCharts/QChart>
+#include <QPrinter>
+#include <QGraphicsDropShadowEffect>
+#include <QTextDocument>
 
 examens::examens(QWidget *parent) :
     QMainWindow(parent),
@@ -43,15 +49,8 @@ examens::examens(QWidget *parent) :
     connect(ui->comboBox_triDate, &QComboBox::currentTextChanged, this, &examens::trierDate);
 
     connect(ui->pushButton_stats, &QPushButton::clicked, this, &examens::afficherStatistiques);
+    connect(ui->pushButton_rappel, &QPushButton::clicked, this, &examens::rappelExamensDuJour);
 
-    connect(ui->pushButton_planifier, &QPushButton::clicked, this, [=]() {
-        if (Examen().planifierAutomatique("Code", "Centre A", "TN1234")) {
-            QMessageBox::information(this, "Succès", "Examens planifiés automatiquement !");
-            ui->tableView_examens->setModel(Examen().afficher());
-        } else {
-            QMessageBox::critical(this, "Erreur", "Échec de la planification !");
-        }
-    });
 
 }
 
@@ -100,14 +99,29 @@ void examens::on_pushButton_ajouter_clicked()
     QString vehicule = ui->comboBox_vehicule->currentText();
     QString resultat = ui->comboBox_resultat->currentText();
 
-    // Vérification des champs
-   /* if (idText.isEmpty() || type.isEmpty() || date.isEmpty() || heure.isEmpty() ||
-        lieu.isEmpty() || vehicule.isEmpty() || resultat.isEmpty())
-    {
-        QMessageBox::warning(this, "Champs manquants",
-                             "⚠️ Veuillez remplir tous les champs !");
+    // --- 🔥 AJOUTER LA VÉRIFICATION ICI ---
+
+    // Vérification date >= today
+    QDate dateExamenQ = ui->dateEdit_date->date();
+    QDate dateActuelle = QDate::currentDate();
+
+    if (dateExamenQ < dateActuelle) {
+        QMessageBox::warning(this, "Date invalide",
+                             "⚠️ Vous ne pouvez pas planifier un examen dans le passé !");
         return;
-    }*/
+    }
+
+    // Vérification de l'heure si la date est aujourd'hui
+    QTime heureExamen = ui->timeEdit_heure->time();
+    QTime heureActuelle = QTime::currentTime();
+
+    if (dateExamenQ == dateActuelle && heureExamen <= heureActuelle) {
+        QMessageBox::warning(this, "Heure invalide",
+                             "⚠️ Vous ne pouvez pas planifier un examen dans une heure déjà passée !");
+        return;
+    }
+
+    // --- 🔥 FIN vérifications date/heure ---
 
     // Vérification de l'ID entier
     bool ok;
@@ -116,12 +130,15 @@ void examens::on_pushButton_ajouter_clicked()
         QMessageBox::warning(this, "Erreur", "L'ID doit être un entier !");
         return;
     }
+
     Examen e(id, type, date, heure, lieu, vehicule, resultat);
+
     if (e.ajouter()) {
         QMessageBox::information(this, "Succès", "Examen ajouté !");
         ui->tableView_examens->setModel(Examen().afficher());
-        clearFields(); // 🟢 vide les champs après ajout
-    } else {
+        clearFields();
+    }
+    else {
         QMessageBox::critical(this, "Erreur", "Échec de l’ajout !");
     }
 }
@@ -301,169 +318,260 @@ void examens::trierDate(const QString &ordre)
 
 void examens::on_exporterPDF_clicked()
 {
-    // ➤ Vérifier si la table contient des données
     QAbstractItemModel *model = ui->tableView_examens->model();
-    if (model->rowCount() == 0) {
+    if (!model || model->rowCount() == 0) {
         QMessageBox::warning(this, "Avertissement", "Aucun examen à exporter !");
         return;
     }
 
-    // ➤ Choisir un emplacement
-    QString filePath = QFileDialog::getSaveFileName(
-        this, "Exporter la liste des examens", "", "Fichier PDF (*.pdf)");
+    QString fileName = QFileDialog::getSaveFileName(this, "Exporter en PDF", "", "PDF Files (*.pdf)");
+    if (fileName.isEmpty()) return;
 
-    if (filePath.isEmpty())
-        return;
+    QPrinter printer(QPrinter::PrinterResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName(fileName);
+    printer.setPageSize(QPageSize(QPageSize::A4));
 
-    if (!filePath.endsWith(".pdf", Qt::CaseInsensitive))
-        filePath += ".pdf";
+    QTextDocument doc;
+    QString html = "<h1 align='center'>Liste des Examens</h1><table border='1' width='100%'><tr>";
 
-    // ➤ Préparer le PDF
-    QPdfWriter pdf(filePath);
-    pdf.setPageSize(QPageSize(QPageSize::A4));
-    pdf.setTitle("Liste des examens");
-
-    QPainter painter(&pdf);
-    painter.setRenderHint(QPainter::Antialiasing);
-
-    // -------------------- EN-TÊTE --------------------
-    painter.setFont(QFont("Helvetica", 18, QFont::Bold));
-    painter.drawText(1500, 1500, "Liste des Examens");
-
-    painter.setFont(QFont("Helvetica", 10));
-    painter.drawText(1500, 1800, "Date : " + QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm"));
-
-    painter.drawLine(500, 2000, 5500, 2000);
-
-    // -------------------- TABLEAU --------------------
-    int startY = 2500;
-    int rowHeight = 400;
-    int colWidth = 1000;
-
-    painter.setFont(QFont("Helvetica", 11, QFont::Bold));
-
-    // ➤ Afficher les en-têtes de colonnes
-    for (int col = 0; col < model->columnCount(); ++col) {
-        painter.drawText(500 + col * colWidth, startY, model->headerData(col, Qt::Horizontal).toString());
-    }
-
-    painter.drawLine(500, startY + 100, 5500, startY + 100);
-
-    // ➤ Afficher les données du tableau
-    painter.setFont(QFont("Helvetica", 10));
-    int y = startY + 300;
+    for (int col = 0; col < model->columnCount(); ++col)
+        html += "<th>" + model->headerData(col, Qt::Horizontal).toString() + "</th>";
+    html += "</tr>";
 
     for (int row = 0; row < model->rowCount(); ++row) {
-        for (int col = 0; col < model->columnCount(); ++col) {
-            QString cellText;
-
-            // ---- FORMATTAGE MANUEL POUR DATE ----
-            if (model->headerData(col, Qt::Horizontal).toString().trimmed().toLower() == "date") {
-                QDate d = model->data(model->index(row, col)).toDate();
-                cellText = d.toString("dd/MM/yyyy");
-            }
-
-            // ---- FORMATTAGE MANUEL POUR HEURE ----
-            else if (model->headerData(col, Qt::Horizontal).toString().trimmed().toLower() == "heure") {
-                QTime t = model->data(model->index(row, col)).toTime();
-                cellText = t.toString("hh:mm");
-            }
-
-            // ---- AUTRES COLONNES ----
-            else {
-                cellText = model->data(model->index(row, col)).toString();
-            }
-
-            // affichage
-            painter.drawText(500 + col * colWidth, y, cellText);
-        }
-        y += rowHeight;
-
-        // ➤ Si on dépasse la page, on en crée une nouvelle
-        if (y > 11000) {
-            pdf.newPage();
-            y = 2500;
-        }
+        html += "<tr>";
+        for (int col = 0; col < model->columnCount(); ++col)
+            html += "<td>" + model->data(model->index(row, col)).toString() + "</td>";
+        html += "</tr>";
     }
+    html += "</table>";
 
-    // -------------------- PIÈCE --------------------
-    painter.setFont(QFont("Helvetica", 9, QFont::StyleItalic));
-    painter.drawText(2000, 11500, "Document généré automatiquement - " +
-                                      QDate::currentDate().toString("dd/MM/yyyy"));
+    doc.setHtml(html);
+    doc.print(&printer);
 
-    painter.end();
-
-    QMessageBox::information(this, "Succès", "La liste complète des examens a été exportée !");
+    QMessageBox::information(this, "Succès", "PDF exporté avec succès.");
 }
+
 
 
 
 void examens::afficherStatistiques()
 {
+    // ---------------- Récupération des statistiques ----------------
     QSqlQuery query;
-    // 🔹 Grouper par RESULTAT au lieu de TYPE
     query.prepare("SELECT RESULTAT, COUNT(*) FROM EXAMEN GROUP BY RESULTAT");
+
     if (!query.exec()) {
-        QMessageBox::critical(this, "Erreur", "Impossible de récupérer les statistiques : " + query.lastError().text());
+        QMessageBox::critical(this, "Erreur",
+                              "Impossible de récupérer les statistiques : " + query.lastError().text());
         return;
     }
 
-    QPieSeries *series = new QPieSeries();
+    QMap<QString,int> stats;
+    int total = 0;
+
     while (query.next()) {
-        QString resultat = query.value(0).toString(); // "Réussi" ou "Échec"
+        QString resultat = query.value(0).toString();  // Réussi / Échec
         int count = query.value(1).toInt();
-        series->append(resultat, count);
+        stats[resultat] = count;
+        total += count;
     }
 
-    QChart *chart = new QChart();
-    chart->addSeries(series);
-    chart->setTitle("Répartition des examens selon le résultat");
-    chart->legend()->setAlignment(Qt::AlignRight);
+    if (total == 0) {
+        QMessageBox::information(this, "Info", "Aucun examen trouvé !");
+        return;
+    }
 
-    QChartView *chartView = new QChartView(chart);
+    // ---------------- Création de la série (donut chart) ----------------
+    QPieSeries* series = new QPieSeries();
+    series->setHoleSize(0.35);   // Donut moderne
+
+    for (auto it = stats.begin(); it != stats.end(); ++it) {
+
+        double pourcentage = (it.value() * 100.0) / total;
+
+        QString label = it.key() + " (" + QString::number(it.value()) +
+                        ") : " + QString::number(pourcentage, 'f', 1) + "%";
+
+        QPieSlice* slice = series->append(label, it.value());
+        slice->setLabelVisible(true);
+
+        // 🎨 Couleurs personnalisées selon le résultat
+        if (it.key().toLower() == "admis") {
+            slice->setBrush(QColor("#43cea2"));   // vert
+        }
+        else if (it.key().toLower() == "en attente") {
+            slice->setBrush(QColor("#f1c40f"));   // jaune
+        }
+        else if (it.key().toLower() == "refusé") {
+            slice->setBrush(QColor("#e74c3c"));   // rouge
+        }
+
+        // ✨ Animation explosion
+        slice->setExploded(false);
+        QObject::connect(slice, &QPieSlice::hovered, [slice](bool state){
+            slice->setExploded(state);
+            slice->setLabelVisible(true);
+        });
+    }
+
+    // ---------------- Création du graphique ----------------
+    QChart* chart = new QChart();
+    chart->addSeries(series);
+    chart->setAnimationOptions(QChart::SeriesAnimations);
+
+    // Fond transparent
+    chart->setBackgroundVisible(false);
+    chart->setPlotAreaBackgroundVisible(false);
+
+    // 🎯 Titre stylé
+    chart->setTitle("Répartition des examens selon le résultat");
+    chart->setTitleFont(QFont("Segoe UI", 14, QFont::Bold));
+    chart->setTitleBrush(QBrush(QColor("#185a9d")));
+
+    // 📝 Légendes modernes
+    chart->legend()->setAlignment(Qt::AlignBottom);
+    chart->legend()->setFont(QFont("Segoe UI", 10, QFont::Bold));
+    chart->legend()->setLabelColor(QColor("#185a9d"));
+
+    // ---------------- Affichage dans un QDialog ----------------
+    QChartView* chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
 
-    // 🔹 Affichage dans une nouvelle fenêtre
-    QMainWindow *statWindow = new QMainWindow(this);
-    statWindow->setCentralWidget(chartView);
-    statWindow->resize(600, 400);
-    statWindow->show();
+    QDialog* dialog = new QDialog(this);
+    QVBoxLayout* layout = new QVBoxLayout(dialog);
+    layout->addWidget(chartView);
+
+    dialog->setWindowTitle("Statistiques des Examens");
+    dialog->resize(550, 450);
+    dialog->exec();
 }
+
 
 
 void examens::on_pushButton_planifier_clicked()
 {
+    QString type = ui->comboBox_type->currentText();
+    QString lieu = ui->lineEdit_lieu->text();
+    QString vehicule = ui->comboBox_vehicule->currentText();
+
     Examen e;
 
-    // Appel correct : 3 paramètres comme dans examen.h
-    bool ok = e.planifierAutomatique("Code", "Centre A", "A");
-
-    if (ok) {
-        QMessageBox::information(this, "Succès", "Examens planifiés automatiquement !");
-        ui->tableView_examens->setModel(Examen().afficher());  // rafraîchir le tableau
-    }
-    else {
-        qDebug() << "Planification échouée (voir erreurs SQL dans la console).";
+    if (e.planifierAutomatique(type, lieu, vehicule)) {
+        QMessageBox::information(this, "Succès", "Examen planifié automatiquement !");
+        ui->tableView_examens->setModel(e.afficher());
+    } else {
+        QMessageBox::warning(this, "Erreur", "Veuillez remplir tous les champs !");
     }
 }
 
-void examens::rappelExamensDuJour() {
+
+
+void examens::rappelExamensDuJour()
+{
+    static QDialog* rappelDialog = nullptr; // Empêche double ouverture
+    if(rappelDialog != nullptr && rappelDialog->isVisible())
+        return;
+
     QSqlQuery query;
     QDate today = QDate::currentDate();
-    query.prepare("SELECT TYPE, HEURE, LIEU, VEHICULE FROM EXAMEN WHERE TO_CHAR(DATE_EXAMEN,'DD/MM/YYYY') = :date");
+
+    query.prepare("SELECT ID_EXAMEN, TYPE, HEURE, LIEU, VEHICULE "
+                  "FROM EXAMEN "
+                  "WHERE TO_CHAR(DATE_EXAMEN,'DD/MM/YYYY') = :date "
+                  "ORDER BY HEURE");
     query.bindValue(":date", today.toString("dd/MM/yyyy"));
 
-    if (!query.exec()) return;
+    if (!query.exec())
+        return;
 
-    QString message;
-    while (query.next()) {
-        message += query.value("TYPE").toString() + " à " + query.value("HEURE").toString() +
-                   " au " + query.value("LIEU").toString() + " (" + query.value("VEHICULE").toString() + ")\n";
+    // --- Créer le dialog ---
+    rappelDialog = new QDialog(this);
+    rappelDialog->setWindowTitle("📅 Rappel des examens du jour");
+    rappelDialog->setModal(true);
+    rappelDialog->setFixedSize(600, 500);
+    rappelDialog->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
+
+    // --- Style ---
+    rappelDialog->setStyleSheet(
+        "QDialog{background-color:#fff8f0; border-radius:15px;}"
+        "QLabel{font-family:Segoe UI; font-size:11pt;}"
+        "QPushButton{background-color:#ff8c00; color:white; border:none;"
+        "border-radius:8px; padding:10px 20px; font-size:12pt;}"
+        "QPushButton:hover{background-color:#ffa733;}"
+        );
+
+    QVBoxLayout* mainLayout = new QVBoxLayout(rappelDialog);
+    mainLayout->setContentsMargins(15,15,15,15);
+    mainLayout->setSpacing(10);
+
+    QLabel* titleLabel = new QLabel("📌 Examens programmés aujourd'hui", rappelDialog);
+    titleLabel->setStyleSheet("font-size:16pt; font-weight:bold; color:#2B547E;");
+    titleLabel->setAlignment(Qt::AlignCenter);
+    mainLayout->addWidget(titleLabel);
+
+    // --- Scrollable area pour la liste ---
+    QScrollArea* scrollArea = new QScrollArea(rappelDialog);
+    scrollArea->setWidgetResizable(true);
+    QWidget* scrollContent = new QWidget();
+    QVBoxLayout* scrollLayout = new QVBoxLayout(scrollContent);
+
+    bool hasExams = false;
+    while(query.next()) {
+        hasExams = true;
+        QString html = QString(
+                           "<b style='color:#1F618D;'>ID: %1 | ⏰ %2</b><br>"
+                           "<span style='color:#2E4053;'>• Type :</span> %3<br>"
+                           "<span style='color:#2E4053;'>• Lieu :</span> %4<br>"
+                           "<span style='color:#2E4053;'>• Véhicule :</span> %5"
+                           ).arg(query.value("ID_EXAMEN").toString())
+                           .arg(query.value("HEURE").toString())
+                           .arg(query.value("TYPE").toString())
+                           .arg(query.value("LIEU").toString())
+                           .arg(query.value("VEHICULE").toString());
+
+        QLabel* examLabel = new QLabel(html, scrollContent);
+        examLabel->setWordWrap(true);
+        examLabel->setStyleSheet("padding:8px; border:1px solid #ff8c00; border-radius:8px; background:#fff3e0;");
+        scrollLayout->addWidget(examLabel);
     }
 
-    if (!message.isEmpty())
-        QMessageBox::information(this, "Rappel Examens du Jour", message);
+    if(!hasExams) {
+        QLabel* emptyLabel = new QLabel("✅ Aucun examen prévu pour aujourd'hui.", scrollContent);
+        emptyLabel->setAlignment(Qt::AlignCenter);
+        emptyLabel->setStyleSheet("font-size:12pt; color:#2E4053;");
+        scrollLayout->addWidget(emptyLabel);
+    }
+
+    scrollContent->setLayout(scrollLayout);
+    scrollArea->setWidget(scrollContent);
+    mainLayout->addWidget(scrollArea);
+
+    // --- Bouton OK ---
+    QPushButton* okButton = new QPushButton("✓ OK", rappelDialog);
+    okButton->setCursor(Qt::PointingHandCursor);
+    QObject::connect(okButton, &QPushButton::clicked, rappelDialog, &QDialog::accept);
+    mainLayout->addWidget(okButton, 0, Qt::AlignCenter);
+
+    // --- Ombre ---
+    QGraphicsDropShadowEffect* shadow = new QGraphicsDropShadowEffect(rappelDialog);
+    shadow->setBlurRadius(20);
+    shadow->setOffset(0,5);
+    shadow->setColor(QColor(0,0,0,100));
+    rappelDialog->setGraphicsEffect(shadow);
+
+    // --- Reset static pointer à la fermeture ---
+    QObject::connect(rappelDialog, &QDialog::finished, [=](){
+        rappelDialog->deleteLater();
+        rappelDialog = nullptr;
+    });
+
+    rappelDialog->exec();
 }
+
+
+
 
 
 void examens::clearFields()

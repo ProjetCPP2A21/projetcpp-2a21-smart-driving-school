@@ -1,3 +1,5 @@
 <RCC>
-    <qresource prefix="/recherche"/>
+    <qresource prefix="/recherche">
+        <file>recherche.png</file>
+    </qresource>
 </RCC>
