@@ -17,7 +17,7 @@ private:
 public:
     Paiement();
     Paiement(int id, QString type, QString date, QString heure,
-             double montant, int id_apprenant = 0);
+             double montant, int id_paiement = 0);
 
     // Getters
     int getId() const;
@@ -33,7 +33,8 @@ public:
     static bool supprimer(int id);  // Méthode statique
     QSqlQueryModel* afficher() const;
     QSqlQueryModel* trierParDate(bool croissant = true) const;
-    QSqlQueryModel* rechercherParApprenant(int id_apprenant) const;
+    QSqlQueryModel* rechercherParApprenant(int id_paiement) const;
+
 
 };
 

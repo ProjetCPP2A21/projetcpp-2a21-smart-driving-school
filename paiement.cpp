@@ -119,7 +119,7 @@ QSqlQueryModel* Paiement::trierParDate(bool croissant) const
 
     return model;
 }
-QSqlQueryModel* Paiement::rechercherParApprenant(int id_apprenant) const
+/*QSqlQueryModel* Paiement::rechercherParApprenant(int id_apprenant) const
 {
     QSqlQueryModel* model = new QSqlQueryModel();
     QSqlQuery query(QSqlDatabase::database("oracle_connection"));
@@ -132,5 +132,37 @@ QSqlQueryModel* Paiement::rechercherParApprenant(int id_apprenant) const
     query.exec();
 
     model->setQuery(query);
+    return model;
+}*/
+QSqlQueryModel* Paiement::rechercherParApprenant(int id_paiement) const
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery query(QSqlDatabase::database("oracle_connection"));
+
+    query.prepare(
+        "SELECT ID_PAIEMENT, TYPE_PAIEMENT, "
+        "TO_CHAR(DATE_PAIEMENT,'DD-MM-YYYY') AS DATE_PAIEMENT, "
+        "HEURE_PAIEMENT, MONTANT, ID_APPRENANT "
+        "FROM PAIEMENTS "
+        "WHERE ID_PAIEMENT = :id"
+        );
+
+    query.bindValue(":id", id_paiement);
+
+    if (!query.exec()) {
+        qDebug() << "Erreur SQL recherche par ID Paiement:" << query.lastError().text();
+        return model;  // Retourne un modèle vide en cas d'erreur
+    }
+
+    model->setQuery(std::move(query));
+
+    // Ajouter des en-têtes pour QTableView
+    model->setHeaderData(0, Qt::Horizontal, "ID Paiement");
+    model->setHeaderData(1, Qt::Horizontal, "Type");
+    model->setHeaderData(2, Qt::Horizontal, "Date");
+    model->setHeaderData(3, Qt::Horizontal, "Heure");
+    model->setHeaderData(4, Qt::Horizontal, "Montant");
+    model->setHeaderData(5, Qt::Horizontal, "ID Apprenant");
+
     return model;
 }

@@ -24,11 +24,13 @@ private slots:
     void on_rechercher_clicked();
     void on_exporter_clicked();
     void on_statistique_clicked();
+    void on_tabView_clicked(const QModelIndex &index); // ajoute ici, dans le même bloc
 
 private:
     Ui::MainWindow *ui;
     void afficherTableauPaiement();
     Paiement readPaiementFromUI() const;
 };
+
 
 #endif // MAINWINDOW_H
