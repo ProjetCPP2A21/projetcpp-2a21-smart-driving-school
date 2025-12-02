@@ -1,0 +1,10 @@
+debug/apprenant.o
+debug/connection.o
+debug/examen.o
+debug/moniteur.o
+debug/vehicules.o
+debug/paiement.o
+debug/main.o
+debug/application_integree.o
+debug/moc_moniteur.o
+debug/moc_application_integree.o

@@ -1,0 +1,10 @@
+release/apprenant.o
+release/connection.o
+release/examen.o
+release/moniteur.o
+release/vehicules.o
+release/paiement.o
+release/main.o
+release/application_integree.o
+release/moc_moniteur.o
+release/moc_application_integree.o
