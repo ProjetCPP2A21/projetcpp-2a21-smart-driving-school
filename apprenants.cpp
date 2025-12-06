@@ -1,7 +1,16 @@
 #include "apprenants.h"
 #include "ui_apprenants.h"
+<<<<<<< HEAD
 #include <QMessageBox>
 #include <QPdfWriter>
+=======
+#include "chatwindow.h"
+#include <QMessageBox>
+#include <QThread>  // Pour QThread::msleep
+#include <QInputDialog>
+#include <QPdfWriter>
+#include <QTextEdit>
+>>>>>>> 4229cbb (ajout arduino)
 #include <QPainter>
 #include <QFileDialog>
 #include <QPageLayout>
@@ -10,9 +19,15 @@
 #include <QColor>
 #include <QList>
 #include <algorithm>
+<<<<<<< HEAD
 #include <QtCharts/QChartView>
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QChart>
+=======
+#include <QChartView>
+#include <QPieSeries>
+#include <QChart>
+>>>>>>> 4229cbb (ajout arduino)
 #include <QVBoxLayout>
 #include <QDate>
 #include <QRegularExpression>
@@ -23,21 +38,247 @@
 #include <QGraphicsDropShadowEffect>
 #include <QPropertyAnimation>
 #include <QTimer>
+<<<<<<< HEAD
+=======
+#include <QScreen>
+#include <QApplication>
+>>>>>>> 4229cbb (ajout arduino)
 
 apprenants::apprenants(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::apprenants)
+<<<<<<< HEAD
+=======
+    , m_chatbot(new ApiChatBot(this))
+    , chatbotButton(nullptr)
+>>>>>>> 4229cbb (ajout arduino)
 {
     ui->setupUi(this);
     ui->label_message->setVisible(false);
     ui->dateEdit_naissance->setDate(QDate::currentDate().addYears(-18));
+<<<<<<< HEAD
+=======
+    
+    // Le chatbot local ne nécessite pas de connexions de signaux
+    
+    // Créer le bouton du chatbot avec un style amélioré
+    // Le bouton est un enfant direct de la fenêtre principale (this)
+    chatbotButton = new QPushButton("🤖", this);
+    
+    // Style moderne et attrayant pour le bouton
+    // Pas besoin    // Style du bouton de l'assistant
+    QString buttonStyle = 
+        "QPushButton {\n"
+        "    background-color: #4CAF50;\n"
+        "    border: none;\n"
+        "    color: white;\n"
+        "    text-align: center;\n"
+        "    text-decoration: none;\n"
+        "    display: inline-block;\n"
+        "    font-size: 24px;\n"
+        "    margin: 4px 2px;\n"
+        "    cursor: pointer;\n"
+        "    border-radius: 12px;\n"
+        "    width: 50px;\n"
+        "    height: 50px;\n"
+        "    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n"
+        "    transition: all 0.3s;\n"
+        "}\n"
+        "\n"
+        "QPushButton:hover {\n"
+        "    background-color: #45a049;\n"
+        "    transform: scale(1.1);\n"
+        "    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n"
+        "}\n"
+        "\n"
+        "QPushButton:pressed {\n"
+        "    background-color: #3e8e41;\n"
+        "    transform: scale(0.95);\n"
+        "}";
+    
+    chatbotButton->setStyleSheet(buttonStyle);
+    
+    // Ajouter un effet d'ombre portée
+    QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect();
+    effect->setBlurRadius(10);
+    effect->setXOffset(0);
+    effect->setYOffset(2);
+    effect->setColor(QColor(0, 0, 0, 60));
+    chatbotButton->setGraphicsEffect(effect);
+    
+    // Ajouter une infobulle
+    chatbotButton->setToolTip("Cliquez pour poser une question sur le code de la route");
+    
+    // Positionnement initial du bouton dans le coin inférieur droit
+    int buttonSize = 50;
+    int margin = 5;  // Marge réduite pour déplacer le bouton plus à droite
+    
+    chatbotButton->setFixedSize(buttonSize, buttonSize);
+    
+    // Positionner dans le coin inférieur droit avec marge
+    chatbotButton->move(width() - buttonSize - margin,  // À droite avec marge
+                       height() - buttonSize - margin);  // En bas avec marge
+    
+    // Initialiser la communication avec l'Arduino
+    setupArduino();
+    
+    // La position sera mise à jour dans la méthode resizeEvent
+    
+    connect(chatbotButton, &QPushButton::clicked, this, &apprenants::onChatbotButtonClicked);
+    
+    // Afficher une notification de bienvenue après un court délai
+    QTimer::singleShot(1000, this, [this]() {
+        afficherNotification("Bienvenue", 
+                           "Bienvenue dans Smart Driving School ! Commencez par ajouter un apprenant.", 
+                           NotificationType::MOTIVATION, 
+                           8000);
+        
+        // Afficher une notification de rappel après un délai plus long
+        QTimer::singleShot(5000, this, [this]() {
+            afficherNotification("Astuce rapide", 
+                               "Utilisez le bouton vert en bas à droite pour accéder à l'assistant virtuel.", 
+                               NotificationType::TIP, 
+                               10000);
+        });
+    });
+    
+>>>>>>> 4229cbb (ajout arduino)
     afficherMessageControle("Connexion réussie !", false);
     afficherApprenants();
+}
+
+<<<<<<< HEAD
+apprenants::~apprenants()
+{
+    delete ui;
+=======
+void apprenants::resizeEvent(QResizeEvent *event)
+{
+    QMainWindow::resizeEvent(event);
+    
+    // Mettre à jour la position du bouton lors du redimensionnement
+    if (chatbotButton) {
+        int buttonSize = 50;
+        int margin = 5;  // Marge réduite pour déplacer le bouton plus à droite
+        chatbotButton->move(width() - buttonSize - margin,
+                          height() - buttonSize - margin);
+    }
 }
 
 apprenants::~apprenants()
 {
     delete ui;
+    delete m_chatbot;
+    delete chatbotButton;
+    
+    // Fermer la connexion série si elle est ouverte
+    if (arduino && arduino->isOpen()) {
+        arduino->close();
+    }
+    delete arduino;
+    
+    // Nettoyer les notifications
+    qDeleteAll(m_notifications);
+    m_notifications.clear();
+}
+
+void apprenants::onChatbotButtonClicked()
+{
+    // Vérifier si la clé API est configurée
+    QString apiKey = m_chatbot->loadApiKey();
+    if (apiKey.isEmpty()) {
+        // Si la clé n'est pas configurée, demander à l'utilisateur de la saisir
+        bool ok;
+        apiKey = QInputDialog::getText(this, 
+                                     "Configuration requise",
+                                     "Veuillez entrer votre clé API OpenAI :",
+                                     QLineEdit::Normal,
+                                     "",
+                                     &ok);
+        if (ok && !apiKey.isEmpty()) {
+            m_chatbot->saveApiKey(apiKey);
+        } else {
+            QMessageBox::warning(this, "Configuration requise", 
+                               "Une clé API valide est nécessaire pour utiliser l'assistant.");
+            return;
+        }
+    }
+
+    // Créer et afficher la fenêtre de chat
+    ChatWindow *chatWindow = new ChatWindow(this);
+    chatWindow->setAttribute(Qt::WA_DeleteOnClose);  // Supprimer la fenêtre lorsqu'elle est fermée
+    chatWindow->show();
+}
+
+void apprenants::onChatbotResponse(const QString &response)
+{
+    // Créer une boîte de dialogue personnalisée
+    QDialog dialog(this);
+    dialog.setWindowTitle("🔍 Réponse de l'assistant");
+    dialog.setMinimumWidth(500);
+    
+    // Style pour la boîte de dialogue
+    dialog.setStyleSheet(
+        "QDialog {\n"
+        "    background-color: #f8f9fa;\n"
+        "    font-family: 'Segoe UI', Arial, sans-serif;\n"
+        "}\n"
+        "\n"
+        "QTextEdit {\n"
+        "    border: 1px solid #dee2e6;\n"
+        "    border-radius: 8px;\n"
+        "    padding: 15px;\n"
+        "    background-color: white;\n"
+        "    font-size: 14px;\n"
+        "    line-height: 1.5;\n"
+        "}\n"
+        "\n"
+        "QPushButton {\n"
+        "    background-color: #4a6baf;\n"
+        "    color: white;\n"
+        "    border: none;\n"
+        "    border-radius: 5px;\n"
+        "    padding: 8px 20px;\n"
+        "    font-weight: bold;\n"
+        "}\n"
+        "\n"
+        "QPushButton:hover {\n"
+        "    background-color: #3a5b9f;\n"
+        "}"
+    );
+    
+    QVBoxLayout *layout = new QVBoxLayout(&dialog);
+    
+    // Zone de texte pour la réponse avec mise en forme
+    QTextEdit *textEdit = new QTextEdit();
+    textEdit->setText(response);
+    textEdit->setReadOnly(true);
+    textEdit->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::LinksAccessibleByMouse);
+    
+    // Bouton de fermeture
+    QPushButton *closeButton = new QPushButton("Fermer");
+    connect(closeButton, &QPushButton::clicked, &dialog, &QDialog::accept);
+    
+    // Ajout des widgets au layout
+    layout->addWidget(textEdit);
+    
+    QHBoxLayout *buttonLayout = new QHBoxLayout();
+    buttonLayout->addStretch();
+    buttonLayout->addWidget(closeButton);
+    
+    layout->addLayout(buttonLayout);
+    
+    // Afficher la boîte de dialogue
+    dialog.exec();
+}
+
+void apprenants::onChatbotError(const QString &error)
+{
+    // Boîte de dialogue d'erreur simplifiée pour le chatbot local
+    QMessageBox::warning(this, 
+                        "Erreur de l'assistant", 
+                        "Désolé, une erreur est survenue :\n" + error);
+>>>>>>> 4229cbb (ajout arduino)
 }
 
 // -------------------- Vérification des saisies --------------------
@@ -369,6 +610,7 @@ void apprenants::on_pushButton_ajouter_clicked()
 
     Apprenant a(id, nom, prenom, dateNaissance, tel, sexe, adresse);
     if(a.ajouter()){
+<<<<<<< HEAD
         afficherMessageControle(
             QString("Apprenant %1 %2 (ID %3) ajouté avec succès !")
                 .arg(prenom).arg(nom).arg(id),
@@ -377,6 +619,28 @@ void apprenants::on_pushButton_ajouter_clicked()
         reinitialiserFormulaire();
     } else {
         afficherMessageControle("Échec de l'ajout : veuillez réessayer.");
+=======
+        QString message = QString("L'apprenant %1 %2 a été ajouté avec succès").arg(prenom, nom);
+        afficherMessageControle("Ajout avec succès", false);
+        ui->tableView_apprenants->setModel(a.afficher());
+        reinitialiserFormulaire();
+        
+        // Afficher une notification de succès
+        afficherNotification("Nouvel apprenant", message, NotificationType::MOTIVATION);
+        
+        // Afficher une notification pour les modules disponibles
+        QTimer::singleShot(2000, this, [this]() {
+            afficherNotification("Module disponible", 
+                               "Découvrez nos nouveaux modules de formation", 
+                               NotificationType::THEORY, 
+                               10000);
+        });
+    } else {
+        afficherMessageControle("Erreur lors de l'ajout");
+        afficherNotification("Erreur", 
+                           "Impossible d'ajouter l'apprenant. Veuillez réessayer.", 
+                           NotificationType::ALERT);
+>>>>>>> 4229cbb (ajout arduino)
     }
 }
 
@@ -394,6 +658,7 @@ void apprenants::on_pushButton_modifier_clicked()
 
     Apprenant a(id, nom, prenom, dateNaissance, tel, sexe, adresse);
     if(a.modifier()){
+<<<<<<< HEAD
         afficherMessageControle(
             QString("Apprenant %1 %2 (ID %3) modifié avec succès !")
                 .arg(prenom).arg(nom).arg(id),
@@ -402,6 +667,32 @@ void apprenants::on_pushButton_modifier_clicked()
         reinitialiserFormulaire();
     } else {
         afficherMessageControle("Échec de la modification : veuillez réessayer.");
+=======
+        QString message = QString("Les informations de %1 %2 (ID %3) ont été mises à jour")
+                            .arg(prenom, nom).arg(id);
+        
+        afficherMessageControle("Modification réussie !", false);
+        afficherApprenants();
+        reinitialiserFormulaire();
+        
+        // Afficher une notification de succès
+        afficherNotification("Mise à jour réussie", message, NotificationType::TIP);
+        
+        // Si c'est une mise à jour de numéro de téléphone, afficher un rappel
+        if (!tel.isEmpty()) {
+            QTimer::singleShot(1500, this, [this, prenom, nom]() {
+                afficherNotification("Rappel important", 
+                                   QString("N'oubliez pas de confirmer votre numéro de téléphone, %1").arg(prenom), 
+                                   NotificationType::REMINDER, 
+                                   8000);
+            });
+        }
+    } else {
+        afficherMessageControle("Échec de la modification : veuillez réessayer.");
+        afficherNotification("Erreur de modification", 
+                           "La mise à jour des informations a échoué. Veuillez réessayer.", 
+                           NotificationType::ALERT);
+>>>>>>> 4229cbb (ajout arduino)
     }
 }
 
@@ -422,6 +713,7 @@ void apprenants::on_pushButton_supprimer_clicked()
         return;
     }
 
+<<<<<<< HEAD
     if(service.supprimer(id)){
         afficherMessageControle(
             QString("Apprenant (ID %1) supprimé avec succès.").arg(id),
@@ -430,6 +722,34 @@ void apprenants::on_pushButton_supprimer_clicked()
         reinitialiserFormulaire();
     } else {
         afficherMessageControle("Échec de la suppression : veuillez réessayer.");
+=======
+    // Récupérer le nom et prénom avant la suppression pour l'affichage
+    QString nom = ui->lineEdit_nom->text().trimmed();
+    QString prenom = ui->lineEdit_prenom->text().trimmed();
+    
+    if(service.supprimer(id)){
+        QString message = QString("L'apprenant %1 %2 (ID %3) a été supprimé").arg(prenom, nom).arg(id);
+        
+        afficherMessageControle("Suppression effectuée avec succès !", false);
+        afficherApprenants();
+        reinitialiserFormulaire();
+        
+        // Afficher une notification de confirmation
+        afficherNotification("Suppression réussie", message, NotificationType::ALERT);
+        
+        // Afficher une notification de suggestion après un court délai
+        QTimer::singleShot(2000, this, [this]() {
+            afficherNotification("Astuce", 
+                               "Vous pouvez ajouter un nouvel apprenant en utilisant le formulaire ci-dessus.", 
+                               NotificationType::TIP, 
+                               5000);
+        });
+    } else {
+        afficherMessageControle("Échec de la suppression : l'apprenant n'existe pas ou une erreur est survenue.");
+        afficherNotification("Erreur de suppression", 
+                           "La suppression a échoué. L'apprenant n'existe pas ou une erreur est survenue.", 
+                           NotificationType::ALERT);
+>>>>>>> 4229cbb (ajout arduino)
     }
 }
 
@@ -466,7 +786,11 @@ void apprenants::on_pushButton_exporterPDF_clicked()
 
     QAbstractItemModel* model = ui->tableView_apprenants->model();
     if(!model || model->rowCount() == 0){
+<<<<<<< HEAD
         QMessageBox::warning(this, "Erreur", "Aucune donnée à exporter !");
+=======
+        afficherMessageControle("Erreur", "Aucune donnée à exporter !");
+>>>>>>> 4229cbb (ajout arduino)
         return;
     }
 
@@ -476,7 +800,11 @@ void apprenants::on_pushButton_exporterPDF_clicked()
 
     QPainter painter(&pdf);
     if(!painter.isActive()){
+<<<<<<< HEAD
         QMessageBox::critical(this, "Erreur", "Impossible de créer le PDF !");
+=======
+       afficherMessageControle("Erreur", "Impossible de créer le PDF !");
+>>>>>>> 4229cbb (ajout arduino)
         return;
     }
 
@@ -607,7 +935,11 @@ void apprenants::on_pushButton_exporterPDF_clicked()
     }
 
     painter.end();
+<<<<<<< HEAD
     QMessageBox::information(this, "PDF", "Exportation réussie !");
+=======
+    afficherMessageControle( "PDF Exportation réussie !", false);
+>>>>>>> 4229cbb (ajout arduino)
 }
 
 // -------------------- STATISTIQUES --------------------
@@ -615,6 +947,7 @@ void apprenants::on_pushButton_statistique_clicked()
 {
     Apprenant a;
     QMap<QString,int> stats = a.statistiquesSexe();
+<<<<<<< HEAD
     int total = 0; for(auto val: stats) total += val;
 
     QPieSeries* series = new QPieSeries();
@@ -639,12 +972,84 @@ void apprenants::on_pushButton_statistique_clicked()
     dialog->setLayout(layout);
     dialog->setWindowTitle("Statistiques");
     dialog->resize(500,400);
+=======
+    int total = 0;
+    for (auto val : stats) total += val;
+
+    QPieSeries* series = new QPieSeries();
+    series->setHoleSize(0.25);  // Donut léger (plus moderne)
+
+    for (auto it = stats.begin(); it != stats.end(); ++it) {
+
+        double pourcentage = (it.value() * 100.0) / total;
+        QString label = it.key() + " (" + QString::number(it.value()) +
+                        ") : " + QString::number(pourcentage, 'f', 1) + "%";
+
+        QPieSlice* slice = series->append(label, it.value());
+        slice->setLabelVisible(true);
+
+        if (it.key() == "Femme") {
+            slice->setBrush(QColor("#43cea2"));  // couleur Femme
+        }
+        else if (it.key() == "Homme") {
+            slice->setBrush(QColor("#185a9d"));  // couleur Homme
+        }
+
+        // ✨ Explosion animation au survol
+        slice->setExploded(false);
+        QObject::connect(slice, &QPieSlice::hovered, [slice](bool state){
+            slice->setExploded(state);
+            slice->setLabelVisible(true);
+        });
+    }
+
+    // 📊 Création du chart
+    QChart* chart = new QChart();
+    chart->addSeries(series);
+    chart->setAnimationOptions(QChart::SeriesAnimations);
+
+    // 🎨 Fond transparent
+    chart->setBackgroundVisible(false);
+    chart->setPlotAreaBackgroundVisible(false);
+
+    // Titre stylé
+    chart->setTitle("Répartition des apprenants selon le sexe");
+    chart->setTitleFont(QFont("Segoe UI", 14, QFont::Bold));
+    chart->setTitleBrush(QBrush(QColor("#185a9d")));
+
+    // 🏷️ Légende stylée
+    chart->legend()->setAlignment(Qt::AlignBottom);
+    chart->legend()->setFont(QFont("Segoe UI", 10, QFont::Bold));
+    chart->legend()->setLabelColor(QColor("#185a9d"));
+
+    // Création de la fenêtre de dialogue
+    QDialog *dialog = new QDialog(this);
+    dialog->setWindowTitle("Statistiques des apprenants");
+    dialog->setMinimumSize(800, 600);
+    
+    // Configuration de la vue du graphique
+    QChartView* chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    
+    // Mise en page
+    QVBoxLayout *layout = new QVBoxLayout(dialog);
+    layout->addWidget(chartView);
+    
+    // Ajouter un bouton de fermeture
+    QPushButton *closeButton = new QPushButton("Fermer", dialog);
+    connect(closeButton, &QPushButton::clicked, dialog, &QDialog::accept);
+    layout->addWidget(closeButton, 0, Qt::AlignRight);
+    
+    // Afficher la fenêtre
+    dialog->setLayout(layout);
+>>>>>>> 4229cbb (ajout arduino)
     dialog->exec();
 }
 
 // -------------------- SELECTION LIGNE --------------------
 void apprenants::on_tableView_apprenants_clicked(const QModelIndex &index)
 {
+<<<<<<< HEAD
     if(!index.isValid()) return;
     QAbstractItemModel* model = ui->tableView_apprenants->model();
 
@@ -659,4 +1064,192 @@ void apprenants::on_tableView_apprenants_clicked(const QModelIndex &index)
     ui->lineEdit_telephone->setText(model->index(index.row(),4).data().toString());
     ui->comboBox_sexe->setCurrentText(model->index(index.row(),5).data().toString());
     ui->lineEdit_adresse->setText(model->index(index.row(),6).data().toString());
+=======
+    int row = index.row();
+    QVariant id = ui->tableView_apprenants->model()->data(ui->tableView_apprenants->model()->index(row, 0));
+    QVariant nom = ui->tableView_apprenants->model()->data(ui->tableView_apprenants->model()->index(row, 1));
+    QVariant prenom = ui->tableView_apprenants->model()->data(ui->tableView_apprenants->model()->index(row, 2));
+    QVariant date_naissance = ui->tableView_apprenants->model()->data(ui->tableView_apprenants->model()->index(row, 3));
+    QVariant tel = ui->tableView_apprenants->model()->data(ui->tableView_apprenants->model()->index(row, 4));
+    QVariant sexe = ui->tableView_apprenants->model()->data(ui->tableView_apprenants->model()->index(row, 5));
+    QVariant adresse = ui->tableView_apprenants->model()->data(ui->tableView_apprenants->model()->index(row, 6));
+
+    ui->lineEdit_id->setText(id.toString());
+    ui->lineEdit_nom->setText(nom.toString());
+    ui->lineEdit_prenom->setText(prenom.toString());
+    ui->dateEdit_naissance->setDate(QDate::fromString(date_naissance.toString(), "dd/MM/yyyy"));
+    ui->lineEdit_telephone->setText(tel.toString());
+    ui->comboBox_sexe->setCurrentText(sexe.toString());
+    ui->lineEdit_adresse->setText(adresse.toString());
+}
+
+void apprenants::afficherNotification(const QString &titre, const QString &message, NotificationType type, int dureeAffichage)
+{
+    // Nettoyer les notifications terminées
+    nettoyerNotifications();
+    
+    // Créer et afficher une nouvelle notification
+    Notification *notification = new Notification(this);
+    notification->showNotification(titre, message, type, dureeAffichage);
+    
+    // Connecter le signal de clic sur la notification
+    connect(notification, &Notification::notificationClicked, this, [this](NotificationType type, const QString &titre) {
+        // Gérer l'action lorsque l'utilisateur clique sur une notification
+        QMessageBox::information(this, titre, 
+            QString("Action pour la notification de type %1").arg(static_cast<int>(type)));
+    });
+    
+    // Positionner la notification en fonction du nombre de notifications déjà affichées
+    QScreen *screen = QApplication::primaryScreen();
+    QRect screenGeometry = screen->availableGeometry();
+    int y = screenGeometry.height() - 150 - (m_notifications.size() * 150);
+    notification->move(screenGeometry.width() - notification->width() - 20, y);
+    
+    // Ajouter à la liste des notifications actives
+    m_notifications.append(notification);
+}
+
+void apprenants::nettoyerNotifications()
+{
+    // Supprimer les notifications qui ne sont plus affichées
+    for (int i = m_notifications.size() - 1; i >= 0; --i) {
+        if (!m_notifications[i] || !m_notifications[i]->isVisible()) {
+            delete m_notifications.takeAt(i);
+        }
+    }
+}
+
+void apprenants::setupArduino()
+{
+    arduino = new QSerialPort(this);
+    
+    // Configuration pour utiliser spécifiquement COM8
+    arduino->setPortName("COM8");
+
+    // Vérifier si le port est disponible
+    bool portDisponible = false;
+    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
+        if (info.portName() == "COM8") {
+            portDisponible = true;
+            break;
+        }
+    }
+
+    if (!portDisponible) {
+        afficherMessageControle("Le port COM8 n'est pas disponible", true);
+        return;
+    }
+
+    // Configuration du port série
+    arduino->setBaudRate(QSerialPort::Baud9600);
+    arduino->setDataBits(QSerialPort::Data8);
+    arduino->setParity(QSerialPort::NoParity);
+    arduino->setStopBits(QSerialPort::OneStop);
+    arduino->setFlowControl(QSerialPort::NoFlowControl);
+
+    if (!arduino->open(QIODevice::ReadWrite)) {
+        afficherMessageControle("Impossible d'ouvrir le port " + arduino->portName(), true);
+        return;
+    }
+
+    // Attendre que la connexion soit établie
+    QThread::sleep(2); // Attente de 2 secondes pour l'initialisation
+    arduino->clear(); // Vider les buffers
+
+    // Se connecter au signal readyRead
+    connect(arduino, &QSerialPort::readyRead,
+            this, &apprenants::lireArduino);
+
+    // Configuration de la temporisation pour la lecture en continu
+    arduino->setReadBufferSize(64); // Taille du buffer de lecture
+    arduino->setDataTerminalReady(true); // Activer DTR pour certains modules RFID
+
+    afficherNotification("Arduino", "Connexion établie sur " + arduino->portName(),
+                         NotificationType::INFORMATION);
+    qDebug() << "Connexion Arduino établie sur" << arduino->portName() << "à 9600 bauds";
+}
+
+void apprenants::lireArduino()
+{
+    static QByteArray buffer;
+    static qint64 lastReadTime = 0;
+    const qint64 debounceTime = 1000; // Délai d'attente en ms entre deux lectures
+    
+    qint64 currentTime = QDateTime::currentMSecsSinceEpoch();
+    
+    // Vérifier si le délai minimum entre deux lectures est respecté
+    if ((currentTime - lastReadTime) < debounceTime) {
+        arduino->clear(); // Nettoyer le buffer pour éviter les lectures en attente
+        return;
+    }
+    
+    // Lire toutes les données disponibles
+    while (arduino->bytesAvailable() > 0) {
+        buffer += arduino->readAll();
+        // Petite pause pour permettre la réception de données supplémentaires
+        QCoreApplication::processEvents();
+        QThread::usleep(5000);  // Réduit à 5ms pour une meilleure réactivité
+    }
+
+    // Vérifier si nous avons une ligne complète
+    int endOfLine = buffer.indexOf('\n');
+    if (endOfLine == -1) {
+        // Pas de ligne complète reçue encore
+        // Si le buffer devient trop grand, le vider pour éviter les fuites de mémoire
+        if (buffer.size() > 100) {
+            buffer.clear();
+            qDebug() << "Buffer nettoyé pour éviter les fuites de mémoire";
+        }
+        return;
+    }
+
+    // Extraire la ligne complète
+    QByteArray ligneComplete = buffer.left(endOfLine).trimmed();
+    // Conserver le reste dans le buffer
+    buffer = buffer.mid(endOfLine + 1);
+
+    // Traiter la ligne reçue
+    QString ligne = QString::fromUtf8(ligneComplete);
+    qDebug() << "Données brutes reçues:" << ligne;
+
+    // Vérifier le format UID (ex: "UID:0102A3B4")
+    if (ligne.startsWith("UID:")) {
+        QString uid = ligne.mid(4).trimmed().toUpper();
+        if (!uid.isEmpty()) {
+            // Formater l'UID pour un affichage plus lisible (ajouter des tirets)
+            QString formattedUid;
+            for (int i = 0; i < uid.length(); i += 2) {
+                if (i > 0) formattedUid += "-";
+                formattedUid += uid.mid(i, 2);
+            }
+            
+            // Mettre à jour le temps de la dernière lecture valide
+            lastReadTime = currentTime;
+            
+            qDebug() << "UID détecté :" << formattedUid;
+            emit rfidDetected(formattedUid);
+            
+            // Vérifier l'UID et afficher le message approprié
+            if (formattedUid == "D3-2F-3F-44") {
+                afficherNotification("Accès autorisé", "ID valide : " + formattedUid,
+                                   NotificationType::MOTIVATION, 2000);
+            } else if (formattedUid == "FF-78-07-C6") {
+                afficherNotification("Accès refusé", "ID invalide : " + formattedUid,
+                                   NotificationType::ALERT, 2000);
+            } else {
+                afficherNotification("Carte détectée", "UID : " + formattedUid,
+                                   NotificationType::INFORMATION, 2000);
+            }
+            
+            // Vider le buffer après détection
+            buffer.clear();
+            
+            // Vider le buffer de réception matériel
+            arduino->clear();
+            
+            // Ajouter un délai logiciel pour éviter les lectures multiples
+            QThread::msleep(100);
+        }
+    }
+>>>>>>> 4229cbb (ajout arduino)
 }

@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 17.0.1, 2025-11-17T20:14:43. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
   <value type="QByteArray">{c96cd6bb-d7c5-4048-9058-6a3754c6349c}</value>
+=======
+<!-- Written by QtCreator 17.0.1, 2025-12-05T18:58:02. -->
+<qtcreator>
+ <data>
+  <variable>EnvironmentId</variable>
+  <value type="QByteArray">{bc480500-2024-4143-bb71-e8096dada0d7}</value>
+>>>>>>> 4229cbb (ajout arduino)
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -162,6 +170,7 @@
      <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
      <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
      <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph &quot;dwarf,4096&quot; -F 250</value>
+<<<<<<< HEAD
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
      <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/hp/Desktop/apprenants/apprenants.pro</value>
@@ -170,6 +179,16 @@
      <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
      <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
      <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/hp/Desktop/apprenants/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug</value>
+=======
+     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">apprenants2</value>
+     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
+     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/hp/Desktop/apprenants_arduino/apprenants.pro</value>
+     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">true</value>
+     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
+     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/hp/Desktop/apprenants/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/bin</value>
+>>>>>>> 4229cbb (ajout arduino)
     </valuemap>
     <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">2</value>
@@ -198,6 +217,7 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph &quot;dwarf,4096&quot; -F 250</value>
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/hp/Desktop/apprenants/apprenants.pro</value>
@@ -206,6 +226,16 @@
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/hp/Desktop/apprenants/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug</value>
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">apprenants2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/hp/Desktop/apprenants_arduino/apprenants.pro</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">true</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/hp/Desktop/apprenants/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/bin</value>
+>>>>>>> 4229cbb (ajout arduino)
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
