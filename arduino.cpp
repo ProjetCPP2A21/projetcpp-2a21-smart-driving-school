@@ -1,14 +1,28 @@
 #include "arduino.h"
-#include "ui_arduino.h"
+#include <QSerialPort>
+#include <QSerialPortInfo>
+#include <QDebug>
 
-arduino::arduino(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::arduino)
+Arduino::Arduino(QObject *parent) : QObject(parent)
 {
-    ui->setupUi(this);
-}
+    serial = new QSerialPort(this);
+    serial->setPortName("COM5");
+    serial->setBaudRate(QSerialPort::Baud9600);
 
-arduino::~arduino()
-{
-    delete ui;
+    if(!serial->open(QIODevice::ReadWrite)) {
+        qDebug() << "Impossible d'ouvrir le port série";
+        return;
+    }
+
+    QObject::connect(serial, &QSerialPort::readyRead, [this]() {
+        QByteArray data = serial->readAll();
+        QString uid = QString::fromUtf8(data).trimmed();
+        qDebug() << "UID reçu:" << uid;
+
+        if(uid == "123456") {
+            qDebug() << "Accès autorisé !";
+        } else {
+            qDebug() << "Accès refusé !";
+        }
+    });
 }

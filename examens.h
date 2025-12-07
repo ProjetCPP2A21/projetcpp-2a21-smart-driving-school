@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include "examen.h"
 #include "ui_examens.h"
+#include <QMainWindow>
+#include <QSerialPort>
+#include <QtSql>
 namespace Ui {
 class examens;
 }
@@ -16,9 +19,8 @@ public:
     explicit examens(QWidget *parent = nullptr);
     ~examens();
 
+
 private slots:
-    void on_pushButton_login_clicked();
-    void on_pushButton_examens_clicked();
     void on_pushButton_ajouter_clicked();
     void on_pushButton_modifier_clicked();
     void on_pushButton_supprimer_clicked();
@@ -30,12 +32,26 @@ private slots:
     void on_pushButton_retour_clicked();
     void on_pushButton_planifier_clicked(); // nouveau slot
     void rappelExamensDuJour(); // rappel automatique
+    // ----- Arduino -----
+    void setupArduino();              // config et ouverture port Arduino
+    void lireArduino();               // lire les données venant de l'Arduino
+    void verifierID(const QString &id); // vérifier si ID valide et action moteur
+void on_pushButton_ouvrir_clicked(); // <-- nouveau
+
 
 
 private:
     Ui::examens *ui;
     int selectedId;           // 🔹 ID de la ligne sélectionnée
-    void clearFields();       // 🔹 Fonction pour vider tous les champs
+    void clearFields();
+    QSqlDatabase db;    // 🔹 Fonction pour vider tous les champs
+    QSerialPort *arduino;       // port série pour Arduino
+    QString bufferArduino;       // pour accumuler les données série
+
+
+    bool idValide(const QString &id); // vérifie si l'ID est dans la base
+
 };
+
 
 #endif // EXAMENS_H

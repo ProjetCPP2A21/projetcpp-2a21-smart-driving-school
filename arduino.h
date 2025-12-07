@@ -1,22 +1,18 @@
 #ifndef ARDUINO_H
 #define ARDUINO_H
 
-#include <QWidget>
+#include <QObject>
+#include <QSerialPort>
+#include <QDebug>
 
-namespace Ui {
-class arduino;
-}
-
-class arduino : public QWidget
+class Arduino : public QObject
 {
     Q_OBJECT
-
 public:
-    explicit arduino(QWidget *parent = nullptr);
-    ~arduino();
+    explicit Arduino(QObject *parent = nullptr);
 
 private:
-    Ui::arduino *ui;
+    QSerialPort *serial;
 };
 
 #endif // ARDUINO_H

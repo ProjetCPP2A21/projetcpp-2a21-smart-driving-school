@@ -21,23 +21,18 @@
 #include <QPrinter>
 #include <QGraphicsDropShadowEffect>
 #include <QTextDocument>
+#include <QSerialPortInfo>
+#include <QRegularExpression>
+#include <QCloseEvent>
+
 
 examens::examens(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::examens)
 {
     ui->setupUi(this);
+    setupArduino();
 
-    // ✅ Démarre sur la page de connexion
-    ui->stackedWidget->setCurrentIndex(0);
-
-    // Masquer le mot de passe
-    ui->lineEdit_password->setEchoMode(QLineEdit::Password);
-
-    // Connexions
-    connect(ui->pushButton_examens, &QPushButton::clicked, this, &examens::on_pushButton_examens_clicked);
-
-    // Initialisation de la table examens (ta partie existante)
     selectedId = 0;
     ui->tableView_examens->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableView_examens->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -51,43 +46,17 @@ examens::examens(QWidget *parent) :
     connect(ui->pushButton_stats, &QPushButton::clicked, this, &examens::afficherStatistiques);
     connect(ui->pushButton_rappel, &QPushButton::clicked, this, &examens::rappelExamensDuJour);
 
-
 }
 
-// 🟢 LOGIN
-void examens::on_pushButton_login_clicked()
-{
-    QString email = ui->lineEdit_email->text().trimmed();
-    QString password = ui->lineEdit_password->text().trimmed();
 
-    if (email == "a" && password == "0000")
-    {
-        QMessageBox::information(this, "Connexion réussie", "Bienvenue !");
-        ui->stackedWidget->setCurrentIndex(1); // Page menu
-        ui->lineEdit_email->clear();
-        ui->lineEdit_password->clear();
-    }
-    else
-    {
-        QMessageBox::warning(this, "Erreur", "Email ou mot de passe incorrect !");
-    }
-}
-
-// 🟡 MENU → PAGE EXAMENS
-void examens::on_pushButton_examens_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2); // Passe à l’interface examens
-    ui->tableView_examens->setModel(Examen().afficher());
-    ui->tableView_examens->clearSelection();
-
-    rappelExamensDuJour();
-}
 
 examens::~examens()
 {
+    if (arduino && arduino->isOpen())
+        arduino->close();
+    delete arduino;
     delete ui;
 }
-
 // -------------------- AJOUTER --------------------
 void examens::on_pushButton_ajouter_clicked()
 {
@@ -589,4 +558,119 @@ void examens::clearFields()
 void examens::on_pushButton_retour_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1); // index 1 = page menu
+}
+
+// ---------------- Arduino ----------------
+void examens::setupArduino()
+{
+    arduino = new QSerialPort(this);
+
+    qDebug() << "=== Test Arduino ===";
+    qDebug() << "Ports disponibles :";
+    for (const QSerialPortInfo &info : QSerialPortInfo::availablePorts())
+        qDebug() << " -" << info.portName();
+
+    arduino->setPortName("COM5");
+    arduino->setBaudRate(QSerialPort::Baud9600);
+
+    if (arduino->open(QIODevice::ReadWrite))
+        qDebug() << "Arduino ouvert avec succès !";
+    else
+        qDebug() << "Impossible d'ouvrir Arduino :" << arduino->errorString();
+
+    connect(arduino, &QSerialPort::readyRead, this, &examens::lireArduino);
+}
+
+void examens::lireArduino()
+{
+    if (!arduino->isOpen()) return;
+
+    while (arduino->canReadLine()) {
+        QByteArray data = arduino->readLine();
+        QString uid = QString::fromUtf8(data).trimmed();
+
+        if (uid.startsWith("UID:")) {
+            uid = uid.mid(4).toUpper();
+            qDebug() << "UID détecté:" << uid;
+            verifierID(uid);
+        }
+    }
+}
+
+void examens::verifierID(const QString &id)
+{
+    if (idValide(id)) {
+        qDebug() << "ID valide !";
+        arduino->write("OPEN\n");
+
+        QMessageBox::information(this, "Porte", "Porte ouverte !");
+        QTimer::singleShot(5000, this, [=](){
+            QMessageBox::information(this, "Porte", "Porte fermée !");
+        });
+    } else {
+        qDebug() << "ID invalide !";
+        QMessageBox::warning(this, "Porte", "ID invalide !");
+    }
+}
+
+// Fonction qui vérifie si l'ID existe dans la table moniteur
+bool examens::idValide(const QString &id)
+{
+    QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM moniteur WHERE uid_card = :id");
+    query.bindValue(":id", id);
+
+    if (!query.exec()) {
+        qDebug() << "Erreur SQL:" << query.lastError().text();
+        return false;
+    }
+
+    if (query.next()) {
+        int count = query.value(0).toInt();
+        return count > 0;
+    }
+
+    return false;
+}
+
+// Slot du bouton "Ouvrir"
+void examens::on_pushButton_ouvrir_clicked()
+{
+
+    QString id = ui->id_lineEdit->text().trimmed(); // récupérer ID entré
+
+    if(id.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez entrer un ID !");
+        return;
+    }
+
+    // Vérifier si l'ID existe dans la table MONITEUR
+    QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM MONITEUR WHERE ID = :id");
+    query.bindValue(":id", id);
+
+    if(!query.exec()) {
+        QMessageBox::critical(this, "Erreur", "Erreur de base de données !");
+        return;
+    }
+
+    query.next();
+    int count = query.value(0).toInt();
+
+    if(count > 0) {
+        QMessageBox::information(this, "Succès", "ID valide !");
+
+        // Envoyer commande à Arduino pour moteur
+        arduino->write("OPEN\n");
+
+        // Premier message : porte ouverte
+        QMessageBox::information(this, "Porte", "Porte ouverte !");
+
+        // Message porte fermée après 5 secondes
+        QTimer::singleShot(5000, this, [=](){
+            QMessageBox::information(this, "Porte", "Porte fermée !");
+        });
+    } else {
+        QMessageBox::critical(this, "Erreur", "ID invalide !");
+    }
 }
