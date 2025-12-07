@@ -1,0 +1,90 @@
+* [33mc9e8e47[m[33m ([m[1;32mmaster[m[33m)[m ajouter arduino
+* [33mb91ba58[m[33m ([m[1;31morigin/integration-islem-mannai[m[33m)[m tache indiv final
+* [33m4dde237[m integration final
+* [33m8c3db1b[m[33m ([m[1;31morigin/integ-menu-examens-CRUD-metiers[m[33m)[m modification metiers
+* [33m3f73416[m integration examens
+[31m|[m * [33m8b9fad7[m[33m ([m[1;31morigin/integration_islemmelki+islemmannai_VF[m[33m)[m integration final arduino islem mannai
+[31m|[m * [33m60402f7[m[33m ([m[1;31morigin/paiementCRUD+meters[m[33m)[m output arduino
+[31m|[m * [33m126ef65[m mitier avancé
+[31m|[m * [33m82259f2[m mitier
+[31m|[m * [33m7cb00e5[m CRUD+meters1
+[31m|[m * [33m52a8f96[m[33m ([m[1;31morigin/paiement[m[33m)[m Ajout des fichiers paiement, cnx et maj de l'interface
+[31m|[m * [33m5efb5d7[m First commit paiement
+[31m|[m * [33mc0b918e[m[33m ([m[1;31morigin/connection-apprenant[m[33m)[m ajout arduino
+[31m|[m * [33ma3be4b4[m CRUD modifier
+[31m|[m * [33md4158b5[m crud
+[31m|[m * [33m1be7ce6[m connection
+[31m|[m * [33med5847a[m[33m ([m[1;31morigin/integration_islemmelki_VF[m[33m)[m Ajout arduino
+[31m|[m * [33m79d6bc1[m[33m ([m[1;31morigin/integration-amin-islem-islem[m[33m)[m integration
+[31m|[m [34m|[m * [33m490033e[m[33m ([m[1;31morigin/integration-islemmelki-islemmannai[m[33m)[m islemmelki et islemmannai
+[31m|[m [34m|[m * [33m8250a8b[m[33m ([m[1;31morigin/moniteur[m[33m)[m Ajout du code pour le module moniteur
+[31m|[m [34m|[m * [33m319f8b3[m Premier commit
+[31m|[m [34m|[m * [33md640098[m[33m ([m[1;31morigin/employe[m[33m)[m ajouté tous les métiers simples
+[31m|[m [34m|[m * [33m4c30f33[m ajouté tous les métiers simples
+[31m|[m [34m|[m * [33m9de7cf7[m delete files
+[31m|[m [34m|[m * [33ma15bc1f[m ajoutapresfinal
+[31m|[m [34m|[m * [33m7a09c9a[m addFichiers
+[31m|[m [34m|[m * [33mfee1ecc[m[33m ([m[1;31morigin/main-original[m[33m)[m addbuild
+[31m|[m [34m|[m * [33me4f922c[m fix-bug
+[31m|[m [34m|[m [36m|[m * [33mb4dc738[m[33m ([m[1;31morigin/master[m[33m)[m cleaning up branch master
+[31m|[m [34m|[m [36m|[m[34m/[m  
+[31m|[m [34m|[m[34m/[m[36m|[m   
+[31m|[m * [36m|[m [33m93ce3b3[m Push application_integree project
+[31m|[m  [36m/[m  
+[31m|[m [36m|[m * [33m872f7c2[m[33m ([m[1;31morigin/integration[m[33m)[m Ajout du dossier en intégration
+[31m|[m [36m|[m *   [33m03fd9dc[m[33m ([m[1;31morigin/integration_apprenant[m[33m)[m Résolution des conflits - garder version locale
+[31m|[m [36m|[m [1;32m|[m[1;33m\[m  
+[31m|[m [36m|[m [1;32m|[m * [33m6261b74[m integration CRUD
+[31m|[m [36m|[m[31m_[m[1;32m|[m[31m/[m  
+[31m|[m[31m/[m[36m|[m [1;32m|[m   
+* [36m|[m [1;32m|[m [33m93ff472[m[33m ([m[1;31morigin/connection-examens[m[33m)[m CRUD
+* [36m|[m [1;32m|[m [33m84ad8fa[m connection-examens
+* [36m|[m [1;32m|[m [33ma1e65b2[m[33m ([m[1;31morigin/examens[m[33m)[m First commit all files
+* [36m|[m [1;32m|[m [33me6e26bb[m first commit main.cpp
+ [36m/[m [1;32m/[m  
+[36m|[m * [33m0b0174c[m integration crud apprenant
+[36m|[m * [33m0157910[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mcrud[m[33m, [m[1;31morigin/crud[m[33m)[m hello
+[36m|[m * [33me7cda16[m[33m ([m[1;31morigin/connection-vehicule[m[33m)[m hello
+[36m|[m * [33mda32267[m[33m ([m[1;31morigin/vehicule[m[33m)[m first commit vehicule
+[36m|[m * [33me8a0ec9[m[33m ([m[1;31morigin/atelier_connexion_ghassen[m[33m)[m add_connection
+[36m|[m[36m/[m  
+* [33m330bd13[m add employe
+* [33mbd12723[m initial
+* [33m1089f66[m[33m ([m[1;31morigin/main.original[m[33m)[m initial commit
+*   [33m0ac026f[m allah le traba7 lgit
+[31m|[m[32m\[m  
+[31m|[m * [33m3bb5e44[m[33m ([m[1;31morigin/integ-menu-examen[m[33m)[m First commit to main-original
+[31m|[m * [33m8b41219[m Fiste commit GoDrive
+* [33ma4a89c5[m Ajout du fichier .gitignore pour ignorer les fichiers build
+* [33m27d3432[m Ajout du fichier .gitignore et suppression des fichiers générés
+* [33md308938[m hani njareb
+* [33m78fb12e[m Fist commit all files
+* [33m393ec46[m First commit main.cpp
+* [33m2aa697a[m[33m ([m[1;31morigin/integ-menu-examens-apprenants[m[33m)[m Ton message de commit
+* [33m3166f5d[m Firt commit main.cpp
+* [33m9374ca1[m[33m ([m[1;31morigin/apprenant[m[33m)[m Initial commit
+* [33mb916522[m[33m ([m[1;31morigin/new[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add files via upload
+* [33m371be03[m Add files via upload
+* [33mf946f55[m Add files via upload
+* [33me6e6ba2[m Add files via upload
+* [33m9be33b5[m Add files via upload
+* [33m4007f77[m Delete paiement.pro
+* [33m682232c[m Delete paiement.pro.user
+* [33m2b13944[m Delete moniteur.ui.autosave
+* [33m2b28c32[m Delete moniteur.ui
+* [33md0be55f[m Delete moniteur.pro.user
+* [33mf1cb8e6[m Delete moniteur.pro
+* [33m7b96359[m Delete moniteur.h
+* [33m6623bef[m Delete moniteur.cpp
+* [33ma7d42e2[m Delete mainwindow.ui
+* [33m09993fe[m Delete mainwindow.h
+* [33m85e529e[m Delete mainwindow.cpp
+* [33mce674c0[m Delete main.cpp
+* [33me00d15f[m Delete apprenant.ui
+* [33m5f1791f[m Delete apprenant.h
+* [33m07603dd[m Delete apprenant.cpp
+* [33med26f03[m Delete CMakeLists.txt.user
+* [33m9767cda[m Delete CMakeLists.txt
+* [33m7bdf1a7[m Add files via upload
+* [33m923f997[m Add files via upload
+* [33m08754f4[m Add files via upload
