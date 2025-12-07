@@ -1,0 +1,10 @@
+debug/cnx.o
+debug/main.o
+debug/mainwindow.o
+debug/paiement.o
+debug/qrcode.o
+debug/qrcodegen.o
+debug/test.o
+debug/qrc_logo.o
+debug/moc_mainwindow.o
+debug/moc_test.o

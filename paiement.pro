@@ -12,14 +12,16 @@ SOURCES += \
     mainwindow.cpp \
     paiement.cpp \
     qrcode.cpp \
-    qrcodegen.cpp
+    qrcodegen.cpp \
+    test.cpp
 
 HEADERS += \
     cnx.h \
     mainwindow.h \
     paiement.h \
     qrcode.h \
-    qrcodegen.hpp
+    qrcodegen.hpp \
+    test.h
 
 FORMS += \
     mainwindow.ui
@@ -31,3 +33,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     logo.qrc
+
+QT += serialport

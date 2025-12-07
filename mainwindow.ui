@@ -201,24 +201,23 @@ QPushButton:hover {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(110, 69, 226, 0.3);
+    
 }
 
 QPushButton:hover {
     background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
                               stop:0 #5d3db8, stop:1 #6bbab5);
-    box-shadow: 0 6px 20px rgba(110, 69, 226, 0.4);
+    
     transform: translateY(-2px);
 }
 
 QPushButton:pressed {
     transform: translateY(1px);
-    box-shadow: 0 2px 10px rgba(110, 69, 226, 0.3);
 }
 
 QPushButton:disabled {
     background: #cccccc;
-    box-shadow: none;
+    
     transform: none;
 }</string>
     </property>
@@ -394,13 +393,11 @@ QPushButton:hover {
 QLineEdit:focus {
     border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
         stop:0 #ff4b1f, stop:1 #ffc837);
-    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
 }
 
 /* Hover */
 QLineEdit:hover {
     border: 2px solid #43cea2;
-    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
 }
 
 /* Placeholder text */
@@ -440,13 +437,11 @@ QLineEdit[placeholderText]:empty {
 QLineEdit:focus {
     border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
         stop:0 #ff4b1f, stop:1 #ffc837);
-    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
 }
 
 /* Hover */
 QLineEdit:hover {
     border: 2px solid #43cea2;
-    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
 }
 
 /* Placeholder text */
@@ -497,13 +492,11 @@ QDateEdit::down-arrow {
 QDateEdit:focus {
     border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
         stop:0 #ff4b1f, stop:1 #ffc837);
-    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
 }
 
 /* Hover */
 QDateEdit:hover {
     border: 2px solid #43cea2;
-    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
 }
 
 /* Menu du calendrier */
@@ -625,12 +618,10 @@ QComboBox::down-arrow {
 QComboBox:focus {
     border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
         stop:0 #ff4b1f, stop:1 #ffc837);
-    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
 }
 
 QComboBox:hover {
     border: 2px solid #43cea2;
-    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
 }
 
 /* Menu déroulant */
@@ -831,13 +822,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
 QLineEdit:focus {
     border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
         stop:0 #ff4b1f, stop:1 #ffc837);
-    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
 }
 
 /* Hover */
 QLineEdit:hover {
     border: 2px solid #43cea2;
-    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
 }
 
 /* Placeholder text */
@@ -847,25 +836,6 @@ QLineEdit[placeholderText]:empty {
     </property>
     <property name="text">
      <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>10</y>
-      <width>171</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>:/Downloads/554337631_1437269814008871_8043664467412301076_n.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -909,13 +879,11 @@ QLineEdit[placeholderText]:empty {
 QLineEdit:focus {
     border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
         stop:0 #ff4b1f, stop:1 #ffc837);
-    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
 }
 
 /* Hover */
 QLineEdit:hover {
     border: 2px solid #43cea2;
-    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
 }
 
 /* Placeholder text */
@@ -967,12 +935,10 @@ QComboBox::down-arrow {
 QComboBox:focus {
     border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
         stop:0 #ff4b1f, stop:1 #ffc837);
-    box-shadow: 0 0 4px rgba(255, 107, 53, 0.6);
 }
 
 QComboBox:hover {
     border: 2px solid #43cea2;
-    box-shadow: 0 0 4px rgba(67, 206, 162, 0.6);
 }
 
 /* Menu déroulant */
@@ -1045,6 +1011,99 @@ QPushButton:hover {
     </property>
     <property name="text">
      <string>recherche</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ID-EMPRRIENTE</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ID_2">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>60</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2, stop:1 #185a9d);
+    border-radius: 10px;
+    padding: 4px 8px;
+    background: white;
+    color: #2c3e50;
+    min-width: 120px;
+    max-width: 200px;
+    height: 24px;
+    selection-background-color: #43cea2;
+    selection-color: white;
+}
+
+/* Focus */
+QLineEdit:focus {
+    border: 2px solid qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4b1f, stop:1 #ffc837);
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #43cea2;
+    
+}
+
+/* Placeholder text */
+QLineEdit[placeholderText]:empty {
+    color: #95a5a6;  /* gris clair pour le placeholder */
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="testp">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>110</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #43cea2,
+        stop:1 #185a9d
+    );
+    color: white;
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: bold;
+    border: 1px solid #144d7e;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff4e50,   /* rouge vif */
+        stop:0.5 #fc913a, /* orange vif */
+        stop:1 #f9d423   /* jaune lumineux */
+    );
+    border: 1px solid #e04b3f; /* bordure assortie au feu */
+}</string>
+    </property>
+    <property name="text">
+     <string>test</string>
     </property>
    </widget>
   </widget>
