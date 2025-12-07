@@ -1,0 +1,8 @@
+# Ignorer le dossier build et les fichiers binaires
+/build/
+*.exe
+*.o
+/build/
+*.exe
+*.o
+build/
