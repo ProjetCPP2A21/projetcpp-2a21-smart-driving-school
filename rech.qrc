@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/rech">
+        <file>recherche.png</file>
+    </qresource>
+</RCC>
