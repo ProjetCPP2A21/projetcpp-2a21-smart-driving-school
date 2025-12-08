@@ -36,7 +36,8 @@ static inline QSqlDatabase db() {
 
 examens::examens(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::auto_ecole)
+    ui(new Ui::auto_ecole),
+    m_empreinte(nullptr)
 {
     ui->setupUi(this);
     setupArduino();       // si tu veux la garder
@@ -45,7 +46,14 @@ examens::examens(QWidget *parent) :
     if (!db.isOpen())
         qDebug() << "Erreur : la base SQL n'est pas ouverte !";
 
-
+    // Initialiser Empreinte digitale
+    m_empreinte = new Empriente(this);
+    if (m_empreinte->connecterArduino()) {
+        qDebug() << "Empreinte digitale connectée au port:" << m_empreinte->portActuel();
+        connect(m_empreinte, &Empriente::fingerprintResult, this, &examens::afficherResultatEmpreinte);
+    } else {
+        qDebug() << "Erreur connexion empreinte:" << m_empreinte->dernierMessageErreur();
+    }
 
     connect(arduino, &QSerialPort::readyRead, this, &examens::lireArduino);
 
@@ -737,6 +745,25 @@ void examens::on_pushButton_5_clicked()
     Employes *emp = new Employes();  // créer la fenêtre Employes
     emp->show();                     // l'afficher
     this->close();                   // fermer l'actuelle window examens
+}
+
+// Slot pour traiter le résultat de l'empreinte digitale
+void examens::afficherResultatEmpreinte(QString res)
+{
+    QString r = res.trimmed().toLower();
+    if (r == QStringLiteral("inscrit")) {
+        qDebug() << "Résultat empreinte: inscrit";
+        QMessageBox::information(this, "Vérification Empreinte", 
+                                "Apprenant reconnu - Inscrit dans la base.");
+    } else if (r == QStringLiteral("n'est pas inscrit")) {
+        qDebug() << "Résultat empreinte: n'est pas inscrit";
+        QMessageBox::warning(this, "Vérification Empreinte", 
+                            "Apprenant NON reconnu - Non inscrit dans la base.");
+    } else {
+        qDebug() << "Résultat empreinte (autre):" << res;
+        QMessageBox::information(this, "Résultat", 
+                                "Résultat empreinte reçu: " + res);
+    }
 }
 
 

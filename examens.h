@@ -7,6 +7,7 @@
 #include "ui_examens.h"
 #include <QSerialPort>
 #include <QtSql>
+#include "empriente.h"
 
 #include"employes.h"
 namespace Ui {
@@ -42,7 +43,7 @@ private slots:
     //_______arduino islem*2___________
     void lireArduino();
     void verifierID(const QString &id); // <- vérifie si l'ID est dans la base
-
+    void afficherResultatEmpreinte(QString res); // Nouveau slot pour empreinte digitale
 
 
     void on_Bapprenant_clicked();
@@ -69,7 +70,8 @@ private:
 //_____arduino islem*2______
     QSerialPort *arduino;       // port série pour Arduino
     QString bufferArduino;       // pour accumuler les données série
-QSqlDatabase db;
+    Empriente *m_empreinte;      // Objet Empriente pour biométrie
+    QSqlDatabase db;
     void setupArduino();
 };
 

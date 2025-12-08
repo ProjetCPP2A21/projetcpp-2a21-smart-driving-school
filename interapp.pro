@@ -58,13 +58,16 @@ SOURCES += \
     apiconfig.cpp \
     vehicule.cpp \
     vehicules.cpp \
+    vehicules_slots_impl.cpp \
     maintenance.cpp \
     mainwindow.cpp \
     paiement.cpp \
     qrcode.cpp \
     qrcodegen.cpp \
     moniteur.cpp \
-    moniteur_ui.cpp
+    moniteur_ui.cpp \
+    empriente.cpp \
+    logo.cpp
 
 # ========================================
 # HEADERS - Fichiers headers
@@ -95,7 +98,9 @@ HEADERS += \
     qrcode.h \
     qrcodegen.hpp \
     moniteur.h \
-    moniteur_ui.h
+    moniteur_ui.h \
+    empriente.h \
+    logo.h
 
 # ========================================
 # FORMS - Fichiers UI
