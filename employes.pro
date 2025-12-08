@@ -1,6 +1,10 @@
 QT       += core gui sql
-QT       += core charts
 QT       += core gui printsupport
+QT       += core charts
+QT += charts
+QT       += core gui  serialport
+QT += core gui sql printsupport charts network
+    quick
 QT += core gui multimedia multimediawidgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,18 +22,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arduino.cpp \
     connection.cpp \
+    email.cpp \
     employe.cpp \
     main.cpp \
-    employes.cpp
+    employes.cpp \
+    login.cpp
 
 HEADERS += \
+    arduino.h \
     connection.h \
+    email.h \
     employe.h \
-    employes.h
+    employes.h \
+    login.h
 
 FORMS += \
-    employes.ui
+    employes.ui \
+    login.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,4 +1,5 @@
 #include "employes.h"
+#include "email.h"
 #include "ui_employes.h"
 #include<QMessageBox>
 #include<QDebug>
@@ -6,14 +7,18 @@ Employes::Employes(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Employes)
 {
+    id ="";
+    data = "";
     ui->setupUi(this);
     tabEmploye = new QSqlQueryModel();
 
 
     ui->tabEmploye->setModel(tabEmploye);
-    ui->Employe->show();
+    ui->grp_login->show();
+    ui->Employe->hide();
     ui->grp_ajoutEmpl->hide();
     ui->grp_ModifierEmpl->hide();
+    ui->menu->hide();
     e.afficher(tabEmploye);
 
 
@@ -26,8 +31,45 @@ Employes::Employes(QWidget *parent)
     ui->prenomEmploye->setValidator(validator2);
     ui->nomEmploye->setValidator(validator2);
     ui->idEmploye->setValidator(validator1) ;
-}
 
+    int ret=a.connect_arduino(); // lancer la connexion à arduino
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< a.getarduino_port_name();
+        break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<a.getarduino_port_name();
+        break;
+    case(-1):qDebug() << "arduino is not available";
+    }
+
+     QObject::connect(a.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+
+}
+void Employes::update_label()
+{
+    data=a.read_from_arduino();
+
+    if(data!="D")
+    {
+        id =id + data ;
+        qDebug () <<"id: " <<id ;
+    }
+    else
+    {
+        if(e.existe(id))
+        {
+            QMessageBox::critical(nullptr, QObject::tr("id existe"),
+                                  QObject::tr("id existe.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+        else
+        {
+            QMessageBox::critical(nullptr, QObject::tr("id n'existe pas"),
+                                  QObject::tr("id n'existe pas.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+        id = "" ;
+    }
+}
 Employes::~Employes()
 {
     delete ui;
@@ -373,3 +415,70 @@ void Employes::on_btn_statEmpl_clicked()
         ui->lab_statEmpl->setStyleSheet("background:transparent; color:white; ");
         ui->lab_statEmpl->show();
 }
+
+void Employes::on_btn_connexion_clicked()
+{
+    e.setMdp(ui->lineEdit_motdepasse->text());
+    e.setEmail(ui->lineEdit_adresse->text());
+    if(e.login())
+    {
+        ui->grp_login->hide();
+        ui->Employe->show();
+        ui->grp_ajoutEmpl->hide();
+        ui->grp_ModifierEmpl->hide();
+        ui->menu->show();
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("login faild"),
+                            QObject::tr("mot de passe ou email incorrecte.\n"
+                                        "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+}
+
+void Employes::on_btn_motdepasse_oublie_clicked()
+{
+
+    QString bdy = R"(
+<html>
+  <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
+    <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 20px;">
+      <h2 style="color: #2a9df4; text-align: center;">🔒 Réinitialisation de votre mot de passe</h2>
+      <p>Bonjour,</p>
+      <p>Vous avez demandé à récupérer votre mot de passe. Voici vos informations de connexion :</p>
+      <div style="background-color: #f2f2f2; border-left: 4px solid #2a9df4; padding: 10px; margin: 15px 0;">
+        <strong>Mot de passe :</strong> <span style="color: #333;">%1</span>
+      </div>
+      <p>Pour des raisons de sécurité, pensez à changer votre mot de passe après connexion.</p>
+      <p style="font-size: 12px; color: #777;">Ceci est un message automatique, merci de ne pas y répondre.</p>
+    </div>
+  </body>
+</html>
+)";
+
+
+    e.setEmail(ui->lineEdit_adresse->text());
+    if(e.getPassword())
+    {
+        mailer m;
+        if(m.sendEmail(e.getEmail(),"mot de passe oublié",bdy.arg(e.getMdp()))!=-1)
+        {
+            QMessageBox::critical(nullptr, QObject::tr("email envoyé"),
+                                  QObject::tr("password a été envoyé à votre email\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+        else
+        {
+            QMessageBox::critical(nullptr, QObject::tr("failed envoie email "),
+                                  QObject::tr("problem\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("email non trouvé"),
+                              QObject::tr("email n'existe pas\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+}
+

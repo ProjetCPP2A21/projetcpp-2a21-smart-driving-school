@@ -9,6 +9,7 @@
 #include<QChartView>
 #include<QPieSeries>
 #include <QPrinter>
+#include"arduino.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class Employes; }
 QT_END_NAMESPACE
@@ -23,6 +24,7 @@ public:
 bool matchesValidator(QValidator *v, const QString &s);
 private slots:
 
+    void update_label();
     void on_ajoutEmpl_clicked();
 
     void on_modifierEmpl_clicked();
@@ -46,9 +48,16 @@ private slots:
 
     void on_btn_statEmpl_clicked();
 
+    void on_btn_connexion_clicked();
+
+    void on_btn_motdepasse_oublie_clicked();
+
 private:
     Ui::Employes *ui;
     QSqlQueryModel *tabEmploye;
     employe e;
+    Arduino a;
+    QString id;
+    QString data ;
 };
 #endif // MAINWINDOW_H

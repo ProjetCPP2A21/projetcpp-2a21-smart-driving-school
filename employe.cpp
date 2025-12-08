@@ -71,3 +71,49 @@ int employe:: countPoste(QString poste)
     model->setQuery("select * from employe where poste like '" + poste + "'") ;
     return  model->rowCount();
 }
+bool employe:: login()
+{
+    QSqlQuery query ;
+        query.prepare("select * from EMPLOYE where mdp=:mdp and email = :email");
+        query.bindValue(":mdp" , mdp);
+        query.bindValue(":email" , email);
+        if(query.exec() && query.next())
+        {
+            return true ;
+        }
+        else
+        {
+            return  false ;
+        }
+}
+bool employe::getPassword()
+{
+    QSqlQuery query;
+    query.prepare("select * from EMPLOYE where email=:email");
+    query.bindValue(":email",email);
+    if(query.exec() && query.next())
+    {
+        mdp=query.value(3).toString();
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+
+}
+bool employe::existe(QString id)
+{
+    QSqlQuery query;
+    query.prepare("select * from EMPLOYE where ID_EMPLOYE=:id");
+    query.bindValue(":id",id);
+    if(query.exec() && query.next())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}

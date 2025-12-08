@@ -1,8 +1,10 @@
+#include "login.h"
 #include "employes.h"
 
 #include <QApplication>
 #include"connection.h"
 #include<QMessageBox>
+#include"employes.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -20,7 +22,7 @@ int main(int argc, char *argv[])
                                 QObject::tr("connection succes.\n"
                                             "Click Cancel to exit."), QMessageBox::Cancel);
         }
-    Employes w;
-    w.show();
+    Employes e;
+    e.show();
     return a.exec();
 }
