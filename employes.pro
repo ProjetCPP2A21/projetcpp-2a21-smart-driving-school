@@ -19,17 +19,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     connection.cpp \
+    email.cpp \
     employe.cpp \
     main.cpp \
-    employes.cpp
+    employes.cpp \
+    login.cpp
 
 HEADERS += \
     connection.h \
+    email.h \
     employe.h \
-    employes.h
+    employes.h \
+    login.h
 
 FORMS += \
-    employes.ui
+    employes.ui \
+    login.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

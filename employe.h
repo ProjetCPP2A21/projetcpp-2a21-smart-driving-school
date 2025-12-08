@@ -38,6 +38,8 @@ public:
     void trie(QSqlQueryModel *tabEmploye , QString critere);
     void recherche(QSqlQueryModel *tabEmploye , QString critere , QString ch);
     int countPoste(QString poste) ;
+    bool login();
+    bool getPassword();
 };
 
 #endif // EMPLOYE_H

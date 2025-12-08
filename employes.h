@@ -46,6 +46,10 @@ private slots:
 
     void on_btn_statEmpl_clicked();
 
+    void on_btn_connexion_clicked();
+
+    void on_btn_motdepasse_oublie_clicked();
+
 private:
     Ui::Employes *ui;
     QSqlQueryModel *tabEmploye;
